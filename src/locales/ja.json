@@ -1,0 +1,110 @@
+{
+  "app-bar": {},
+  "apps-name": {
+    "update-log": "変更ログ"
+  },
+  "index": {
+    "description": "オープンソースの純粋なWebページHoYoゲームツールボックス。",
+    "s0": "「（訳）美しき雲に愛しき花、風流は山水にありて。」",
+    "use": "すぐに使用してください"
+  },
+  "name": "「試作」",
+  "setting": {
+    "theme": {
+      "selector": {},
+      "dark": "ダークモード",
+      "light": "ライトモード",
+      "system": "システムに従ってください",
+      "select": "トピックを選択します",
+      "title": "テーマ"
+    },
+    "language": {
+      "selector": {},
+      "title": "言語",
+      "select": "選択言語",
+      "teyvat": "Tyvatフォントを使用します"
+    },
+    "about": {
+      "title": "について"
+    },
+    "title": "設定"
+  },
+  "song-player": {
+    "actions": {
+      "open-in-wyy": "NetEase クラウドで開く",
+      "share": "共有リンクをコピーする"
+    },
+    "intro": {},
+    "title": "音楽プレーヤー"
+  },
+  "translator": {
+    "font-size": "フォントサイズ",
+    "raw-text": "オリジナル",
+    "reverse-translation": "逆翻訳",
+    "forward-translation": "前方翻訳",
+    "title": "翻訳者",
+    "auto-wrap": "自動変更",
+    "open-keyboard": "キーボードを開きます",
+    "cloase-keyboard": "キーボードを片付けます"
+  },
+  "dictionary": {
+    "search": "検索",
+    "en": "英語",
+    "ja": "日本語",
+    "zh-cn": "簡体字中国語",
+    "search-text": "検索するテキスト",
+    "title": "辞書"
+  },
+  "update-log": {
+    "only-chinese-and-english": "このページは簡体字中国語と英語でのみ表示されます。"
+  },
+  "main": {},
+  "about": {
+    "build-time": "建設時間：{0}"
+  },
+  "question": {
+    "answer-right": "正解する",
+    "answer-wrong": "不正解",
+    "question-number": "質問{0}",
+    "submit-answer": "この質問への回答を送信する",
+    "question-rank-is": "質問バンク:",
+    "result": {
+      "tip": "合計 {0} 問ありますが、あなたは {1} 問に正解しました。"
+    }
+  },
+  "home": {
+    "title": "フロントページ"
+  },
+  "quiz": {
+    "title": "答え"
+  },
+  "achievement": {
+    "title": "成果",
+    "search": "成果を検索します",
+    "select-version": "オプション",
+    "finish": {
+      "is-finished": "それは完了ですか",
+      "unfinished": "未完成",
+      "finished": "完了"
+    },
+    "platforms-to-search": "",
+    "import-export": "インポート/エクスポート",
+    "search-with": "{0}で検索",
+    "numbers": "",
+    "all": "全て"
+  },
+  "gacha": {
+    "view": {
+      "title": "@:gacha.title ・閲覧"
+    },
+    "simulator": {
+      "title": "@:gacha.title ・シミュレーター"
+    },
+    "title": "ガチャ"
+  },
+  "global": {
+    "about": "について",
+    "github-os-repo": "Github オープンソース リポジトリ",
+    "loading": "読み込み"
+  }
+}

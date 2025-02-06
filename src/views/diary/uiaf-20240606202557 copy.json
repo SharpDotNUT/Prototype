@@ -1,0 +1,11 @@
+{
+  "info": {
+    "export_app": "YaeAchievement",
+    "export_timestamp": 1717676757,
+    "export_app_version": "3.7",
+    "uiaf_version": "v1.1"
+  },
+  "list": [
+    { "id": 80001, "status": 3, "current": 0, "timestamp": 1689322511 }
+  ]
+}

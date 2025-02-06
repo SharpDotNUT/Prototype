@@ -1,0 +1,113 @@
+{
+  "name": "「试作」",
+  "apps-name": {
+    "update-log": "更新日志"
+  },
+  "app-bar": {},
+  "setting": {
+    "theme": {
+      "dark": "深色模式",
+      "light": "浅色模式",
+      "system": "跟随系统",
+      "select": "选择主题",
+      "title": "主题"
+    },
+    "language": {
+      "title": "语言",
+      "select": "选择语言",
+      "teyvat": "使用提瓦特字体"
+    },
+    "about": {
+      "title": "关于"
+    },
+    "title": "设置"
+  },
+  "index": {
+    "s0": "「 云婵娟来花婵娟，风流尽在山水间。 」",
+    "description": "一个开源的纯网页端米哈游游戏工具箱。",
+    "use": "立即使用"
+  },
+  "song-player": {
+    "intro": {},
+    "actions": {
+      "share": "复制分享链接",
+      "open-in-wyy": "在网易云打开"
+    },
+    "title": "音乐播放器"
+  },
+  "translator": {
+    "font-size": "字体大小",
+    "raw-text": "原文",
+    "forward-translation": "正向翻译",
+    "reverse-translation": "反向翻译",
+    "title": "翻译器",
+    "auto-wrap": "自动换行",
+    "open-keyboard": "打开键盘",
+    "cloase-keyboard": "收起键盘",
+    "export-to-image": "导出结果为图片",
+    "action-to-save": "右键或长按保存"
+  },
+  "dictionary": {
+    "search": "搜索",
+    "zh-cn": "简体中文",
+    "en": "英文",
+    "ja": "日文",
+    "search-text": "要搜索的文本",
+    "title": "辞典"
+  },
+  "update-log": {
+    "only-chinese-and-english": "本页面只以简体中文和英文展示。"
+  },
+  "main": {},
+  "about": {
+    "build-time": "构建时间： {0}"
+  },
+  "question": {
+    "answer-right": "回答正确",
+    "answer-wrong": "回答错误",
+    "question-number": "第 {0} 题",
+    "submit-answer": "提交本题答案",
+    "next-question": "下一题",
+    "question-rank-is": "题库：",
+    "result": {
+      "tip": "一共 {0} 题， 您答对了 {1} 题。"
+    }
+  },
+  "home": {
+    "title": "首页"
+  },
+  "quiz": {
+    "title": "答题"
+  },
+  "achievement": {
+    "title": "成就",
+    "search": "搜索成就",
+    "select-version": "选择版本",
+    "all": "所有",
+    "finish": {
+      "finished": "已完成",
+      "is-finished": "是否完成",
+      "unfinished": "未完成"
+    },
+    "platforms-to-search": "搜索成就的平台",
+    "import-export": "导入/导出",
+    "numbers": "{0} 个成就组 - {1} 个成就",
+    "search-with": "在{0}上搜索"
+  },
+  "gacha": {
+    "view": {
+      "title": "@:gacha.title · 浏览"
+    },
+    "simulator": {
+      "title": "@:gacha.title · 模拟器"
+    },
+    "title": "卡池"
+  },
+  "global": {
+    "copy-success": "复制成功",
+    "copy-fail": "复制失败：{0}",
+    "about": "关于",
+    "github-os-repo": "Github 开源仓库",
+    "loading": "加载中"
+  }
+}

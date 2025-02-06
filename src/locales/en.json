@@ -1,0 +1,110 @@
+{
+  "name": "Prototype",
+  "apps-name": {
+    "update-log": "Update Log"
+  },
+  "app-bar": {},
+  "setting": {
+    "theme": {
+      "selector": {},
+      "dark": "Dark mode",
+      "light": "Light mode",
+      "system": "Follow the system",
+      "select": "Select Theme",
+      "title": "Theme"
+    },
+    "language": {
+      "selector": {},
+      "title": "Language",
+      "select": "Select language",
+      "teyvat": "Use Tyvat font"
+    },
+    "about": {
+      "title": "About"
+    },
+    "title": "Settings"
+  },
+  "index": {
+    "s0": "(Translated) \" How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」\"",
+    "description": "A open source HoYo game toolkit.",
+    "use": "Use"
+  },
+  "song-player": {
+    "intro": {},
+    "actions": {
+      "open-in-wyy": "Open on NetEase Cloud Music",
+      "share": "Copy share link"
+    },
+    "title": "Music player"
+  },
+  "translator": {
+    "font-size": "Font size",
+    "raw-text": "Raw text",
+    "reverse-translation": "Reverse translation",
+    "forward-translation": "Forward translation",
+    "title": "Translator",
+    "auto-wrap": "Automatic Wrap",
+    "open-keyboard": "Open the keyboard",
+    "cloase-keyboard": "Close the keyboard"
+  },
+  "dictionary": {
+    "search": "Search",
+    "en": "English",
+    "ja": "Japanese",
+    "zh-cn": "Simplified Chinese",
+    "search-text": "Text To Search For",
+    "title": "Dictionary"
+  },
+  "update-log": {
+    "only-chinese-and-english": "This page is only displayed in Simplified Chinese and English."
+  },
+  "main": {},
+  "about": {
+    "build-time": "Build time: {0}"
+  },
+  "question": {
+    "answer-right": "Answer correctly",
+    "answer-wrong": "Wrong answer",
+    "question-number": "Question {0}",
+    "submit-answer": "Submit answer",
+    "question-rank-is": "Question bank :",
+    "result": {
+      "tip": "There are {0} questions in total, and you answered {1} correctly."
+    }
+  },
+  "home": {
+    "title": "Home"
+  },
+  "quiz": {
+    "title": "Quiz"
+  },
+  "achievement": {
+    "title": "Achievement",
+    "search": "Search for achievement",
+    "select-version": "Select version",
+    "finish": {
+      "is-finished": "Is finished",
+      "unfinished": "Unfinished",
+      "finished": "Finished"
+    },
+    "platforms-to-search": "Platform to search for",
+    "import-export": "Import/Export",
+    "search-with": "Search with {0}",
+    "numbers": "{0} Groups - {1} Achievements",
+    "all": "All"
+  },
+  "gacha": {
+    "view": {
+      "title": "@:gacha.title · Browse"
+    },
+    "simulator": {
+      "title": "@:gacha.title · Simulator"
+    },
+    "title": "Gacha"
+  },
+  "global": {
+    "about": "About",
+    "github-os-repo": "Github Open Source Repository",
+    "loading": "Loading"
+  }
+}
