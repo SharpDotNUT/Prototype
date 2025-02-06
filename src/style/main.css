@@ -1,0 +1,57 @@
+@import url("./g-font.css");
+
+body {
+  transition: background-color .25s, color .25s;
+  color: var(--color-text);
+  background-color: var(--color-body);
+}
+
+:root {
+  --base-width: min(100%, 1000px)
+}
+.base-width {
+  width: var(--base-width)
+}
+
+body {
+  transition: background-color .25s, color .25s;
+  color: var(--color-text);
+  background-color: var(--color-body);
+  color-scheme: var(--color-scheme);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  --option-height:auto;
+  --option-padding:6px 12px;
+}
+html {
+  height: -webkit-fill-available;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+a:active {
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(var(--color-background), 1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+}

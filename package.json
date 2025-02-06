@@ -1,0 +1,42 @@
+{
+  "name": "yunhan-toolbox",
+  "version": "2.0.0 - build.1",
+  "description": "A open source HoYo game toolkit.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.4.47",
+    "@varlet/touch-emulator": "^3.2.13",
+    "@varlet/ui": "^3.7.0",
+    "@vue/tsconfig": "^0.5.1",
+    "dom-to-image": "^2.6.0",
+    "filesize": "^10.1.6",
+    "github-markdown-css": "^5.5.1",
+    "lodash-es": "^4.17.21",
+    "markdown-it": "^14.1.0",
+    "pinia": "^2.1.7",
+    "save-dev": "0.0.1-security",
+    "typescript": "^5.6.2",
+    "vite-plugin-pwa": "^0.20.1",
+    "vite-plugin-vue-devtools": "^7.7.1",
+    "vue": "^3.4.27",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.15",
+    "@varlet/import-resolver": "^3.3.6",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "nodemon": "^3.1.3",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "unplugin-vue-components": "^0.27.2",
+    "vite": "^5.2.13"
+  }
+}
