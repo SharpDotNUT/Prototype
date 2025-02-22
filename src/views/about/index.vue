@@ -20,19 +20,12 @@
       {{ $t("about.build-time", [new Date(BuildTime).toLocaleString()]) }}
     </p>
     <p>Copyright © 2025 SharpDotNUT. All rights reserved.</p>
-    <var-divider></var-divider>
-    <h3>README.md</h3>
-    <CIntro :content="Readme" />
   </div>
 </template>
 
 <script setup lang="ts">
   import PackageJSON from "../../../package.json";
-  import CIntro from "../../components/CIntro.vue";
-  //@ts-ignore
-  import Readme from "../../../README.md?raw";
   import Meta from "@/meta";
-  //@ts-ignore
   const BuildTime = __BUILD_TIME;
   const show = defineModel("show", { type: Boolean, default: true });
 </script>

@@ -1,97 +1,105 @@
 <script setup>
-  import { ref } from "vue";
-  import { Dialog, Snackbar } from "@varlet/ui";
-  import { useI18n } from "vue-i18n";
-  const { t, locale } = useI18n();
-  import _ from "lodash-es";
-  import Tags from "@/data/dictionary/tags.json";
+  import { ref } from 'vue'
+  import { Dialog, Snackbar } from '@varlet/ui'
+  import { useI18n } from 'vue-i18n'
+  const { t, locale } = useI18n()
+  import _ from 'lodash-es'
+  import Tags from '@/data/dictionary/tags.json'
 
-  const WordsPath = "https://dataset.genshin-dictionary.com/words.json";
-  let Words = [];
+  const WordsPath = 'https://dataset.genshin-dictionary.com/words.json'
+  let Words = []
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // 交换元素
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]] // 交换元素
     }
-    return array;
+    return array
   }
-  caches.open("dictionary").then(cache => {
+  caches.open('dictionary').then(cache => {
     cache.match(WordsPath).then(async res => {
       if (res) {
         res.json().then(data => {
-          Words = shuffleArray(data);
-          Words_loaded.value = true;
-          Snackbar("从缓存加载成功");
-          load();
-          search(null, true);
-        });
+          Words = shuffleArray(data)
+          Words_loaded.value = true
+          Snackbar('从缓存加载成功')
+          load()
+          search(null, true)
+        })
+        const res = await fetch(WordsPath)
+        cache.put(WordsPath, res.clone())
       } else {
-        const res = await fetch(WordsPath);
-        cache.put(WordsPath, res.clone());
+        const res = await fetch(WordsPath)
+        cache.put(WordsPath, res.clone())
         res.json().then(data => {
-          Words = shuffleArray(data);
-          Words_loaded.value = true;
-          Snackbar("从网络下载成功");
-          load();
-          search(null, true);
-        });
+          Words = shuffleArray(data)
+          Words_loaded.value = true
+          Snackbar('从网络下载成功')
+          load()
+          search(null, true)
+        })
       }
-    });
-  });
+    })
+  })
 
-  const Words_loaded = ref(false);
-  const lastSearchString = ref(undefined);
-  const searchString = ref("");
-  const lastSearchTags = ref(undefined);
-  const searchTags = ref([]);
-  const pre_words = ref([]);
-  const words = ref([]);
-  const ref_words = ref({});
+  const Words_loaded = ref(false)
+  const lastSearchString = ref(undefined)
+  const searchString = ref('')
+  const lastSearchTags = ref(undefined)
+  const searchTags = ref([])
+  const pre_words = ref([])
+  const words = ref([])
+  const ref_words = ref({})
   const load = () => {
-    words.value = pre_words.value.slice(0, words.value.length + 100);
-  };
+    words.value = pre_words.value.slice(0, words.value.length + 100)
+  }
 
   const search = (e, force = false) => {
-    const sameString = searchString.value == lastSearchString.value;
-    const sameTags = _.isEqual(searchTags.value, lastSearchTags.value);
-    console.log(sameString, sameTags, force);
+    const sameString = searchString.value == lastSearchString.value
+    const sameTags = _.isEqual(searchTags.value, lastSearchTags.value)
+    console.log(sameString, sameTags, force)
     if (sameString && sameTags && !force) {
-      return;
+      return
     }
-    console.log("sameString, sameTags, force");
-    lastSearchString.value = searchString.value;
-    lastSearchTags.value = searchTags.value;
+    console.log('sameString, sameTags, force')
+    lastSearchString.value = searchString.value
+    lastSearchTags.value = searchTags.value
     pre_words.value = Words.filter(word => {
-      let _text = false;
+      let _text = false
       if (!searchString.value) {
-        _text = true;
+        _text = true
       } else {
         if (word.zhCN) {
-          _text = word.zhCN.toLowerCase().includes(searchString.value.toLowerCase());
+          _text = word.zhCN
+            .toLowerCase()
+            .includes(searchString.value.toLowerCase())
         }
         if (word.en) {
-          _text = _text || word.en.toLowerCase().includes(searchString.value.toLowerCase());
+          _text =
+            _text ||
+            word.en.toLowerCase().includes(searchString.value.toLowerCase())
         }
         if (word.ja) {
-          _text = _text || word.ja.toLowerCase().includes(searchString.value.toLowerCase());
+          _text =
+            _text ||
+            word.ja.toLowerCase().includes(searchString.value.toLowerCase())
         }
       }
-      let _tag = true;
+      let _tag = true
       if (searchTags.value.length) {
         if (word.tags) {
           for (const searchTag of searchTags.value) {
             if (!word.tags.includes(searchTag)) {
-              _text = false;
+              _text = false
             }
           }
         } else {
-          _tag = false;
+          _tag = false
         }
       }
-      return _text && _tag;
-    });
-    load();
-  };
+      return _text && _tag
+    })
+    load()
+  }
 </script>
 
 <template>
@@ -105,26 +113,40 @@
         @blur="search"
         @keydown.enter="search" />
       <br />
-      <var-select variant="outlined" placeholder="筛选标签" chip multiple v-model="searchTags" @blur="search">
-        <var-option v-for="(text, tag) in Tags?.[locale]" :value="tag" :label="text" />
+      <var-select
+        variant="outlined"
+        placeholder="筛选标签"
+        chip
+        multiple
+        v-model="searchTags"
+        @blur="search">
+        <var-option
+          v-for="(text, tag) in Tags?.[locale]"
+          :value="tag"
+          :label="text" />
       </var-select>
       <br />
       <var-button @click="search" type="default" block>
-        {{ $t("dictionary.search") }}
+        {{ $t('dictionary.search') }}
       </var-button>
     </div>
     <var-divider />
     <var-list id="words" @load="load">
-      <div v-for="word in words" :key="word.id" style="padding: 10px; display: flex; flex-direction: column; gap: 10px">
+      <div
+        v-for="word in words"
+        :key="word.id"
+        style="padding: 10px; display: flex; flex-direction: column; gap: 10px">
         <div class="word" :ref="el => (ref_words[word.id] = el)">
-          <h5>{{ $t("dictionary.zh-cn") }}</h5>
+          <h5>{{ $t('dictionary.zh-cn') }}</h5>
           <p class="lang-zhs">{{ word.zhCN }}</p>
-          <h5>{{ $t("dictionary.en") }}</h5>
+          <h5>{{ $t('dictionary.en') }}</h5>
           <p class="lang-en">{{ word.en }}</p>
-          <h5>{{ $t("dictionary.ja") }}</h5>
+          <h5>{{ $t('dictionary.ja') }}</h5>
           <p style="display: flex; align-items: baseline; flex-wrap: wrap">
             <span class="lang-ja">{{ word.ja }}</span>
-            <span class="kana lang-ja" v-if="word.pronunciationJa"> ({{ word.pronunciationJa }}) </span>
+            <span class="kana lang-ja" v-if="word.pronunciationJa">
+              ({{ word.pronunciationJa }})
+            </span>
           </p>
           <div>
             <var-chip v-for="tag in word.tags" style="margin: 0px 2px">
@@ -149,14 +171,12 @@
     #words {
       overflow-y: auto;
     }
-  }
-  .word {
-    padding: 20px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    .kana {
-      font-size: 0.8em;
+    .word {
+      padding: 20px 0px;
+      gap: 10px;
+      .kana {
+        font-size: 0.8em;
+      }
     }
   }
 </style>
