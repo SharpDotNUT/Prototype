@@ -3,7 +3,6 @@
   "apps-name": {
     "update-log": "更新日志"
   },
-  "app-bar": {},
   "setting": {
     "theme": {
       "dark": "深色模式",
@@ -23,12 +22,11 @@
     "title": "设置"
   },
   "index": {
-    "s0": "「 云婵娟来花婵娟，风流尽在山水间。 」",
+    "s0": "「云婵娟来花婵娟，风流尽在山水间。」",
     "description": "一个开源的纯网页端米哈游游戏工具箱。",
     "use": "立即使用"
   },
   "song-player": {
-    "intro": {},
     "actions": {
       "share": "复制分享链接",
       "open-in-wyy": "在网易云打开"
@@ -58,7 +56,6 @@
   "update-log": {
     "only-chinese-and-english": "本页面只以简体中文和英文展示。"
   },
-  "main": {},
   "about": {
     "build-time": "构建时间： {0}"
   },
