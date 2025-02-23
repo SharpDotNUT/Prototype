@@ -22,6 +22,7 @@ export default defineConfig({
         name: 'Prototype',
         short_name: 'Prototype',
         id: 'sharpdotnut-prototype',
+        background_color: "#000000",
         theme_color: '#d1bdff',
         icons: [
           {
