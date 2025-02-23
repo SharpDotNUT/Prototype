@@ -9,6 +9,11 @@ export const routes = [
     path: "/settings",
     name: "settings",
     component: () => import("../views/settings/index.vue" as any),
+  },,
+  {
+    path: "/update_log",
+    name: "update_log",
+    component: () => import("../views/update_log/index.vue" as any),
   },
   {
     path: "/about",

@@ -1,11 +1,30 @@
-
-.answers{
+.__container {
     display: flex;
     flex-direction: column;
-    gap:10px;
-}
-.answer{
-    display: flex;
-    flex-direction: row;
-    gap:10px;
+    gap: 10px;
+    height: 100%;
+    padding: 20px max(calc(50vw - 300px), 10vw);
+
+    #question {
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto;
+        #text{
+            overflow-y: auto;
+        }
+    }
+
+    #actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-shrink: 0;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
 }

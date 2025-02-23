@@ -1,6 +1,6 @@
 <script setup>
 import Intro from "@/components/CIntro.vue";
-import Articles from "../../../docs/views/question/zh-CN.md?raw";
+import Articles from "@/docs/views/question/zh-CN.md?raw";
 </script>
 
 <template>
