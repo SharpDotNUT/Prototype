@@ -25,7 +25,7 @@ export default defineConfig({
         theme_color: '#d1bdff',
         icons: [
           {
-            src: './src/img/UI_ChapterIcon_Yunjin.png',
+            src: '/img/UI_ChapterIcon_Yunjin.png',
             sizes: '256x256',
             type: 'image/png'
           }

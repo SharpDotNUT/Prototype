@@ -1,7 +1,7 @@
 <template>
   <div class="__container_about">
     <div id="main">
-      <img src="@/img/UI_NameCardPic_Yunjin_P.png" style="width: 100%; border-radius: 20px;opacity: 0.75;" />
+      <img src="/img/UI_NameCardPic_Yunjin_P.png" style="width: 100%; border-radius: 20px;opacity: 0.75;" />
       <div id="main_text">
         <p style="font-size: 5vw">{{ $t("name") }}</p>
         <var-badge :value="'v ' + PackageJSON.version"></var-badge>

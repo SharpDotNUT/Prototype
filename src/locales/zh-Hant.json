@@ -6,7 +6,8 @@
   "index": {
     "description": "一個開源的純網頁端 HoYo 遊戲工具箱。",
     "s0": "「 雲嬵娟來花嬋娟，風流盡在山水間。 」",
-    "use": "立即使用"
+    "use": "立即使用",
+    "install": "安裝為 PWA 應用"
   },
   "name": "「試作」",
   "setting": {
