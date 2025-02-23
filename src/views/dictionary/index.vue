@@ -1,8 +1,8 @@
 <script setup>
   import { ref } from 'vue'
-  import { Dialog, Snackbar } from '@varlet/ui'
+  import { Snackbar } from '@varlet/ui'
   import { useI18n } from 'vue-i18n'
-  const { t, locale } = useI18n()
+  const { locale } = useI18n()
   import _ from 'lodash-es'
   import Tags from '@/data/dictionary/tags.json'
 
@@ -125,10 +125,6 @@
           :value="tag"
           :label="text" />
       </var-select>
-      <br />
-      <var-button @click="search" type="default" block>
-        {{ $t('dictionary.search') }}
-      </var-button>
     </div>
     <var-divider />
     <var-list id="words" @load="load">
