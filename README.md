@@ -2,7 +2,7 @@
 <center>
 
 <img
-  src="/src/img/UI_ChapterIcon_Yunjin.png"
+  src="/img/UI_ChapterIcon_Yunjin.png"
   style="width: 15%;background-color: #777;"></img>
 
 # 「试作」

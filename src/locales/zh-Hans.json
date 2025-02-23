@@ -24,7 +24,8 @@
   "index": {
     "s0": "「云婵娟来花婵娟，风流尽在山水间。」",
     "description": "一个开源的纯网页端米哈游游戏工具箱。",
-    "use": "立即使用"
+    "use": "立即使用",
+    "install": "安装为 PWA 应用"
   },
   "song-player": {
     "actions": {

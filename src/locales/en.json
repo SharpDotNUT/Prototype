@@ -27,7 +27,8 @@
   "index": {
     "s0": "(Translated) \" How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」\"",
     "description": "A open source HoYo game toolkit.",
-    "use": "Use"
+    "use": "Use",
+    "install": "Install as a PWA application"
   },
   "song-player": {
     "intro": {},

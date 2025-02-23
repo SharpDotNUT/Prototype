@@ -47,7 +47,7 @@ watch(
   </var-dialog>
   <div style="height: var(--app-bar-height);">
     <var-app-bar style="position: fixed; top: 0; left: 0; right: 0">
-      <img src="@/img/UI_ChapterIcon_Yunjin.png" style="height:36px;"></img>
+      <img src="/img/UI_ChapterIcon_Yunjin.png" style="height:36px;"></img>
       <span>{{ $t('name') }}</span>
       <template #right>
         <var-menu placement="bottom-end">
