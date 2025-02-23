@@ -25,8 +25,6 @@
           load()
           search(null, true)
         })
-        const res = await fetch(WordsPath)
-        cache.put(WordsPath, res.clone())
       } else {
         const res = await fetch(WordsPath)
         cache.put(WordsPath, res.clone())
