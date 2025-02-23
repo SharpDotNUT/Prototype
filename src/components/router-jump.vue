@@ -29,13 +29,17 @@
         path: "/song-player",
       },
       {
+        name: t("achievement.title"),
+        path: "/achievement"
+      },
+      {
+        name: t("dictionary.title"),
+        path: "/dictionary",
+      },
+      {
         name: t("quiz.title"),
         path: "/quiz",
         beta: true,
-      },
-      {
-        name: t("achievement.title"),
-        path: "/achievement"
       },
       {
         name: t("gacha.view.title"),
@@ -46,10 +50,6 @@
         name: t("gacha.simulator.title"),
         path: "/gacha/simulator",
         beta: true,
-      },
-      {
-        name: t("dictionary.title"),
-        path: "/dictionary",
       },
     ];
   }
