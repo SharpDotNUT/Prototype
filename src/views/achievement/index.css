@@ -22,6 +22,7 @@
 
             .selected {
                 border-left-width: 5px;
+                background-color: #0002;
             }
         }
     }

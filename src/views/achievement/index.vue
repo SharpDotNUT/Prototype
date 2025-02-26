@@ -203,6 +203,7 @@
           <var-pagination
             v-model:current="pagination.page"
             v-model:size="pagination.pageSize"
+            :simple="false"
             :total="ui_SearchedAchievementList.length"
             :show-total="total => `共 ${total} 个成就组`" /></div
       ></var-paper>
