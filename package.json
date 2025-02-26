@@ -13,7 +13,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "@varlet/touch-emulator": "^3.2.13",
-    "@varlet/ui": "^3.7.0",
+    "@varlet/ui": "^3.9.0",
     "@vue/tsconfig": "^0.5.1",
     "dom-to-image": "^2.6.0",
     "filesize": "^10.1.6",
