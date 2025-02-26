@@ -10,6 +10,13 @@ import ZHT from "./zh-Hant.json";
 //@ts-ignore
 import JA from "./ja.json";
 
+//@ts-ignore
+import { Locale } from '@varlet/ui'
+Locale.add('zh-Hans', Locale.zhCN)
+Locale.add('zh-Hant', Locale.zhTW)
+Locale.add('en', Locale.enUS)
+Locale.add('ja', Locale.jaJP)
+
 let defaultLanguage = "zh-Hans";
 
 const i18n = createI18n({
@@ -36,19 +43,15 @@ const i18n = createI18n({
 // set window title to i18n.global.t("name")
 
 document.title = i18n.global.t("name")
-watch(
-  i18n.global.locale,
-  (newLocale) => {
-    document.title = i18n.global.t("name")
-  }
-)
 
 document.documentElement.lang = defaultLanguage
 watch(
   i18n.global.locale,
   (newLocale) => {
     console.log(newLocale);
+    document.title = i18n.global.t("name")
     document.documentElement.lang = newLocale
+    Locale.use(newLocale)
   }
 )
 
