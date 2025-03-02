@@ -20,7 +20,6 @@ declare module 'vue' {
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
-    VarButtonGroup: typeof import('@varlet/ui')['_ButtonGroupComponent']
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']

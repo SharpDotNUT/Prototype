@@ -87,7 +87,6 @@
             <template #prepend-icon><var-icon name="translate" /></template>
             <var-option label="English" value="en"></var-option>
             <var-option label="中文（简体）" value="zh-Hans"></var-option>
-            <var-option label="中文（繁体）" value="zh-Hant"></var-option>
             <var-option label="日本語" value="ja"></var-option>
           </var-select>
           <br />

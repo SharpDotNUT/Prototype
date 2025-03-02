@@ -57,7 +57,6 @@ watch(
           <template #menu>
             <div style="text-align: right;">
             <var-cell border @click="$i18n.locale = 'zh-Hans'">简体中文</var-cell>
-            <var-cell border @click="$i18n.locale = 'zh-Hant'">繁體中文</var-cell>
             <var-cell border @click="$i18n.locale = 'en'">English</var-cell>
             <var-cell border @click="$i18n.locale = 'ja'">日本語</var-cell>
           </div>

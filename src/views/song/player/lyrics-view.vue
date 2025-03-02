@@ -1,200 +1,169 @@
-<script setup>
-  import { watch, computed, ref } from "vue";
+<script setup lang="ts">
+  import { watch, ref, type Ref } from 'vue'
+  import { mergeLyrics, parseLyrics, type t_Lyrics } from './lyrics'
+  import { useAPIStore } from '@/stores/api'
 
   const props = defineProps({
-    lyrics_url: String,
+    song_id: Number,
     autoScroll: {
       type: Boolean,
-      default: true,
-    },
-  });
-  defineEmits(["play"]);
-
-  const lyrics = ref();
-  let isValidLyrics = true;
-
-  function timeToMilliseconds(timeStr) {
-    const [minutes, seconds] = timeStr.split(":");
-    const [secondsPart, milliseconds] = seconds.split(".");
-    const minutesInMs = parseInt(minutes) * 60 * 1000;
-    const secondsInMs = parseInt(secondsPart) * 1000;
-    const millisecondsPart = parseInt(milliseconds);
-    return minutesInMs + secondsInMs + millisecondsPart;
-  }
-
-  const timeFormat = time => {
-    return `${Math.floor(time / 60)}:${Math.floor(time % 60)
-      .toString()
-      .padStart(2, "0")}`;
-  };
-
-  async function fetchLyrics() {
-    isValidLyrics = true;
-    const response = await fetch(props.lyrics_url);
-    let data = await response.text();
-    data = data.split("\n");
-    data = data.filter(line => line !== "");
-    lyrics.value = [];
-    data.forEach((line, index) => {
-      let timestamp_p = line.indexOf("]");
-      let translation_p = line.indexOf(" (");
-      let timestamp;
-      if (timestamp_p === -1) {
-        (isValidLyrics = false), (timestamp = "00:00.000");
-      } else {
-        timestamp = line.slice(1, timestamp_p);
-      }
-      let translation;
-      if (translation_p === -1) {
-        translation = "";
-        translation_p = line.length;
-      } else {
-        translation = line.slice(translation_p + 2, line.length - 1);
-      }
-      lyrics.value.push({
-        timestamp: timeToMilliseconds(timestamp),
-        text: line.slice(timestamp_p + 1, translation_p + 1),
-        translation,
-      });
-    });
-  }
-  fetchLyrics();
-  watch(
-    () => props.lyrics_url,
-    () => {
-      fetchLyrics();
+      default: true
     }
-  );
+  })
+  defineEmits(['play'])
 
-  const nowPlayingLyrics = ref();
-  const nowPlayedTime = ref();
-  const ref_lyrics = ref([]);
-  let lastRAF;
-  let isPlaying = 0;
-  let frame = 0;
+  const APIStore = useAPIStore()
+
+  const raw_lyrics = ref({
+    raw: '',
+    translation: '',
+    romaji: ''
+  })
+  const lyrics: Ref<t_Lyrics> = ref({})
+  const lyricsContainer = ref<HTMLElement | null>(null)
+  const ref_lyrics = ref<HTMLElement[]>([])
+  const nowPlayingTime = ref(0)
+  const nowPlayingIndex = ref(-1) // 当前播放歌词的索引
+  const isPlaying = ref(false)
+  let animationFrameId: number | null = null
+
+  // 获取歌词数据
+  async function fetchLyrics() {
+    const data = await APIStore.fetchAPI('/lyric/' + props.song_id)
+    raw_lyrics.value.raw = data.lrc.lyric
+    raw_lyrics.value.translation = data?.tlyric?.lyric
+    raw_lyrics.value.romaji = data?.romalrc?.lyric
+
+    lyrics.value = mergeLyrics(
+      parseLyrics(raw_lyrics.value.raw),
+      parseLyrics(raw_lyrics.value.translation),
+      parseLyrics(raw_lyrics.value.romaji)
+    )
+  }
+
+  // 播放控制
+  function play(timestamp = 0) {
+    pause()
+    isPlaying.value = true
+    const startTime = performance.now() - timestamp
+
+    const update = () => {
+      if (!isPlaying.value) return
+      const elapsed = performance.now() - startTime
+      nowPlayingTime.value = elapsed
+      const currentIndex = findCurrentLyricIndex(elapsed)
+      if (currentIndex !== nowPlayingIndex.value) {
+        nowPlayingIndex.value = currentIndex
+        if (props.autoScroll && currentIndex !== -1) {
+          scrollToLyric(currentIndex, 500)
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(update)
+    }
+
+    animationFrameId = requestAnimationFrame(update)
+  }
 
   function pause() {
-    isPlaying = 0;
+    isPlaying.value = false
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId)
+    }
+    console.log('pause')
   }
 
-  function play(timestamp = 0) {
-    pause();
-    if (isPlaying) {
-      clearInterval(isPlaying);
-      console.log("clear interval", isPlaying);
+  // 查找当前播放的歌词索引
+  function findCurrentLyricIndex(currentTime: number): number {
+    const timestamps = Object.keys(lyrics.value)
+      .map(Number)
+      .sort((a, b) => a - b)
+    for (let i = timestamps.length - 1; i >= 0; i--) {
+      if (currentTime >= timestamps[i]) return i
     }
-    if (!isValidLyrics) {
-      return;
-    }
-    let starPlayTime = new Date().getTime();
-    function getPlayedTime() {
-      return new Date().getTime() - starPlayTime + timestamp;
-    }
-    let i = 0;
-    for (let j = 0; j < lyrics.value.length; j++) {
-      if (lyrics.value[j].timestamp <= getPlayedTime()) {
-        i = j;
-      } else {
-        break;
-      }
-    }
-    isPlaying = 1;
-    cancelAnimationFrame(lastRAF);
-    function playNext() {
-      nowPlayedTime.value = getPlayedTime();
-      if (getPlayedTime() >= lyrics.value[lyrics.value.length - 1].timestamp) {
-        clearInterval(isPlaying);
-        return;
-      }
-      if (lyrics.value[i].timestamp <= getPlayedTime()) {
-        nowPlayingLyrics.value = i;
-        if (props.autoScroll) {
-          ref_lyrics.value[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-        i++;
-      }
-      if (isPlaying) {
-        lastRAF = requestAnimationFrame(playNext);
-        frame++;
-      }
-    }
-    lastRAF = requestAnimationFrame(playNext);
+    return -1
   }
 
-  defineExpose({
-    play,
-    pause,
-  });
+  // 手动滚动函数
+  function scrollToLyric(index: number, duration: number = 500) {
+    const container = lyricsContainer.value
+    const targetElement = ref_lyrics.value[index]
+
+    if (!container || !targetElement) return
+
+    const targetRect = targetElement.getBoundingClientRect()
+    const containerRect = container.getBoundingClientRect()
+
+    // 计算目标滚动位置
+    let targetScrollTop: number
+    targetScrollTop =
+      targetRect.top -
+      containerRect.top +
+      container.scrollTop -
+      container.clientHeight / 2 +
+      targetRect.height / 2
+
+    const startScrollTop = container.scrollTop
+    const startTime = performance.now()
+    function animateScroll(currentTime: number) {
+      if (!container || !targetElement) return
+      const elapsedTime = currentTime - startTime
+      const progress = Math.min(elapsedTime / duration, 1)
+      const easedProgress = easeInOut(progress)
+      container.scrollTop =
+        startScrollTop + (targetScrollTop - startScrollTop) * easedProgress
+      if (!container || !targetElement) return
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll)
+      }
+    }
+    requestAnimationFrame(animateScroll)
+  }
+
+  function scrollToCurrentLyric() {
+    const currentIndex = findCurrentLyricIndex(nowPlayingTime.value)
+    if (currentIndex !== -1) {
+      scrollToLyric(currentIndex)
+    }
+  }
+
+  // 缓动函数
+  function easeInOut(t: number): number {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+  }
+
+  watch(
+    () => props.song_id,
+    async newSongId => {
+      if (newSongId) await fetchLyrics()
+    },
+    { immediate: true }
+  )
+
+  defineExpose({ play, pause, scrollToCurrentLyric  })
 </script>
 
 <template>
-  <div id="lyrics-container">
-    <div id="lyrics" ref="lyricsContainer">
-      <div style="height: 50dvh"></div>
-      <div
-        v-for="(lyric, index) in lyrics"
-        :ref="el => (ref_lyrics[index] = el)"
-        :key="index"
-        :class="nowPlayingLyrics === index && isValidLyrics ? 'now-playing lyrics' : 'lyrics'"
-        @click="
-          play(lyric.timestamp);
-          $emit('play', lyric.timestamp);
-        ">
-        <p class="lyrics-text">{{ lyric.text }}</p>
-        <p class="lyrics-translation" v-if="isValidLyrics">
+  <div class="lyrics-container" ref="lyricsContainer">
+    <div style="height: 50dvh"></div>
+    <div
+      v-for="(lyric, timestamp, index) in lyrics"
+      :key="timestamp"
+      :ref="(el) => (ref_lyrics[index] = el as HTMLElement)"
+      :class="['lyric-item', { 'now-playing': nowPlayingIndex === index }]"
+      @click="play(Number(timestamp)), $emit('play', Number(timestamp))">
+      <div class="lyrics-content">
+        <p class="lyrics-text">{{ lyric.raw }}</p>
+        <p class="lyrics-translation" v-if="lyric.translation">
           {{ lyric.translation }}
         </p>
+        <p class="lyrics-romaji" v-if="lyric.romaji">{{ lyric.romaji }}</p>
       </div>
-      <div style="height: 50dvh"></div>
     </div>
+    <div style="height: 50dvh"></div>
   </div>
 </template>
 
 <style scoped>
-  #lyrics-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  #lyrics {
-    overflow-y: auto;
-    padding: 5px;
-  }
-
-  .lyrics {
-    position: relative;
-    transition: color 2s;
-    text-align: center;
-    margin: 10px 0;
-    transform: scale(calc(1 / 1.2));
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  .lyrics-text {
-    font-size: 24px;
-  }
-
-  .lyrics-translation {
-    font-size: 16px;
-  }
-
-  .lyrics:hover {
-    > p {
-      text-shadow: 0px 0px 20px var(--color-text);
-    }
-  }
-
-  .now-playing {
-    color: var(--color-primary);
-    transform: scale(1);
-    transition: transform 0.5s, color 0.5s;
-  }
-
-  .now-playing:hover {
-    > p {
-      text-shadow: 0px 0px 20px var(--color-primary);
-    }
-  }
+  @import './lyrics.css';
 </style>
