@@ -23,3 +23,7 @@ import { Input } from '@varlet/ui'
 Input.setPropsDefaults({
   variant: 'outlined'
 })
+import { Select } from '@varlet/ui'
+Select.setPropsDefaults({
+  variant: 'outlined'
+})

@@ -6,14 +6,11 @@ import EN from "./en.json";
 //@ts-ignore
 import ZHS from "./zh-Hans.json";
 //@ts-ignore
-import ZHT from "./zh-Hant.json";
-//@ts-ignore
 import JA from "./ja.json";
 
 //@ts-ignore
 import { Locale } from '@varlet/ui'
 Locale.add('zh-Hans', Locale.zhCN)
-Locale.add('zh-Hant', Locale.zhTW)
 Locale.add('en', Locale.enUS)
 Locale.add('ja', Locale.jaJP)
 
@@ -25,9 +22,6 @@ const i18n = createI18n({
   messages: {
     "zh-Hans": {
       ...ZHS,
-    },
-    "zh-Hant": {
-      ...ZHT,
     },
     en: {
       ...EN,
