@@ -42,9 +42,9 @@
     "title": "翻译器",
     "auto-wrap": "自动换行",
     "open-keyboard": "打开键盘",
-    "cloase-keyboard": "收起键盘",
     "export-to-image": "导出结果为图片",
-    "action-to-save": "右键或长按保存"
+    "action-to-save": "右键或长按保存",
+    "close-keyboard": "收起键盘"
   },
   "dictionary": {
     "search": "搜索",

@@ -3,7 +3,7 @@
         "id": "TeyvatBlack",
         "file":"./files/TeyvatBlack-Regular.woff2",
         "name": {
-            "zh": "提瓦特文（蒙德）",
+            "zh": "提瓦特文（UI，蒙德）",
             "en": "Teyvat Script (UI, Mondstadt)"
         }
     },
@@ -40,7 +40,7 @@
         }
     },
     {
-        "id": "KhaenriahSun",
+        "id": "KhaenriahSunChasm",
         "file":"./files/KhaenriahSun-Chasm.woff2",
         "name": {
             "zh": "坎瑞亚文（深渊）（层岩巨渊变体）",
@@ -60,14 +60,14 @@
         "file":"./files/StarRailNeue-Sans-Regular.woff2",
         "name": {
             "zh": "星穹铁道文（UI, 黑塔空间站，贝洛伯格）",
-            "en": "Star Rail Script (UI, Herta, Belloth)"
+            "en": "Star Rail Script (UI, Herta, Belobog)"
         }
     },{
         "id": "仙舟文",
         "file":"./files/XianzhouSeal-Regular.woff2",
         "name": {
             "zh": "仙舟文",
-            "en": "Star Rail Script (UI, Herta, Belloth) (Italic)"
+            "en": "Xianzhou Script"
         }
     }
     ,

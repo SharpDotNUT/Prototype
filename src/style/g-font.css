@@ -12,51 +12,35 @@
     src: url("@/data/fonts/files/TeyvatBlack-Regular.woff2");
 }
 
-.lang-zhs {
-    font-family: Noto Sans SC
-}
-
-.lang-zht {
-    font-family: Noto Sans TC
-}
-
-.lang-ja {
-    font-family: Noto Sans JP
-}
-
-.lang-en {
-    font-family: Noto Sans
-}
-
 .g-font {
     font-family: var(--font-family) !important;
     font-weight: 500;
 }
 
-html {
+* {
     font-weight: 500;
 }
 
-html[lang="en"] {
+*[lang="en"] {
     --font-family: Noto Sans, sans-serif;
     font-family: var(--font-family);
 }
 
-html[lang="zh"] {
+*[lang="zh-Hans"] {
     --font-family: Noto Sans, 'Noto Sans SC', sans-serif;
     font-family: var(--font-family);
 }
 
-html[lang="zht"] {
+*[lang="zh-Hant"] {
     --font-family: Noto Sans, 'Noto Sans TC', sans-serif;
     font-family: var(--font-family);
 }
 
-html[lang="ja"] {
+*[lang="ja"] {
     --font-family: Noto Sans, 'Noto Sans JP', sans-serif;
     font-family: var(--font-family);
 }
 
-html.teyvat {
+*.teyvat {
     --font-family: Teyvat, Noto Sans, 'Noto Sans SC', sans-serif;
 }
