@@ -1,0 +1,63 @@
+.__container_translator {
+    margin: 20px max(20px, calc(50vw - 300px));
+}
+
+#actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    >div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+#result {
+    width: fit-content;
+    max-width: 100%;
+    overflow: auto;
+    padding: 20px;
+    white-space: pre-wrap;
+    background-color: var(--color-body);
+}
+
+#keyboard {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--color-paper);
+    transition: transform 0.3s ease-in-out;
+    user-select: none;
+    z-index: 10;
+
+    #keys {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+            height: 5vh;
+            font-family: v-bind(ui_font);
+
+            .key {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2vh;
+                cursor: pointer;
+            }
+        }
+
+        .row.raw {
+            font-family: inherit;
+        }
+    }
+}

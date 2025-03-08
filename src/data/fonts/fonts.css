@@ -40,11 +40,11 @@
     }
     
     @font-face {
-        font-family: 'KhaenriahSun';
+        font-family: 'KhaenriahSunChasm';
         src: url('./files/KhaenriahSun-Chasm.woff2');
     }
-    .font-KhaenriahSun {
-        font-family: 'KhaenriahSun';
+    .font-KhaenriahSunChasm {
+        font-family: 'KhaenriahSunChasm';
     }
     
     @font-face {

@@ -46,7 +46,9 @@
     "title": "翻訳者",
     "auto-wrap": "自動変更",
     "open-keyboard": "キーボードを開きます",
-    "cloase-keyboard": "キーボードを片付けます"
+    "export-to-image": "結果を写真としてエクスポートします",
+    "action-to-save": "右クリックまたはロングプレスを保存します",
+    "close-keyboard": "キーボードを片付けます"
   },
   "dictionary": {
     "search": "検索",

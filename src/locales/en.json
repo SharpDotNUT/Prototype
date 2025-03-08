@@ -46,7 +46,9 @@
     "title": "Translator",
     "auto-wrap": "Automatic Wrap",
     "open-keyboard": "Open the keyboard",
-    "cloase-keyboard": "Close the keyboard"
+    "export-to-image": "Export the result as a picture",
+    "action-to-save": "Right-click or long-press to save",
+    "close-keyboard": "Close the keyboard"
   },
   "dictionary": {
     "search": "Search",
