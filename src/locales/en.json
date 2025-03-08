@@ -56,7 +56,8 @@
     "ja": "Japanese",
     "zh-cn": "Simplified Chinese",
     "search-text": "Text To Search For",
-    "title": "Dictionary"
+    "title": "Dictionary",
+    "filter": "Filter tags"
   },
   "update-log": {
     "only-chinese-and-english": "This page is only displayed in Simplified Chinese and English."
@@ -108,6 +109,28 @@
   "global": {
     "about": "About",
     "github-os-repo": "Github Open Source Repository",
-    "loading": "Loading"
+    "loading": "Loading",
+    "game": {
+      "GI": "Genshin Impact",
+      "HI": "Honkai Impact 3rd",
+      "HSR": "Honkai: Star Rail",
+      "ZZZ": "Zenless Zone Zero"
+    },
+    "expired": "Expired"
+  },
+  "sp-key": {
+    "commit-key": "Submit redemption code",
+    "game": "Game",
+    "server": "Server",
+    "version": "Version",
+    "expired-time": "Expired time",
+    "time-to-expire": "There are still {0} minutes expired",
+    "key": "Redeem code",
+    "token-to-auth": "Token used to verify identity",
+    "become-a-contributor": {
+      "content": "Do you want to be a contributor to this redemption code pool? \nPlease contact the author on the About page and we will give you a token that you can use to submit the redemption code.",
+      "title": "Become a contributor"
+    },
+    "title": "Redeem code"
   }
 }

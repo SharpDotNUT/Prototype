@@ -16,7 +16,7 @@ const host_name = mainStore.host_name;
 
 const notice_show = ref(false);
 const notice_content = ref("");
-fetch(`${host_name}/api/notice`)
+fetch(`${host_name}/notice`)
   .then((res) => res.json())
   .then((data) => {
     console.log(data)
@@ -56,9 +56,9 @@ watch(
           </var-button>
           <template #menu>
             <div style="text-align: right;">
-            <var-cell border @click="$i18n.locale = 'zh-Hans'">简体中文</var-cell>
-            <var-cell border @click="$i18n.locale = 'en'">English</var-cell>
-            <var-cell border @click="$i18n.locale = 'ja'">日本語</var-cell>
+            <var-cell lang="zh-Hans" border @click="$i18n.locale = 'zh-Hans'">简体中文</var-cell>
+            <var-cell lang="en" border @click="$i18n.locale = 'en'">English</var-cell>
+            <var-cell lang="ja" border @click="$i18n.locale = 'ja'">日本語</var-cell>
           </div>
           </template>
         </var-menu>

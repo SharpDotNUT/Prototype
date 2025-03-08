@@ -69,6 +69,11 @@ export const routes = [
     path: "/dictionary",
     component: () => import("../views/dictionary/index.vue" as any),
   },
+  {
+    name:"sp-key",
+    path: "/sp-key",
+    component: () => import("../views/sp-key/index.vue" as any),
+  }
 ];
 
 const router = createRouter({

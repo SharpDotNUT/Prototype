@@ -58,7 +58,7 @@ import { mdiExport } from '@mdi/js'
         <span v-if="!ui_showKeyboard">
           {{ $t('translator.open-keyboard') }}
         </span>
-        <span v-else>{{ $t('translator.cloase-keyboard') }}</span>
+        <span v-else>{{ $t('translator.close-keyboard') }}</span>
       </var-button>
     </div>
     <br />

@@ -1,0 +1,57 @@
+.__container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px max(calc(50% - 300px), 20px);
+    overflow-y: auto;
+}
+
+#keys {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    .key {
+        font-size: 24px;
+        font-family: JB Mono;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    #info {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+#commit {
+    height: 80%;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+
+    #content {
+        display: flex;
+        height: 100%;
+        padding: 20px;
+        flex-direction: column;
+        gap: 10px;
+        overflow: auto;
+
+        >* {
+            flex-shrink: 0;
+        }
+
+        #picker {
+            display: flex;
+            overflow-x: auto;
+        }
+    }
+}

@@ -56,7 +56,8 @@
     "ja": "日本語",
     "zh-cn": "簡体字中国語",
     "search-text": "検索するテキスト",
-    "title": "辞書"
+    "title": "辞書",
+    "filter": "フィルタータグ"
   },
   "update-log": {
     "only-chinese-and-english": "このページは簡体字中国語と英語でのみ表示されます。"
@@ -108,6 +109,28 @@
   "global": {
     "about": "について",
     "github-os-repo": "Github オープンソース リポジトリ",
-    "loading": "読み込み"
+    "loading": "読み込み",
+    "game": {
+      "GI": "原神",
+      "HI": "崩壊3rd",
+      "HSR": "崩壊：スターレイル",
+      "ZZZ": "ゼンレスゾーンゼロ"
+    },
+    "expired": "期限切れ"
+  },
+  "sp-key": {
+    "commit-key": "償還コードを送信します",
+    "game": "ゲーム",
+    "server": "サーバ",
+    "version": "バージョン",
+    "expired-time": "締め切り",
+    "time-to-expire": "まだ{0}分は有効です",
+    "key": "コードを引き換えます",
+    "token-to-auth": "トークンはアイデンティティの検証に使用されていました",
+    "become-a-contributor": {
+      "content": "この引き換えコードプールへの貢献者になりたいですか? 「About」ページで著者に連絡してください。引き換えコードを送信するために使用できるトークンを提供します。",
+      "title": "貢献者になります"
+    },
+    "title": "コードを引き換えます"
   }
 }

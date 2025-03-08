@@ -52,7 +52,8 @@
     "en": "英文",
     "ja": "日文",
     "search-text": "要搜索的文本",
-    "title": "辞典"
+    "title": "辞典",
+    "filter": "筛选标签"
   },
   "update-log": {
     "only-chinese-and-english": "本页面只以简体中文和英文展示。"
@@ -106,6 +107,29 @@
     "copy-fail": "复制失败：{0}",
     "about": "关于",
     "github-os-repo": "Github 开源仓库",
-    "loading": "加载中"
+    "loading": "加载中",
+    "game": {
+      "HI": "崩坏三",
+      "GI": "原神",
+      "HSR": "崩坏：星穹铁道",
+      "ZZZ": "绝区零"
+    },
+    "expired": "已过期",
+    "commit": "提交"
+  },
+  "sp-key": {
+    "commit-key": "提交兑换码",
+    "game": "游戏",
+    "server": "服务器",
+    "version": "版本",
+    "expired-time": "截止时间",
+    "time-to-expire": "还有 {0} 分钟过期",
+    "key": "兑换码",
+    "token-to-auth": "用于验证身份的 Token",
+    "become-a-contributor": {
+      "title": "成为贡献者",
+      "content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。"
+    },
+    "title": "兑换码"
   }
 }

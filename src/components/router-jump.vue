@@ -37,6 +37,10 @@
         path: "/dictionary",
       },
       {
+        name: t("sp-key.title"),
+        path: "/sp-key",
+      },
+      {
         name: t("quiz.title"),
         path: "/quiz",
         beta: true,
