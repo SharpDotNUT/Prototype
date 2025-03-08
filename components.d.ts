@@ -17,6 +17,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TextFileInput: typeof import('./src/components/text-file-input/index.vue')['default']
+    VarAlert: typeof import('@varlet/ui')['_AlertComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
@@ -24,6 +25,7 @@ declare module 'vue' {
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
+    VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
@@ -47,6 +49,7 @@ declare module 'vue' {
     VarTable: typeof import('@varlet/ui')['_TableComponent']
     VarTabs: typeof import('@varlet/ui')['_TabsComponent']
     VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
+    VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
   }
   export interface ComponentCustomProperties {
     vRipple: typeof import('@varlet/ui')['_RippleComponent']

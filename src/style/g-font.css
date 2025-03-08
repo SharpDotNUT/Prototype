@@ -12,9 +12,9 @@
     src: url("@/data/fonts/files/TeyvatBlack-Regular.woff2");
 }
 
-.g-font {
-    font-family: var(--font-family) !important;
-    font-weight: 500;
+@font-face {
+    font-family: JB Mono;
+    src: url("./font/JetBrainsMono-Regular.ttf");
 }
 
 * {

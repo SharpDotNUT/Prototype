@@ -113,7 +113,7 @@
       <br />
       <var-select
         variant="outlined"
-        placeholder="筛选标签"
+        :placeholder="$t('dictionary.filter')"
         chip
         multiple
         v-model="searchTags"
@@ -132,13 +132,13 @@
         style="padding: 10px; display: flex; flex-direction: column; gap: 10px">
         <div class="word" :ref="el => (ref_words[word.id] = el)">
           <h5>{{ $t('dictionary.zh-cn') }}</h5>
-          <p class="lang-zhs">{{ word.zhCN }}</p>
+          <p lang="zh-Hans">{{ word.zhCN }}</p>
           <h5>{{ $t('dictionary.en') }}</h5>
-          <p class="lang-en">{{ word.en }}</p>
+          <p lang="en">{{ word.en }}</p>
           <h5>{{ $t('dictionary.ja') }}</h5>
           <p style="display: flex; align-items: baseline; flex-wrap: wrap">
-            <span class="lang-ja">{{ word.ja }}</span>
-            <span class="kana lang-ja" v-if="word.pronunciationJa">
+            <span lang="ja">{{ word.ja }}</span>
+            <span lang="ja" class="kana" v-if="word.pronunciationJa">
               ({{ word.pronunciationJa }})
             </span>
           </p>

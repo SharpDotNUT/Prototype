@@ -29,7 +29,8 @@
 
   // 获取歌词数据
   async function fetchLyrics() {
-    const data = await APIStore.fetchAPI('/lyric/' + props.song_id)
+    const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
+    const data = await res.json()
     raw_lyrics.value.raw = data.lrc.lyric
     raw_lyrics.value.translation = data?.tlyric?.lyric
     raw_lyrics.value.romaji = data?.romalrc?.lyric

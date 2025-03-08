@@ -19,11 +19,13 @@ import '@varlet/ui/es/style'
 import { useMainStore } from './stores/main'
 useMainStore().setTheme('system')
 
-import { Input } from '@varlet/ui'
+import { Input,Select, TimePicker } from '@varlet/ui'
 Input.setPropsDefaults({
   variant: 'outlined'
 })
-import { Select } from '@varlet/ui'
 Select.setPropsDefaults({
   variant: 'outlined'
+})
+TimePicker.setPropsDefaults({
+  format:'24hr'
 })
