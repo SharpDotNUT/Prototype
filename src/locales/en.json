@@ -1,136 +1,123 @@
 {
-  "name": "Prototype",
-  "apps-name": {
-    "update-log": "Update Log"
+  "about": {
+    "build-time": "Build Time: {0}"
   },
-  "app-bar": {},
+  "achievement": {
+    "title": "Achievements",
+    "search": "Search Achievements",
+    "select-version": "Select Version",
+    "all": "All",
+    "finish": {
+      "finished": "Completed",
+      "is-finished": "Completion Status",
+      "unfinished": "Uncompleted"
+    },
+    "platforms-to-search": "Search Platforms for Achievements",
+    "import-export": "Import/Export",
+    "numbers": "{0} Achievement Groups - {1} Achievements",
+    "search-with": "Search on {0}"
+  },
+  "dictionary": {
+    "zh-cn": "Simplified Chinese",
+    "en": "English",
+    "ja": "Japanese",
+    "search-text": "Text to Search",
+    "title": "Dictionary",
+    "filter": "Filter Tags"
+  },
+  "gacha": {
+    "view": {
+      "title": "Gacha Pool-View"
+    },
+    "simulator": {
+      "title": "Gacha Pool-Simulator"
+    }
+  },
+  "global": {
+    "copy-success": "Copy successful",
+    "copy-fail": "Copy failed: {0}",
+    "about": "About",
+    "github-os-repo": "Github Open Source Repository",
+    "loading": "Loading",
+    "game": {
+      "HI": "Honkai Impact 3rd",
+      "GI": "Genshin Impact",
+      "HSR": "Honkai: Star Rail",
+      "ZZZ": "Zenless Zone Zero"
+    },
+    "expired": "Expired",
+    "commit": "Commit"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "index": {
+    "s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
+    "description": "A open source HoYo game toolkit.",
+    "use": "Use Now",
+    "install": "Install as PWA App"
+  },
+  "name": "「Prototype」",
+  "question": {
+    "answer-right": "Correct",
+    "answer-wrong": "Incorrect",
+    "question-number": "Question {0}",
+    "submit-answer": "Submit Answer",
+    "next-question": "Next Question",
+    "question-rank-is": "Question Bank:",
+    "result": {
+      "tip": "Total {0} questions, {1} answered correctly."
+    }
+  },
+  "quiz": {
+    "title": "Quiz"
+  },
   "setting": {
     "theme": {
-      "selector": {},
-      "dark": "Dark mode",
-      "light": "Light mode",
-      "system": "Follow the system",
+      "dark": "Dark Mode",
+      "light": "Light Mode",
+      "system": "Follow System",
       "select": "Select Theme",
       "title": "Theme"
     },
     "language": {
-      "selector": {},
       "title": "Language",
-      "select": "Select language",
-      "teyvat": "Use Tyvat font"
+      "select": "Select Language",
+      "teyvat": "Use Teyvat Font"
     },
     "about": {
       "title": "About"
     },
     "title": "Settings"
   },
-  "index": {
-    "s0": "(Translated) \" How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」\"",
-    "description": "A open source HoYo game toolkit.",
-    "use": "Use",
-    "install": "Install as a PWA application"
-  },
   "song-player": {
-    "intro": {},
-    "actions": {
-      "open-in-wyy": "Open on NetEase Cloud Music",
-      "share": "Copy share link"
-    },
-    "title": "Music player"
-  },
-  "translator": {
-    "font-size": "Font size",
-    "raw-text": "Raw text",
-    "reverse-translation": "Reverse translation",
-    "forward-translation": "Forward translation",
-    "title": "Translator",
-    "auto-wrap": "Automatic Wrap",
-    "open-keyboard": "Open the keyboard",
-    "export-to-image": "Export the result as a picture",
-    "action-to-save": "Right-click or long-press to save",
-    "close-keyboard": "Close the keyboard"
-  },
-  "dictionary": {
-    "search": "Search",
-    "en": "English",
-    "ja": "Japanese",
-    "zh-cn": "Simplified Chinese",
-    "search-text": "Text To Search For",
-    "title": "Dictionary",
-    "filter": "Filter tags"
-  },
-  "update-log": {
-    "only-chinese-and-english": "This page is only displayed in Simplified Chinese and English."
-  },
-  "main": {},
-  "about": {
-    "build-time": "Build time: {0}"
-  },
-  "question": {
-    "answer-right": "Answer correctly",
-    "answer-wrong": "Wrong answer",
-    "question-number": "Question {0}",
-    "submit-answer": "Submit answer",
-    "question-rank-is": "Question bank :",
-    "result": {
-      "tip": "There are {0} questions in total, and you answered {1} correctly."
-    }
-  },
-  "home": {
-    "title": "Home"
-  },
-  "quiz": {
-    "title": "Quiz"
-  },
-  "achievement": {
-    "title": "Achievement",
-    "search": "Search for achievement",
-    "select-version": "Select version",
-    "finish": {
-      "is-finished": "Is finished",
-      "unfinished": "Unfinished",
-      "finished": "Finished"
-    },
-    "platforms-to-search": "Platform to search for",
-    "import-export": "Import/Export",
-    "search-with": "Search with {0}",
-    "numbers": "{0} Groups - {1} Achievements",
-    "all": "All"
-  },
-  "gacha": {
-    "view": {
-      "title": "@:gacha.title · Browse"
-    },
-    "simulator": {
-      "title": "@:gacha.title · Simulator"
-    },
-    "title": "Gacha"
-  },
-  "global": {
-    "about": "About",
-    "github-os-repo": "Github Open Source Repository",
-    "loading": "Loading",
-    "game": {
-      "GI": "Genshin Impact",
-      "HI": "Honkai Impact 3rd",
-      "HSR": "Honkai: Star Rail",
-      "ZZZ": "Zenless Zone Zero"
-    },
-    "expired": "Expired"
+    "title": "Music Player"
   },
   "sp-key": {
-    "commit-key": "Submit redemption code",
+    "commit-key": "Commit Code",
     "game": "Game",
     "server": "Server",
     "version": "Version",
-    "expired-time": "Expired time",
-    "time-to-expire": "There are still {0} minutes expired",
-    "key": "Redeem code",
-    "token-to-auth": "Token used to verify identity",
+    "expired-time": "Expiration Time",
+    "time-to-expire": "Expiring in {0} minutes",
+    "key": "Redemption Code",
+    "token-to-auth": "Token for Authentication",
     "become-a-contributor": {
-      "content": "Do you want to be a contributor to this redemption code pool? \nPlease contact the author on the About page and we will give you a token that you can use to submit the redemption code.",
-      "title": "Become a contributor"
+      "title": "Become a Contributor",
+      "content": "Want to become a contributor of this code pool? Please contact the author via About page. We'll provide you a token to submit redemption codes."
     },
-    "title": "Redeem code"
+    "title": "Redemption Codes"
+  },
+  "translator": {
+    "font-size": "Font Size",
+    "raw-text": "Original Text",
+    "forward-translation": "Forward Translation",
+    "reverse-translation": "Reverse Translation",
+    "title": "Translator",
+    "auto-wrap": "Auto Wrap",
+    "open-keyboard": "Open Keyboard",
+    "export-to-image": "Export as Image",
+    "action-to-save": "Right click or long press to save",
+    "close-keyboard": "Close Keyboard"
   }
 }
