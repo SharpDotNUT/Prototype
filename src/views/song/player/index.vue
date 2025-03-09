@@ -3,7 +3,45 @@
   import { useRoute, useRouter } from 'vue-router'
   import SvgIcon from '@jamescoyle/vue-icon'
   import LyricsView from './lyrics-view.vue'
-  import Data from './songs.json'
+
+  let Data = {}
+  const s_dataLoaded = ref(false)
+  const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
+  /*
+    caches.open('prototype').then(cache => {
+    cache.match(WordsPath).then(async res => {
+      if (res) {
+        res.json().then(data => {
+          Words = shuffleArray(data)
+          Words_loaded.value = true
+          Snackbar('从缓存加载成功')
+          load()
+          search(null, true)
+        })
+      } else {
+        const res = await fetch(WordsPath)
+        cache.put(WordsPath, res.clone())
+        res.json().then(data => {
+          Words = shuffleArray(data)
+          Words_loaded.value = true
+          Snackbar('从网络下载成功')
+          load()
+          search(null, true)
+        })
+      }
+    })
+  */
+  fetch('https://prototype-oss.sharpdotnut.com/songs.json')
+  .then((response) => response.json())
+  .then((data) => {
+    Data = data
+    s_dataLoaded.value = true
+    songMetaData.value = Data.data
+    selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
+    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+    currentSongID.value =
+      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+  })
 
   const route = useRoute()
   const router = useRouter()
@@ -20,30 +58,28 @@
   import { watchEffect } from 'vue'
   import { onUnmounted } from 'vue'
 
-  const songMetaData = Data.data
-  const selectedAlbum = ref(songMetaData.length - 74) // 空气蛹
+  const songMetaData = ref([])
+  const selectedAlbum = ref(0) // 空气蛹
   const selectedSong = ref(0)
-  const currentSongID = ref(
-    songMetaData[selectedAlbum.value].songs[selectedSong.value].id
-  )
+  const currentSongID = ref({})
   watch(selectedAlbum, () => {
     selectedSong.value = 0
     currentSongID.value =
-      songMetaData[selectedAlbum.value].songs[selectedSong.value].id
-    picURL.value = songMetaData[selectedAlbum.value].picUrl
+      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
   })
   watch(selectedSong, () => {
     currentSongID.value =
-      songMetaData[selectedAlbum.value].songs[selectedSong.value].id
-    if (selectedSong.value >= songMetaData[selectedAlbum.value].songs.length) {
+      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+    if (selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length) {
       selectedSong.value = 0
     } else if (selectedSong.value < 0) {
-      selectedSong.value = songMetaData[selectedAlbum.value].songs.length - 1
+      selectedSong.value = songMetaData.value[selectedAlbum.value].songs.length - 1
     }
   })
   if (route.query.album) {
-    selectedAlbum.value = songMetaData.length - parseInt(route.query.album)
-    picURL.value = songMetaData[selectedAlbum.value].picUrl
+    selectedAlbum.value = songMetaData.value.length - parseInt(route.query.album)
+    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
   }
   if (route.query.song) {
     selectedSong.value = parseInt(route.query.song)
@@ -51,7 +87,7 @@
   router.push({ query: { album: undefined } })
   router.push({ query: { song: undefined } })
 
-  const picURL = ref(songMetaData[selectedAlbum.value].picUrl)
+  const picURL = ref('')
   const imageLoaded = ref(false)
   const lyricsView = ref(null)
   const audio = new Audio()
@@ -126,7 +162,7 @@
 </script>
 
 <template>
-  <div id="container">
+  <div id="container" v-if="s_dataLoaded">
     <div id="title">
       <h2>{{ songMetaData[selectedAlbum].songs[selectedSong].name }}</h2>
       <p style="color: #777">

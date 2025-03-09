@@ -27,14 +27,20 @@
   const isPlaying = ref(false)
   let animationFrameId: number | null = null
 
+  const s_isFetchFailed = ref(false)
   // 获取歌词数据
   async function fetchLyrics() {
-    const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
-    const data = await res.json()
+    let data: any = null
+    try {
+      const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
+      const data = await res.json()
+    } catch {
+      s_isFetchFailed.value = true
+      return
+    }
     raw_lyrics.value.raw = data.lrc.lyric
     raw_lyrics.value.translation = data?.tlyric?.lyric
     raw_lyrics.value.romaji = data?.romalrc?.lyric
-
     lyrics.value = mergeLyrics(
       parseLyrics(raw_lyrics.value.raw),
       parseLyrics(raw_lyrics.value.translation),
@@ -141,13 +147,14 @@
     { immediate: true }
   )
 
-  defineExpose({ play, pause, scrollToCurrentLyric  })
+  defineExpose({ play, pause, scrollToCurrentLyric })
 </script>
 
 <template>
   <div class="lyrics-container" ref="lyricsContainer">
     <div style="height: 50dvh"></div>
     <div
+      v-if="!s_isFetchFailed"
       v-for="(lyric, timestamp, index) in lyrics"
       :key="timestamp"
       :ref="(el) => (ref_lyrics[index] = el as HTMLElement)"
@@ -161,6 +168,7 @@
         <p class="lyrics-romaji" v-if="lyric.romaji">{{ lyric.romaji }}</p>
       </div>
     </div>
+    <div v-else>歌词获取失败</div>
     <div style="height: 50dvh"></div>
   </div>
 </template>
