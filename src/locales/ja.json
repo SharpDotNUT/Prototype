@@ -1,29 +1,89 @@
 {
-  "app-bar": {},
-  "apps-name": {
-    "update-log": "変更ログ"
+  "about": {
+    "build-time": "ビルド時間: {0}"
+  },
+  "achievement": {
+    "title": "実績",
+    "search": "実績検索",
+    "select-version": "バージョン選択",
+    "all": "すべて",
+    "finish": {
+      "finished": "達成済み",
+      "is-finished": "達成状況",
+      "unfinished": "未達成"
+    },
+    "platforms-to-search": "実績検索プラットフォーム",
+    "import-export": "インポート/エクスポート",
+    "numbers": "{0} 個の実績グループ - {1} 個の実績",
+    "search-with": "{0}で検索"
+  },
+  "dictionary": {
+    "zh-cn": "簡体字中国語",
+    "en": "英語",
+    "ja": "日本語",
+    "search-text": "検索テキスト",
+    "title": "辞書",
+    "filter": "タグフィルター"
+  },
+  "gacha": {
+    "view": {
+      "title": "ガチャプール-閲覧"
+    },
+    "simulator": {
+      "title": "ガチャプール-シミュレーター"
+    }
+  },
+  "global": {
+    "copy-success": "コピー成功",
+    "copy-fail": "コピー失敗: {0}",
+    "about": "について",
+    "github-os-repo": "Github オープンソースリポジトリ",
+    "loading": "読み込み中",
+    "game": {
+      "HI": "崩壊3rd",
+      "GI": "原神",
+      "HSR": "崩壊：スターレイル",
+      "ZZZ": "ゼンレスゾーンゼロ"
+    },
+    "expired": "期限切れ",
+    "commit": "送信"
+  },
+  "home": {
+    "title": "ホーム"
   },
   "index": {
-    "description": "オープンソースの純粋なWebページHoYoゲームツールボックス。",
-    "s0": "「（訳）美しき雲に愛しき花、風流は山水にありて。」",
-    "use": "すぐに使用してください",
-    "install": "PWAアプリケーションとしてインストールします"
+    "s0": "（訳）美しき雲に愛しき花、風流は山水にありて。{'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
+    "description": "オープンソースのMiHoYoゲーム用ウェブツールキット。",
+    "use": "今すぐ使う",
+    "install": "PWAアプリとしてインストール"
   },
   "name": "「試作」",
+  "question": {
+    "answer-right": "正解",
+    "answer-wrong": "不正解",
+    "question-number": "第 {0} 問",
+    "submit-answer": "回答を送信",
+    "next-question": "次の問題",
+    "question-rank-is": "問題バンク:",
+    "result": {
+      "tip": "全{0}問中、{1}問正解しました。"
+    }
+  },
+  "quiz": {
+    "title": "クイズ"
+  },
   "setting": {
     "theme": {
-      "selector": {},
       "dark": "ダークモード",
       "light": "ライトモード",
-      "system": "システムに従ってください",
-      "select": "トピックを選択します",
+      "system": "システムに従う",
+      "select": "テーマ選択",
       "title": "テーマ"
     },
     "language": {
-      "selector": {},
       "title": "言語",
-      "select": "選択言語",
-      "teyvat": "Tyvatフォントを使用します"
+      "select": "言語選択",
+      "teyvat": "テイワット字体を使用"
     },
     "about": {
       "title": "について"
@@ -31,106 +91,33 @@
     "title": "設定"
   },
   "song-player": {
-    "actions": {
-      "open-in-wyy": "NetEase クラウドで開く",
-      "share": "共有リンクをコピーする"
-    },
-    "intro": {},
-    "title": "音楽プレーヤー"
-  },
-  "translator": {
-    "font-size": "フォントサイズ",
-    "raw-text": "オリジナル",
-    "reverse-translation": "逆翻訳",
-    "forward-translation": "前方翻訳",
-    "title": "翻訳者",
-    "auto-wrap": "自動変更",
-    "open-keyboard": "キーボードを開きます",
-    "export-to-image": "結果を写真としてエクスポートします",
-    "action-to-save": "右クリックまたはロングプレスを保存します",
-    "close-keyboard": "キーボードを片付けます"
-  },
-  "dictionary": {
-    "search": "検索",
-    "en": "英語",
-    "ja": "日本語",
-    "zh-cn": "簡体字中国語",
-    "search-text": "検索するテキスト",
-    "title": "辞書",
-    "filter": "フィルタータグ"
-  },
-  "update-log": {
-    "only-chinese-and-english": "このページは簡体字中国語と英語でのみ表示されます。"
-  },
-  "main": {},
-  "about": {
-    "build-time": "建設時間：{0}"
-  },
-  "question": {
-    "answer-right": "正解する",
-    "answer-wrong": "不正解",
-    "question-number": "質問{0}",
-    "submit-answer": "この質問への回答を送信する",
-    "question-rank-is": "質問バンク:",
-    "result": {
-      "tip": "合計 {0} 問ありますが、あなたは {1} 問に正解しました。"
-    }
-  },
-  "home": {
-    "title": "フロントページ"
-  },
-  "quiz": {
-    "title": "答え"
-  },
-  "achievement": {
-    "title": "成果",
-    "search": "成果を検索します",
-    "select-version": "オプション",
-    "finish": {
-      "is-finished": "それは完了ですか",
-      "unfinished": "未完成",
-      "finished": "完了"
-    },
-    "platforms-to-search": "実績を検索するプラットフォーム",
-    "import-export": "インポート/エクスポート",
-    "search-with": "{0}で検索",
-    "numbers": "{0} 個の実績グループ - {1} 個の実績",
-    "all": "全て"
-  },
-  "gacha": {
-    "view": {
-      "title": "@:gacha.title ・閲覧"
-    },
-    "simulator": {
-      "title": "@:gacha.title ・シミュレーター"
-    },
-    "title": "ガチャ"
-  },
-  "global": {
-    "about": "について",
-    "github-os-repo": "Github オープンソース リポジトリ",
-    "loading": "読み込み",
-    "game": {
-      "GI": "原神",
-      "HI": "崩壊3rd",
-      "HSR": "崩壊：スターレイル",
-      "ZZZ": "ゼンレスゾーンゼロ"
-    },
-    "expired": "期限切れ"
+    "title": "音楽プレイヤー"
   },
   "sp-key": {
-    "commit-key": "償還コードを送信します",
+    "commit-key": "シリアルコード登録",
     "game": "ゲーム",
-    "server": "サーバ",
+    "server": "サーバー",
     "version": "バージョン",
-    "expired-time": "締め切り",
-    "time-to-expire": "まだ{0}分は有効です",
-    "key": "コードを引き換えます",
-    "token-to-auth": "トークンはアイデンティティの検証に使用されていました",
+    "expired-time": "有効期限",
+    "time-to-expire": "あと{0}分で期限切れ",
+    "key": "シリアルコード",
+    "token-to-auth": "認証用トークン",
     "become-a-contributor": {
-      "content": "この引き換えコードプールへの貢献者になりたいですか? 「About」ページで著者に連絡してください。引き換えコードを送信するために使用できるトークンを提供します。",
-      "title": "貢献者になります"
+      "title": "協力者になる",
+      "content": "シリアルコードプールの協力者になりませんか？詳細は「について」ページから作者に連絡してください。トークンを発行し、コード登録が可能になります。"
     },
-    "title": "コードを引き換えます"
+    "title": "シリアルコード"
+  },
+  "translator": {
+    "font-size": "文字サイズ",
+    "raw-text": "原文",
+    "forward-translation": "順方向翻訳",
+    "reverse-translation": "逆方向翻訳",
+    "title": "翻訳機",
+    "auto-wrap": "自動改行",
+    "open-keyboard": "キーボード表示",
+    "export-to-image": "画像としてエクスポート",
+    "action-to-save": "右クリック/長押しで保存",
+    "close-keyboard": "キーボードを閉じる"
   }
 }

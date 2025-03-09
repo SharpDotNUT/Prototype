@@ -1,7 +1,76 @@
 {
+  "about": {
+    "build-time": "构建时间： {0}"
+  },
+  "achievement": {
+    "title": "成就",
+    "search": "搜索成就",
+    "select-version": "选择版本",
+    "all": "所有",
+    "finish": {
+      "finished": "已完成",
+      "is-finished": "是否完成",
+      "unfinished": "未完成"
+    },
+    "platforms-to-search": "搜索成就的平台",
+    "import-export": "导入/导出",
+    "numbers": "{0} 个成就组 - {1} 个成就",
+    "search-with": "在{0}上搜索"
+  },
+  "dictionary": {
+    "zh-cn": "简体中文",
+    "en": "英文",
+    "ja": "日文",
+    "search-text": "要搜索的文本",
+    "title": "辞典",
+    "filter": "筛选标签"
+  },
+  "gacha": {
+    "view": {
+      "title": "卡池-浏览"
+    },
+    "simulator": {
+      "title": "卡池-模拟器"
+    }
+  },
+  "global": {
+    "copy-success": "复制成功",
+    "copy-fail": "复制失败：{0}",
+    "about": "关于",
+    "github-os-repo": "Github 开源仓库",
+    "loading": "加载中",
+    "game": {
+      "HI": "崩坏三",
+      "GI": "原神",
+      "HSR": "崩坏：星穹铁道",
+      "ZZZ": "绝区零"
+    },
+    "expired": "已过期",
+    "commit": "提交"
+  },
+  "home": {
+    "title": "首页"
+  },
+  "index": {
+    "s0": "「云婵娟来花婵娟，风流尽在山水间。」",
+    "description": "一个开源的纯网页端米哈游游戏工具箱。",
+    "use": "立即使用",
+    "install": "安装为 PWA 应用"
+  },
   "name": "「试作」",
-  "apps-name": {
-    "update-log": "更新日志"
+  "question": {
+    "answer-right": "回答正确",
+    "answer-wrong": "回答错误",
+    "question-number": "第 {0} 题",
+    "submit-answer": "提交本题答案",
+    "next-question": "下一题",
+    "question-rank-is": "题库：",
+    "result": {
+      "tip": "一共 {0} 题， 您答对了 {1} 题。"
+    }
+  },
+  "quiz": {
+    "title": "答题"
   },
   "setting": {
     "theme": {
@@ -21,101 +90,8 @@
     },
     "title": "设置"
   },
-  "index": {
-    "s0": "「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "一个开源的纯网页端米哈游游戏工具箱。",
-    "use": "立即使用",
-    "install": "安装为 PWA 应用"
-  },
   "song-player": {
-    "actions": {
-      "share": "复制分享链接",
-      "open-in-wyy": "在网易云打开"
-    },
     "title": "音乐播放器"
-  },
-  "translator": {
-    "font-size": "字体大小",
-    "raw-text": "原文",
-    "forward-translation": "正向翻译",
-    "reverse-translation": "反向翻译",
-    "title": "翻译器",
-    "auto-wrap": "自动换行",
-    "open-keyboard": "打开键盘",
-    "export-to-image": "导出结果为图片",
-    "action-to-save": "右键或长按保存",
-    "close-keyboard": "收起键盘"
-  },
-  "dictionary": {
-    "search": "搜索",
-    "zh-cn": "简体中文",
-    "en": "英文",
-    "ja": "日文",
-    "search-text": "要搜索的文本",
-    "title": "辞典",
-    "filter": "筛选标签"
-  },
-  "update-log": {
-    "only-chinese-and-english": "本页面只以简体中文和英文展示。"
-  },
-  "about": {
-    "build-time": "构建时间： {0}"
-  },
-  "question": {
-    "answer-right": "回答正确",
-    "answer-wrong": "回答错误",
-    "question-number": "第 {0} 题",
-    "submit-answer": "提交本题答案",
-    "next-question": "下一题",
-    "question-rank-is": "题库：",
-    "result": {
-      "tip": "一共 {0} 题， 您答对了 {1} 题。"
-    }
-  },
-  "home": {
-    "title": "首页"
-  },
-  "quiz": {
-    "title": "答题"
-  },
-  "achievement": {
-    "title": "成就",
-    "search": "搜索成就",
-    "select-version": "选择版本",
-    "all": "所有",
-    "finish": {
-      "finished": "已完成",
-      "is-finished": "是否完成",
-      "unfinished": "未完成"
-    },
-    "platforms-to-search": "搜索成就的平台",
-    "import-export": "导入/导出",
-    "numbers": "{0} 个成就组 - {1} 个成就",
-    "search-with": "在{0}上搜索"
-  },
-  "gacha": {
-    "view": {
-      "title": "@:gacha.title · 浏览"
-    },
-    "simulator": {
-      "title": "@:gacha.title · 模拟器"
-    },
-    "title": "卡池"
-  },
-  "global": {
-    "copy-success": "复制成功",
-    "copy-fail": "复制失败：{0}",
-    "about": "关于",
-    "github-os-repo": "Github 开源仓库",
-    "loading": "加载中",
-    "game": {
-      "HI": "崩坏三",
-      "GI": "原神",
-      "HSR": "崩坏：星穹铁道",
-      "ZZZ": "绝区零"
-    },
-    "expired": "已过期",
-    "commit": "提交"
   },
   "sp-key": {
     "commit-key": "提交兑换码",
@@ -131,5 +107,17 @@
       "content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。"
     },
     "title": "兑换码"
+  },
+  "translator": {
+    "font-size": "字体大小",
+    "raw-text": "原文",
+    "forward-translation": "正向翻译",
+    "reverse-translation": "反向翻译",
+    "title": "翻译器",
+    "auto-wrap": "自动换行",
+    "open-keyboard": "打开键盘",
+    "export-to-image": "导出结果为图片",
+    "action-to-save": "右键或长按保存",
+    "close-keyboard": "收起键盘"
   }
 }

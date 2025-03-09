@@ -27,6 +27,8 @@
         <img src="/img/UI_ChapterIcon_Yunjin.png" style="height: 10vh" />
         <h1 id="title-name">{{ $t('name') }}</h1>
         <p id="title-description"></p>
+        {{ $t('index.s0') }}
+        <br/>
         {{ $t('index.description') }}
         <a
           :href="`https://github.com/${Meta.repo}`"
