@@ -35,7 +35,7 @@
       const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
       const data = await res.json()
     } catch {
-      s_isFetchFailed.value = true
+      // s_isFetchFailed.value = true
       return
     }
     raw_lyrics.value.raw = data.lrc.lyric
