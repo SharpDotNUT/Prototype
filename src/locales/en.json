@@ -53,9 +53,10 @@
   },
   "index": {
     "s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "A open source HoYo game toolkit.",
+    "description": "An open-source HoYo games toolkit.",
     "use": "Use Now",
-    "install": "Install as PWA App"
+    "install": "Install as PWA App",
+    "unfinished-note": "This webpage is not finished yet. Most pages are not optimized for mobile. Please use the menu in the upper right corner to access available features."
   },
   "name": "「Prototype」",
   "question": {

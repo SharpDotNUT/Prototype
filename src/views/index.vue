@@ -2,14 +2,14 @@
   import Meta from '@/meta'
   import { useMainStore } from '@/stores/main'
   import { Dialog } from '@varlet/ui'
+  import { useI18n } from 'vue-i18n'
 
+  const { t } = useI18n()
   const mainStore = useMainStore()
 
   function use(params) {
     Dialog({
-      title: '提示',
-      message:
-        '本网页未完成。大部分页面并没有适配手机。请使用右上角菜单访问已有的功能。',
+      message: t('index.unfinished-note'),
       showConfirmButton: false
     })
   }
