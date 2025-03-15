@@ -24,12 +24,9 @@ declare module 'vue' {
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
-    VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
-    VarIcon: typeof import('@varlet/ui')['_IconComponent']
-    VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
@@ -39,19 +36,13 @@ declare module 'vue' {
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
     VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
-    VarProgress: typeof import('@varlet/ui')['_ProgressComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSlider: typeof import('@varlet/ui')['_SliderComponent']
     VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
-    VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
     VarTab: typeof import('@varlet/ui')['_TabComponent']
     VarTabItem: typeof import('@varlet/ui')['_TabItemComponent']
-    VarTable: typeof import('@varlet/ui')['_TableComponent']
     VarTabs: typeof import('@varlet/ui')['_TabsComponent']
     VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
-  }
-  export interface ComponentCustomProperties {
-    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }

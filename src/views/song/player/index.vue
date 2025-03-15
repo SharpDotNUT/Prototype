@@ -1,51 +1,16 @@
 <script setup>
-  import { ref, onMounted, watch } from 'vue'
+  import {
+    ref,
+    onMounted,
+    watch,
+    watchEffect,
+    onUnmounted,
+    useTemplateRef
+  } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import SvgIcon from '@jamescoyle/vue-icon'
   import LyricsView from './lyrics-view.vue'
-
-  let Data = {}
-  const s_dataLoaded = ref(false)
-  const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
-  /*
-    caches.open('prototype').then(cache => {
-    cache.match(WordsPath).then(async res => {
-      if (res) {
-        res.json().then(data => {
-          Words = shuffleArray(data)
-          Words_loaded.value = true
-          Snackbar('从缓存加载成功')
-          load()
-          search(null, true)
-        })
-      } else {
-        const res = await fetch(WordsPath)
-        cache.put(WordsPath, res.clone())
-        res.json().then(data => {
-          Words = shuffleArray(data)
-          Words_loaded.value = true
-          Snackbar('从网络下载成功')
-          load()
-          search(null, true)
-        })
-      }
-    })
-  */
-  fetch('https://prototype-oss.sharpdotnut.com/songs.json')
-  .then((response) => response.json())
-  .then((data) => {
-    Data = data
-    s_dataLoaded.value = true
-    songMetaData.value = Data.data
-    selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
-    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
-    currentSongID.value =
-      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-  })
-
-  const route = useRoute()
-  const router = useRouter()
-
+  import { Snackbar } from '@varlet/ui'
   import {
     mdiSkipNext,
     mdiSkipPrevious,
@@ -55,8 +20,40 @@
     mdiTextBox,
     mdiImageArea
   } from '@mdi/js'
-  import { watchEffect } from 'vue'
-  import { onUnmounted } from 'vue'
+
+  let Data = {}
+  const s_dataLoaded = ref(false)
+  const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
+  caches.open('prototype').then(cache => {
+    cache.match(d_dataURL).then(async res => {
+      if (res) {
+        res.json().then(data => {
+          Snackbar('从缓存加载成功')
+          Data = data
+          init()
+        })
+      } else {
+        const res = await fetch(d_dataURL)
+        cache.put(d_dataURL, res.clone())
+        res.json().then(data => {
+          Snackbar('从网络下载成功')
+          Data = data
+          init()
+        })
+      }
+    })
+  })
+  function init() {
+    s_dataLoaded.value = true
+    songMetaData.value = Data.data
+    selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
+    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+    currentSongID.value =
+      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+  }
+
+  const route = useRoute()
+  const router = useRouter()
 
   const songMetaData = ref([])
   const selectedAlbum = ref(0) // 空气蛹
@@ -71,14 +68,18 @@
   watch(selectedSong, () => {
     currentSongID.value =
       songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-    if (selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length) {
+    if (
+      selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length
+    ) {
       selectedSong.value = 0
     } else if (selectedSong.value < 0) {
-      selectedSong.value = songMetaData.value[selectedAlbum.value].songs.length - 1
+      selectedSong.value =
+        songMetaData.value[selectedAlbum.value].songs.length - 1
     }
   })
   if (route.query.album) {
-    selectedAlbum.value = songMetaData.value.length - parseInt(route.query.album)
+    selectedAlbum.value =
+      songMetaData.value.length - parseInt(route.query.album)
     picURL.value = songMetaData.value[selectedAlbum.value].picUrl
   }
   if (route.query.song) {
@@ -90,7 +91,7 @@
   const picURL = ref('')
   const imageLoaded = ref(false)
   const lyricsView = ref(null)
-  const audio = new Audio()
+  const audio = useTemplateRef('audio')
   const isMuted = ref(false)
   const isAutoScroll = ref(true)
   const process = ref(0)
@@ -109,9 +110,9 @@
   window.addEventListener('resize', checkMobileWidth)
   watch(pause, () => {
     if (pause.value) {
-      audio.pause()
+      audio.value.pause()
     } else {
-      audio.play()
+      audio.value.play()
     }
   })
   watch(picURL, () => {
@@ -124,45 +125,46 @@
       .padStart(2, '0')}`
   }
 
-  onMounted(() => {
+  watch(audio, () => {
+    console.log(audio.value)
     watchEffect(() => {
-      audio.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
-      audio.muted = isMuted.value
+      audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
+      audio.value.muted = isMuted.value
     })
-    audio.addEventListener('loadedmetadata', () => {
-      processMax.value = Math.ceil(audio.duration)
+    audio.value.addEventListener('loadedmetadata', () => {
+      processMax.value = Math.ceil(audio.value.duration)
       process.value = 0
     })
-    audio.addEventListener('canplay', () => {
+    audio.value.addEventListener('canplay', () => {
       if (!pause.value) {
-        audio.play()
+        audio.value.play()
       }
     })
-    audio.addEventListener('play', () => {
-      lyricsView.value.play(Math.floor(audio.currentTime * 1000))
+    audio.value.addEventListener('play', () => {
+      lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
     })
-    audio.addEventListener('pause', () => {
+    audio.value.addEventListener('pause', () => {
       lyricsView.value.pause()
     })
-    audio.addEventListener('timeupdate', () => {
+    audio.value.addEventListener('timeupdate', () => {
       if (!onChangeProcess.value) {
-        process.value = Math.ceil(audio.currentTime)
+        process.value = Math.ceil(audio.value.currentTime)
       }
       if (hasChangedProcess.value) {
-        lyricsView.value.play(Math.floor(audio.currentTime * 1000))
+        lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
         hasChangedProcess.value = false
       }
     })
   })
 
   onUnmounted(() => {
-    audio.remove()
     window.removeEventListener('resize', checkMobileWidth)
   })
 </script>
 
 <template>
   <div id="container" v-if="s_dataLoaded">
+    <audio ref="audio"></audio>
     <div id="title">
       <h2>{{ songMetaData[selectedAlbum].songs[selectedSong].name }}</h2>
       <p style="color: #777">
@@ -187,7 +189,7 @@
         id="pic"
         :style="{
           position: isMobileWidth ? 'absolute' : 'relative',
-          right: (!isViewingLyrics || !isMobileWidth) ? '0%' : '100%'
+          right: !isViewingLyrics || !isMobileWidth ? '0%' : '100%'
         }">
         <img
           :src="picURL"
@@ -252,9 +254,7 @@
           @click="ui_showSelector = true">
           <SvgIcon type="mdi" :path="mdiListBox" />
         </var-button>
-        <var-popup
-          position="bottom"
-          v-model:show="ui_showSelector">
+        <var-popup position="bottom" v-model:show="ui_showSelector">
           <div id="selector">
             <var-tabs v-model:active="ui_tabSelector">
               <var-tab>专辑列表</var-tab>
@@ -262,55 +262,58 @@
             </var-tabs>
             <br />
             <div id="list">
-            <var-tabs-items v-model:active="ui_tabSelector">
-              <var-tab-item>
-                <div
-                  class="cell"
-                  v-for="(item, index) in songMetaData"
-                  :class="{ selected: index === selectedAlbum }"
-                  @click="selectedAlbum = index"
-                  :key="item.id"
-                  :value="index"
-                  :label="item.name">
-                  <div style="display: flex; align-items: center; gap: 10px">
-                    <img
-                      :src="item.picUrl + '?param=40y40'"
-                      style="width: 40px; height: 40px; border-radius: 5px" />
-                    <p>
-                      <span>{{ item.name }}</span>
-                      <span v-if="item.alias[0]" style="color: #999">
-                        <br />
-                        ({{ item.alias[0] }})
-                      </span>
-                    </p>
+              <var-tabs-items v-model:active="ui_tabSelector">
+                <var-tab-item>
+                  <div
+                    class="cell"
+                    v-for="(item, index) in songMetaData"
+                    :class="{ selected: index === selectedAlbum }"
+                    @click="selectedAlbum = index"
+                    :key="item.id"
+                    :value="index"
+                    :label="item.name">
+                    <div style="display: flex; align-items: center; gap: 10px">
+                      <img
+                        :src="item.picUrl + '?param=40y40'"
+                        style="width: 40px; height: 40px; border-radius: 5px" />
+                      <p>
+                        <span>{{ item.name }}</span>
+                        <span v-if="item.alias[0]" style="color: #999">
+                          <br />
+                          ({{ item.alias[0] }})
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </var-tab-item>
-              <var-tab-item>
-                <div
-                  class="cell"
-                  v-for="(item, index) in songMetaData[selectedAlbum].songs"
-                  :class="{ selected: index === selectedSong }"
-                  @click="selectedSong = index"
-                  :key="item.id"
-                  :value="index"
-                  :label="item.name">
-                  <div style="display: flex; align-items: center; gap: 10px">
-                    <img
-                      :src="songMetaData[selectedAlbum].picUrl + '?param=40y40'"
-                      style="width: 40px; height: 40px; border-radius: 5px" />
-                    <p>
-                      <span>{{ item.name }}</span>
-                      <span v-if="item.alias[0]" style="color: #999">
-                        <br />
-                        ({{ item.alias[0] }})
-                      </span>
-                    </p>
+                </var-tab-item>
+                <var-tab-item>
+                  <div
+                    class="cell"
+                    v-for="(item, index) in songMetaData[selectedAlbum].songs"
+                    :class="{ selected: index === selectedSong }"
+                    @click="selectedSong = index"
+                    :key="item.id"
+                    :value="index"
+                    :label="item.name">
+                    <div style="display: flex; align-items: center; gap: 10px">
+                      <img
+                        :src="
+                          songMetaData[selectedAlbum].picUrl + '?param=40y40'
+                        "
+                        style="width: 40px; height: 40px; border-radius: 5px" />
+                      <p>
+                        <span>{{ item.name }}</span>
+                        <span v-if="item.alias[0]" style="color: #999">
+                          <br />
+                          ({{ item.alias[0] }})
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <template #clear-icon></template>
-              </var-tab-item>
-            </var-tabs-items></div>
+                  <template #clear-icon></template>
+                </var-tab-item>
+              </var-tabs-items>
+            </div>
           </div>
         </var-popup>
       </div>

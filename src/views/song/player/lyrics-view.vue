@@ -33,7 +33,7 @@
     let data: any = null
     try {
       const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
-      const data = await res.json()
+      data = await res.json()
     } catch {
       s_isFetchFailed.value = true
       return
