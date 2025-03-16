@@ -15,7 +15,8 @@
     "platforms-to-search": "実績検索プラットフォーム",
     "import-export": "インポート/エクスポート",
     "numbers": "{0} 個の実績グループ - {1} 個の実績",
-    "search-with": "{0}で検索"
+    "search-with": "{0}で検索",
+    "description": "原神の実績管理/検索/記録ツール"
   },
   "dictionary": {
     "zh-cn": "簡体字中国語",
@@ -23,7 +24,8 @@
     "ja": "日本語",
     "search-text": "検索テキスト",
     "title": "辞書",
-    "filter": "タグフィルター"
+    "filter": "タグフィルター",
+    "description": "『原神』の固有名詞に関する中日英辞典"
   },
   "gacha": {
     "view": {
@@ -57,7 +59,7 @@
   },
   "index": {
     "s0": "（訳）美しき雲に愛しき花、風流は山水にありて。{'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "オープンソースのMiHoYoゲーム用ウェブツールキット。",
+    "description": "オープンソースのHoYoVERSEゲーム用ウェブツールキット。",
     "use": "今すぐ使う",
     "install": "PWAアプリとしてインストール",
     "unfinished-note": "このウェブページは未完成です。多くのページはモバイルに対応していません。右上のメニューから利用可能な機能にアクセスしてください。",
@@ -97,7 +99,8 @@
     "title": "設定"
   },
   "song-player": {
-    "title": "音楽プレイヤー"
+    "title": "音楽プレイヤー",
+    "description": "HoYo-Mix（HoYoVERSE音楽スタジオ）がリリースした楽曲に対応した音楽プレイヤー"
   },
   "sp-key": {
     "commit-key": "シリアルコード登録",
@@ -112,7 +115,8 @@
       "title": "協力者になる",
       "content": "シリアルコードプールの協力者になりませんか？詳細は「について」ページから作者に連絡してください。トークンを発行し、コード登録が可能になります。"
     },
-    "title": "シリアルコード"
+    "title": "シリアルコード",
+    "description": "予告番組の引き換えコードを検索"
   },
   "translator": {
     "font-size": "文字サイズ",
@@ -124,6 +128,7 @@
     "open-keyboard": "キーボード表示",
     "export-to-image": "画像としてエクスポート",
     "action-to-save": "右クリック/長押しで保存",
-    "close-keyboard": "キーボードを閉じる"
+    "close-keyboard": "キーボードを閉じる",
+    "description": "HoYoVERSEゲーム内のテキストと英語を変換するためのツール"
   }
 }

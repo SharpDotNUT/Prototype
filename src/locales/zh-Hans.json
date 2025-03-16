@@ -15,7 +15,8 @@
     "platforms-to-search": "搜索成就的平台",
     "import-export": "导入/导出",
     "numbers": "{0} 个成就组 - {1} 个成就",
-    "search-with": "在{0}上搜索"
+    "search-with": "在{0}上搜索",
+    "description": "适用于原神的成就管理/查询/记录工具"
   },
   "dictionary": {
     "zh-cn": "简体中文",
@@ -23,7 +24,8 @@
     "ja": "日文",
     "search-text": "要搜索的文本",
     "title": "辞典",
-    "filter": "筛选标签"
+    "filter": "筛选标签",
+    "description": "一个关于原神专有名词的中日英辞典"
   },
   "gacha": {
     "view": {
@@ -97,7 +99,8 @@
     "title": "设置"
   },
   "song-player": {
-    "title": "音乐播放器"
+    "title": "音乐播放器",
+    "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器"
   },
   "sp-key": {
     "commit-key": "提交兑换码",
@@ -112,7 +115,8 @@
       "title": "成为贡献者",
       "content": "您想成为本兑换码池的贡献者吗？请联系在关于页面联系作者，我们将给您一个 token，您可以使用这个 token 来提交兑换码。"
     },
-    "title": "兑换码"
+    "title": "兑换码",
+    "description": "查询前瞻特别节目的兑换码"
   },
   "translator": {
     "font-size": "字体大小",
@@ -124,6 +128,7 @@
     "open-keyboard": "打开键盘",
     "export-to-image": "导出结果为图片",
     "action-to-save": "右键或长按保存",
-    "close-keyboard": "收起键盘"
+    "close-keyboard": "收起键盘",
+    "description": "一个用于转换米哈游游戏内文字和英文的工具"
   }
 }

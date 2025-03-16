@@ -15,7 +15,8 @@
     "platforms-to-search": "Search Platforms for Achievements",
     "import-export": "Import/Export",
     "numbers": "{0} Achievement Groups - {1} Achievements",
-    "search-with": "Search on {0}"
+    "search-with": "Search on {0}",
+    "description": "An achievement management/query/record tool for Genshin Impact"
   },
   "dictionary": {
     "zh-cn": "Simplified Chinese",
@@ -23,7 +24,8 @@
     "ja": "Japanese",
     "search-text": "Text to Search",
     "title": "Dictionary",
-    "filter": "Filter Tags"
+    "filter": "Filter Tags",
+    "description": "A Chinese-Japanese-English dictionary of Genshin Impact proper nouns"
   },
   "gacha": {
     "view": {
@@ -97,7 +99,8 @@
     "title": "Settings"
   },
   "song-player": {
-    "title": "Music Player"
+    "title": "Music Player",
+    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE"
   },
   "sp-key": {
     "commit-key": "Commit Code",
@@ -112,7 +115,8 @@
       "title": "Become a Contributor",
       "content": "Want to become a contributor of this code pool? Please contact the author via About page. We'll provide you a token to submit redemption codes."
     },
-    "title": "Redemption Codes"
+    "title": "Redemption Codes",
+    "description": "Query the redemption codes for the SP/Special Program"
   },
   "translator": {
     "font-size": "Font Size",
@@ -124,6 +128,7 @@
     "open-keyboard": "Open Keyboard",
     "export-to-image": "Export as Image",
     "action-to-save": "Right click or long press to save",
-    "close-keyboard": "Close Keyboard"
+    "close-keyboard": "Close Keyboard",
+    "description": "A tool for converting in-game text and English in HoYoVERSE games"
   }
 }

@@ -13,6 +13,11 @@
       <router-link v-for="item in NavigationData" :to="item.path">
         <var-card class="card" ripple>
           <h3>{{ $t(item.name + '.title') }}</h3>
+          <p>
+            {{ $t(item.name + '.description') }}
+            <br/>
+            <var-chip v-if="item.beta" size="small" type="warning">Beta</var-chip>
+          </p>
         </var-card>
       </router-link>
     </nav>
