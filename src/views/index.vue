@@ -28,7 +28,7 @@
         <h1 id="title-name">{{ $t('name') }}</h1>
         <p id="title-description"></p>
         {{ $t('index.s0') }}
-        <br/>
+        <br />
         {{ $t('index.description') }}
         <a
           :href="`https://github.com/${Meta.repo}`"
@@ -52,41 +52,5 @@
 </template>
 
 <style scoped>
-  #container {
-    position: fixed;
-    top: var(--app-bar-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  #main {
-    height: calc(100vh - var(--app-bar-height));
-    #background {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: 68%;
-    }
-    #content {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      gap: 10px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #000a;
-      text-align: center;
-      padding: 0 10vw;
-      #actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px;
-      }
-    }
-  }
+  @import url('./index.css');
 </style>

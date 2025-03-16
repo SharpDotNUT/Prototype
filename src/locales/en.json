@@ -46,17 +46,22 @@
       "ZZZ": "Zenless Zone Zero"
     },
     "expired": "Expired",
-    "commit": "Commit"
+    "commit": "Commit",
+    "username": {
+      "traveler": "Traveler"
+    }
   },
   "home": {
-    "title": "Home"
+    "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
+    "title": "Home Page"
   },
   "index": {
     "s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
     "description": "An open-source HoYo games toolkit.",
     "use": "Use Now",
     "install": "Install as PWA App",
-    "unfinished-note": "This webpage is not finished yet. Most pages are not optimized for mobile. Please use the menu in the upper right corner to access available features."
+    "unfinished-note": "This webpage is not finished yet. Most pages are not optimized for mobile. Please use the menu in the upper right corner to access available features.",
+    "title": "Introduction Page"
   },
   "name": "「Prototype」",
   "question": {

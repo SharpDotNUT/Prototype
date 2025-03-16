@@ -30,7 +30,7 @@ const i18n = createI18n({
       ...JA,
     },
   },
-  warnHtmlMessage: true,
+  warnHtmlMessage: false,
   legacy: false
 });
 
