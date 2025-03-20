@@ -1,6 +1,9 @@
 {
   "about": {
-    "build-time": "Build Time: {0}"
+    "build-time": "Build Time: {0}",
+    "thanks-to-contributors": "Thanks to all contributors",
+    "copyright": "Copyright © 2025 SharpDotNUT Studio. All rights reserved.",
+    "last-commit": "Last commit"
   },
   "achievement": {
     "title": "Achievements",

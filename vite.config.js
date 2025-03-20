@@ -6,6 +6,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import { VarletImportResolver } from '@varlet/import-resolver'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const res = await fetch('https://api.github.com/repos/Sharpdotnut/prototype/commits')
+const commit = (await res.json())[0]
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -46,6 +49,7 @@ export default defineConfig({
     outDir: './dist'
   },
   define: {
-    __BUILD_TIME: new Date().getTime()
+    __BUILD_TIME: new Date().getTime(),
+    __LAST_COMMIT: commit
   }
 })
