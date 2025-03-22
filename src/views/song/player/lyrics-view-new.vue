@@ -22,7 +22,7 @@
     } catch {
       return
     }
-    lyricData.value = parseLrcToLyricLines(data.lrc.lyric)
+    lyricData.value = parseLrcToLyricLines(data)
     console.log(lyricData.value)
     id.value = 1
   }
