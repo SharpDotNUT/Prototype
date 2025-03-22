@@ -1,7 +1,6 @@
 <script setup>
   import {
     ref,
-    onMounted,
     watch,
     watchEffect,
     onUnmounted,
@@ -9,7 +8,7 @@
   } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import SvgIcon from '@jamescoyle/vue-icon'
-  import LyricsView from './lyrics-view.vue'
+  import LyricsView from './lyrics-view-new.vue'
   import { Snackbar } from '@varlet/ui'
   import {
     mdiSkipNext,
@@ -20,6 +19,8 @@
     mdiTextBox,
     mdiImageArea
   } from '@mdi/js'
+
+  const ref_image = ref(null)
 
   let Data = {}
   const s_dataLoaded = ref(false)
@@ -147,11 +148,11 @@
       lyricsView.value.pause()
     })
     audio.value.addEventListener('timeupdate', () => {
+      lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
       if (!onChangeProcess.value) {
         process.value = Math.ceil(audio.value.currentTime)
       }
       if (hasChangedProcess.value) {
-        lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
         hasChangedProcess.value = false
       }
     })
@@ -192,10 +193,11 @@
           right: !isViewingLyrics || !isMobileWidth ? '0%' : '100%'
         }">
         <img
+          ref="ref_image"
           :src="picURL"
           width="100%"
           @load="imageLoaded = true"
-          style="border-radius: 20WWpx" />
+          style="border-radius: 5px" />
       </div>
       <LyricsView
         id="lyrics"
@@ -207,6 +209,7 @@
         :autoScroll="isAutoScroll"
         ref="lyricsView"
         @play="
+        console.log($event)
           ;(audio.currentTime = $event / 1000), audio.play(), (pause = false)
         "></LyricsView>
     </div>

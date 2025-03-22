@@ -1,3 +1,20 @@
+interface LyricWord {
+  startTime: number
+  endTime: number
+  word: string
+  obscene: boolean
+}
+
+interface LyricLine {
+  words: LyricWord[]
+  translatedLyric: string
+  romanLyric: string
+  startTime: number
+  endTime: number
+  isBG: boolean
+  isDuet: boolean
+}
+
 export interface t_RawLyrics {
   [key: number]: string
 }
@@ -6,7 +23,6 @@ export interface t_Lyrics {
 }
 
 export function parseLyrics(lyrics: string | undefined) {
-
   if (!lyrics) return {}
 
   const lyricsLines = lyrics.trim().split('\n')
@@ -60,4 +76,45 @@ export function mergeLyrics(
   })
 
   return mergedLyrics
+}
+
+export function parseLrcToLyricLines(lrc: string): LyricLine[] {
+  const rawLyrics = parseLyrics(lrc)
+  const lyricLines: LyricLine[] = []
+
+  // 获取所有时间戳并排序
+  const timestamps = Object.keys(rawLyrics)
+    .map(Number)
+    .sort((a, b) => a - b)
+
+  for (let i = 0; i < timestamps.length; i++) {
+    const startTime = timestamps[i]
+    const lyricText = rawLyrics[startTime]
+
+    // 计算结束时间
+    const endTime =
+      i < timestamps.length - 1 ? timestamps[i + 1] : startTime + 5000 // 默认最后一行持续5秒
+
+    // 构建 LyricLine 对象
+    const lyricLine: LyricLine = {
+      words: [
+        {
+          startTime: startTime,
+          endTime: endTime,
+          word: lyricText,
+          obscene: false // 假设没有脏话
+        }
+      ],
+      translatedLyric: '', // 假设没有翻译
+      romanLyric: '', // 假设没有音译
+      startTime: startTime,
+      endTime: endTime,
+      isBG: false, // 假设不是背景歌词
+      isDuet: false // 假设不是对唱歌词
+    }
+
+    lyricLines.push(lyricLine)
+  }
+
+  return lyricLines
 }
