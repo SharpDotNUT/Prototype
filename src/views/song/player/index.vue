@@ -1,15 +1,12 @@
 <script setup>
-  import {
-    ref,
-    watch,
-    watchEffect,
-    onUnmounted,
-    useTemplateRef
-  } from 'vue'
+
+  import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import SvgIcon from '@jamescoyle/vue-icon'
   import LyricsView from './lyrics-view-new.vue'
-  import { Snackbar } from '@varlet/ui'
+  import TitleView from './title-view.vue'
+  import ControlPanel from './control-panel.vue'
+  import { Snackbar,Dialog } from '@varlet/ui'
   import {
     mdiSkipNext,
     mdiSkipPrevious,
@@ -21,6 +18,8 @@
   } from '@mdi/js'
 
   const ref_image = ref(null)
+
+  Dialog('由于歌词组件的某些特性，本页面目前还不支持在浅色模式下访问，请转到设置切换成深色模式。')
 
   let Data = {}
   const s_dataLoaded = ref(false)
@@ -100,12 +99,11 @@
   const onChangeProcess = ref(false)
   const hasChangedProcess = ref(false)
   const pause = ref(true)
-  const ui_tabSelector = ref(0)
-  const ui_showSelector = ref(false)
+  const ui_showControlPanel = ref(true)
   const isMobileWidth = ref(false)
   const isViewingLyrics = ref(false)
   function checkMobileWidth() {
-    isMobileWidth.value = window.innerWidth <= 600
+    isMobileWidth.value = window.innerWidth <= 800
   }
   checkMobileWidth()
   window.addEventListener('resize', checkMobileWidth)
@@ -127,7 +125,6 @@
   }
 
   watch(audio, () => {
-    console.log(audio.value)
     watchEffect(() => {
       audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
       audio.value.muted = isMuted.value
@@ -143,9 +140,6 @@
     })
     audio.value.addEventListener('play', () => {
       lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
-    })
-    audio.value.addEventListener('pause', () => {
-      lyricsView.value.pause()
     })
     audio.value.addEventListener('timeupdate', () => {
       lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
@@ -166,52 +160,49 @@
 <template>
   <div id="container" v-if="s_dataLoaded">
     <audio ref="audio"></audio>
-    <div id="title">
-      <h2>{{ songMetaData[selectedAlbum].songs[selectedSong].name }}</h2>
-      <p style="color: #777">
-        {{ songMetaData[selectedAlbum].songs[selectedSong].alias[0] }}
-      </p>
-      <h4>
-        <span
-          v-for="artist in songMetaData[selectedAlbum].songs[selectedSong]
-            .artist"
-          :key="artist.id">
-          <span>·</span>
-          <var-link
-            :href="'https://music.163.com/#/artist?id=' + artist.id"
-            target="_blank">
-            {{ artist.name }}
-          </var-link>
-        </span>
-      </h4>
-    </div>
+    <TitleView
+      v-show="isMobileWidth && ui_showControlPanel"
+      :data="songMetaData[selectedAlbum].songs[selectedSong]" />
     <div id="main">
-      <div
-        id="pic"
-        :style="{
-          position: isMobileWidth ? 'absolute' : 'relative',
-          right: !isViewingLyrics || !isMobileWidth ? '0%' : '100%'
-        }">
-        <img
-          ref="ref_image"
-          :src="picURL"
-          width="100%"
-          @load="imageLoaded = true"
-          style="border-radius: 5px" />
+      <div id="view">
+        <div
+          id="pic"
+          :style="{
+            position: isMobileWidth ? 'absolute' : 'relative',
+            right: !isViewingLyrics || !isMobileWidth ? '0%' : '100%'
+          }">
+          <img
+            ref="ref_image"
+            :src="picURL"
+            width="100%"
+            @load="imageLoaded = true"
+            style="border-radius: 5px" />
+          <TitleView
+            v-if="!isMobileWidth"
+            :data="songMetaData[selectedAlbum].songs[selectedSong]" />
+        </div>
+        <LyricsView
+          id="lyrics"
+          :style="{
+            position: isMobileWidth ? 'absolute' : 'relative',
+            left: isViewingLyrics || !isMobileWidth ? '0%' : '100%'
+          }"
+          :song_id="songMetaData[selectedAlbum].songs[selectedSong].id"
+          :autoScroll="isAutoScroll"
+          ref="lyricsView"
+          @play="
+            console.log($event)
+            ;(audio.currentTime = $event / 1000), audio.play(), (pause = false)
+          "></LyricsView>
       </div>
-      <LyricsView
-        id="lyrics"
+      <ControlPanel
+        id="control-panel"
         :style="{
-          position: isMobileWidth ? 'absolute' : 'relative',
-          left: isViewingLyrics || !isMobileWidth ? '0%' : '100%'
+          transform: ui_showControlPanel ? 'translateY(100%)' : 'translateY(0%)'
         }"
-        :song_id="songMetaData[selectedAlbum].songs[selectedSong].id"
-        :autoScroll="isAutoScroll"
-        ref="lyricsView"
-        @play="
-        console.log($event)
-          ;(audio.currentTime = $event / 1000), audio.play(), (pause = false)
-        "></LyricsView>
+        :songMetaData="songMetaData"
+        v-model:selectedAlbum="selectedAlbum"
+        v-model:selectedSong="selectedSong" />
     </div>
     <div id="controller">
       <div style="display: flex; align-items: center">
@@ -254,71 +245,9 @@
         </var-button>
         <var-button
           style="position: absolute; right: 20px"
-          @click="ui_showSelector = true">
+          @click="ui_showControlPanel = !ui_showControlPanel">
           <SvgIcon type="mdi" :path="mdiListBox" />
         </var-button>
-        <var-popup position="bottom" v-model:show="ui_showSelector">
-          <div id="selector">
-            <var-tabs v-model:active="ui_tabSelector">
-              <var-tab>专辑列表</var-tab>
-              <var-tab>歌曲列表</var-tab>
-            </var-tabs>
-            <br />
-            <div id="list">
-              <var-tabs-items v-model:active="ui_tabSelector">
-                <var-tab-item>
-                  <div
-                    class="cell"
-                    v-for="(item, index) in songMetaData"
-                    :class="{ selected: index === selectedAlbum }"
-                    @click="selectedAlbum = index"
-                    :key="item.id"
-                    :value="index"
-                    :label="item.name">
-                    <div style="display: flex; align-items: center; gap: 10px">
-                      <img
-                        :src="item.picUrl + '?param=40y40'"
-                        style="width: 40px; height: 40px; border-radius: 5px" />
-                      <p>
-                        <span>{{ item.name }}</span>
-                        <span v-if="item.alias[0]" style="color: #999">
-                          <br />
-                          ({{ item.alias[0] }})
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </var-tab-item>
-                <var-tab-item>
-                  <div
-                    class="cell"
-                    v-for="(item, index) in songMetaData[selectedAlbum].songs"
-                    :class="{ selected: index === selectedSong }"
-                    @click="selectedSong = index"
-                    :key="item.id"
-                    :value="index"
-                    :label="item.name">
-                    <div style="display: flex; align-items: center; gap: 10px">
-                      <img
-                        :src="
-                          songMetaData[selectedAlbum].picUrl + '?param=40y40'
-                        "
-                        style="width: 40px; height: 40px; border-radius: 5px" />
-                      <p>
-                        <span>{{ item.name }}</span>
-                        <span v-if="item.alias[0]" style="color: #999">
-                          <br />
-                          ({{ item.alias[0] }})
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <template #clear-icon></template>
-                </var-tab-item>
-              </var-tabs-items>
-            </div>
-          </div>
-        </var-popup>
       </div>
     </div>
   </div>

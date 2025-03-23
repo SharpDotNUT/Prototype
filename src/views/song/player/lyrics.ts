@@ -31,22 +31,22 @@ interface t_LyricsTimeline {
  * 解析 LRC 格式的歌词
  */
 export function parseLyrics(lyrics: string | undefined): t_LyricsTimeline {
-  if (!lyrics) return {}
+  if (!lyrics) return {};
 
-  const lyricsLines = lyrics.trim().split('\n')
-  const lyricsObject: t_LyricsTimeline = {}
+  const lyricsLines = lyrics.trim().split('\n');
+  const lyricsObject: t_LyricsTimeline = {};
 
-  lyricsLines.forEach(line => {
-    const timeTag = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\]/)
+  lyricsLines.forEach((line) => {
+    const timeTag = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\]/);
     if (timeTag) {
-      const minutes = parseInt(timeTag[1], 10)
-      const seconds = parseInt(timeTag[2], 10)
-      const milliseconds = parseInt(timeTag[3], 10)
-      const timeInMilliseconds = minutes * 60000 + seconds * 1000 + milliseconds
+      const minutes = parseInt(timeTag[1], 10);
+      const seconds = parseInt(timeTag[2], 10);
+      const milliseconds = parseInt(timeTag[3], 10);
+      const timeInMilliseconds = minutes * 60000 + seconds * 1000 + milliseconds;
 
       // 提取歌词文本
-      const lyricText = line.replace(/\[.*?\]/, '').trim()
-      lyricsObject[timeInMilliseconds] = lyricText
+      const lyricText = line.replace(/\[.*?\]/, '').trim();
+      lyricsObject[timeInMilliseconds] = lyricText;
     }
   })
 
@@ -76,7 +76,7 @@ export function parseLrcToLyricLines(lrc: t_RawData): t_LyricLine[] {
   // 将时间戳转换为数字并排序
   const sortedTimestamps = Array.from(allTimestamps)
     .map(Number)
-    .sort((a, b) => a - b)
+    .sort((a, b) => a - b);
 
   // 遍历时间戳，构建歌词行
   for (let i = 0; i < sortedTimestamps.length; i++) {
@@ -108,5 +108,5 @@ export function parseLrcToLyricLines(lrc: t_RawData): t_LyricLine[] {
     })
   }
 
-  return lyricLines
+  return lyricLines;
 }

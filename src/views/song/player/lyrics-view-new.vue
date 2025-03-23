@@ -6,7 +6,7 @@
 
   const APIStore = useAPIStore()
 
-  const lyricData : any = ref([])
+  const lyricData: any = ref([])
   const id = ref(0)
 
   const props = defineProps({
@@ -49,15 +49,24 @@
 <template>
   <div style="height: 100%; width: 100%">
     <LyricPlayer
-      style="height: 100%; width: 100%"
+      id="lyric-player"
       :lyric-lines="lyricData"
       :current-time="currentTime"
       @line-click="null /*e => $emit('play', e.line.getLine().startTime)*/"
       align-anchor="top"
       :alignPosition="0.2"
-      enable
       enable-blur
       enable-scale
       enable-spring />
   </div>
 </template>
+
+<style>
+  #lyric-player {
+    height: 100%;
+    width: 100%;
+    > * {
+      --amll-lyric-view-color: var(--color-primary);
+    }
+  }
+</style>
