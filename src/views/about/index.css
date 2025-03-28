@@ -1,39 +1,38 @@
 .__container_about {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px max(5vw, calc((100vw - 600px) / 2));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px max(5vw, calc((100vw - 600px) / 2));
 }
 
-
 #card {
-    background-color: var(--card-background);
-    border-radius: 20px;
+  background-color: var(--card-background);
+  border-radius: 20px;
 
-    #main {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  #main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        img {
-            border-radius: 20px;
-        }
-
-        #main_text {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-        }
+    img {
+      border-radius: 20px;
     }
+
+    #main_text {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
 #contributors {
-    img {
-        width: fit-content;
-        max-width: 100%;
-    }
+  img {
+    width: fit-content;
+    max-width: 100%;
+  }
 }

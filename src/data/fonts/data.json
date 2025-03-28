@@ -1,90 +1,90 @@
 [
-    {
-        "id": "TeyvatBlack",
-        "file":"./files/TeyvatBlack-Regular.woff2",
-        "name": {
-            "zh": "提瓦特文（UI，蒙德）",
-            "en": "Teyvat Script (UI, Mondstadt)"
-        }
-    },
-    {
-        "id": "InazumaBrush",
-        "file":"./files/InazumaBrush-Regular.woff2",
-        "name": {
-            "zh": "稻妻文",
-            "en": "Inazuma Script"
-        }
-    },
-    {
-        "id": "SumeruScribe",
-        "file":"./files/SumeruScribe-Regular.woff2",
-        "name": {
-            "zh": "须弥文（雨林）",
-            "en": "Sumeru Script (Jungle)"
-        }
-    },
-    {
-        "id": "DeshretInscription",
-        "file":"./files/DeshretInscription-Regular.woff2",
-        "name": {
-            "zh": "赤冠文（沙漠）",
-            "en": "Deshret Script (Desert)"
-        }
-    },
-    {
-        "id": "KhaenriahSun",
-        "file":"./files/KhaenriahSun-Regular.woff2",
-        "name": {
-            "zh": "坎瑞亚文（深渊）",
-            "en": "Khænri'ah Script (Abyss)"
-        }
-    },
-    {
-        "id": "KhaenriahSunChasm",
-        "file":"./files/KhaenriahSun-Chasm.woff2",
-        "name": {
-            "zh": "坎瑞亚文（深渊）（层岩巨渊变体）",
-            "en": "Khænri'ah Script (Abyss) (Chasm Variant)"
-        }
-    },
-    {
-        "id": "FonteAinee",
-        "file":"./files/FontAinee-Regular.woff2",
-        "name": {
-            "zh": "枫丹文",
-            "en": "Fontaine Script"
-        }
-    },
-    {
-        "id": "StarRailNeue",
-        "file":"./files/StarRailNeue-Sans-Regular.woff2",
-        "name": {
-            "zh": "星穹铁道文（UI, 黑塔空间站，贝洛伯格）",
-            "en": "Star Rail Script (UI, Herta, Belobog)"
-        }
-    },{
-        "id": "仙舟文",
-        "file":"./files/XianzhouSeal-Regular.woff2",
-        "name": {
-            "zh": "仙舟文",
-            "en": "Xianzhou Script"
-        }
+  {
+    "id": "TeyvatBlack",
+    "file": "./files/TeyvatBlack-Regular.woff2",
+    "name": {
+      "zh": "提瓦特文（UI，蒙德）",
+      "en": "Teyvat Script (UI, Mondstadt)"
     }
-    ,
-    {
-        "id": "ZZZA",
-        "file":"./files/ZZZA-Regular.woff2",
-        "name": {
-            "zh": "绝区零文字变体A",
-            "en": "ZZZ Script Variant A"
-        }
-    },
-    {
-        "id": "ZZZSystem",
-        "file":"./files/ZZZSystem-Regular.woff2",
-        "name": {
-            "zh": "绝区零文字(系统)",
-            "en": "ZZZ System"
-        }
+  },
+  {
+    "id": "InazumaBrush",
+    "file": "./files/InazumaBrush-Regular.woff2",
+    "name": {
+      "zh": "稻妻文",
+      "en": "Inazuma Script"
     }
+  },
+  {
+    "id": "SumeruScribe",
+    "file": "./files/SumeruScribe-Regular.woff2",
+    "name": {
+      "zh": "须弥文（雨林）",
+      "en": "Sumeru Script (Jungle)"
+    }
+  },
+  {
+    "id": "DeshretInscription",
+    "file": "./files/DeshretInscription-Regular.woff2",
+    "name": {
+      "zh": "赤冠文（沙漠）",
+      "en": "Deshret Script (Desert)"
+    }
+  },
+  {
+    "id": "KhaenriahSun",
+    "file": "./files/KhaenriahSun-Regular.woff2",
+    "name": {
+      "zh": "坎瑞亚文（深渊）",
+      "en": "Khænri'ah Script (Abyss)"
+    }
+  },
+  {
+    "id": "KhaenriahSunChasm",
+    "file": "./files/KhaenriahSun-Chasm.woff2",
+    "name": {
+      "zh": "坎瑞亚文（深渊）（层岩巨渊变体）",
+      "en": "Khænri'ah Script (Abyss) (Chasm Variant)"
+    }
+  },
+  {
+    "id": "FonteAinee",
+    "file": "./files/FontAinee-Regular.woff2",
+    "name": {
+      "zh": "枫丹文",
+      "en": "Fontaine Script"
+    }
+  },
+  {
+    "id": "StarRailNeue",
+    "file": "./files/StarRailNeue-Sans-Regular.woff2",
+    "name": {
+      "zh": "星穹铁道文（UI, 黑塔空间站，贝洛伯格）",
+      "en": "Star Rail Script (UI, Herta, Belobog)"
+    }
+  },
+  {
+    "id": "仙舟文",
+    "file": "./files/XianzhouSeal-Regular.woff2",
+    "name": {
+      "zh": "仙舟文",
+      "en": "Xianzhou Script"
+    }
+  },
+  {
+    "id": "ZZZA",
+    "file": "./files/ZZZA-Regular.woff2",
+    "name": {
+      "zh": "绝区零文字变体A",
+      "en": "ZZZ Script Variant A"
+    }
+  },
+  {
+    "id": "ZZZSystem",
+    "file": "./files/ZZZSystem-Regular.woff2",
+    "name": {
+      "zh": "绝区零文字(系统)",
+      "en": "ZZZ System"
+    }
+  }
 ]

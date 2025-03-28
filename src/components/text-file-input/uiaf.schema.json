@@ -1,75 +1,59 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-      "info": {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "info": {
+      "type": "object",
+      "properties": {
+        "export_app": {
+          "type": "string",
+          "description": "导出的app名称"
+        },
+        "export_app_version": {
+          "type": "string",
+          "description": "导出此份记录的App版本号"
+        },
+        "uiaf_version": {
+          "type": "string",
+          "description": "所应用的 UIAF 的版本,包含此字段以防 UIAF 出现中断性变更时，App无法处理",
+          "pattern": "v\\d+.\\d+"
+        },
+        "export_timestamp": {
+          "type": "number",
+          "description": "导出UNIX时间戳"
+        }
+      },
+      "required": ["export_app", "uiaf_version"],
+      "description": "包含导出方定义的基本信息"
+    },
+    "list": {
+      "type": "array",
+      "items": {
         "type": "object",
         "properties": {
-          "export_app": {
-            "type": "string",
-            "description": "导出的app名称"
-          },
-          "export_app_version": {
-            "type": "string",
-            "description": "导出此份记录的App版本号"
-          },
-          "uiaf_version": {
-            "type": "string",
-            "description": "所应用的 UIAF 的版本,包含此字段以防 UIAF 出现中断性变更时，App无法处理",
-            "pattern": "v\\d+.\\d+"
-          },
-          "export_timestamp": {
+          "id": {
             "type": "number",
-            "description": "导出UNIX时间戳"
+            "description": "对应的成就id"
+          },
+          "current": {
+            "type": "number",
+            "description": "进度"
+          },
+          "status": {
+            "type": "number",
+            "description": "完成状态:ACHIEVEMENT_INVALID = 0; ACHIEVEMENT_UNFINISHED = 1; ACHIEVEMENT_FINISHED = 2;ACHIEVEMENT_POINT_TAKEN = 3;",
+            "enum": [0, 1, 2, 3]
+          },
+          "timestamp": {
+            "type": "number",
+            "description": "完成的时间"
           }
         },
-        "required": [
-          "export_app",
-          "uiaf_version"
-        ],
-        "description": "包含导出方定义的基本信息"
+        "required": ["id", "current", "status", "timestamp"],
+        "description": "表示一个成就"
       },
-      "list": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "number",
-              "description": "对应的成就id"
-            },
-            "current": {
-              "type": "number",
-              "description": "进度"
-            },
-            "status": {
-              "type": "number",
-              "description": "完成状态:ACHIEVEMENT_INVALID = 0; ACHIEVEMENT_UNFINISHED = 1; ACHIEVEMENT_FINISHED = 2;ACHIEVEMENT_POINT_TAKEN = 3;",
-              "enum": [
-                0,
-                1,
-                2,
-                3
-              ]
-            },
-            "timestamp": {
-              "type": "number",
-              "description": "完成的时间"
-            }
-          },
-          "required": [
-            "id",
-            "current",
-            "status",
-            "timestamp"
-          ],
-          "description": "表示一个成就"
-        },
-        "description": "包含完成或未完成的成就"
-      }
-    },
-    "required": [
-      "info",
-      "list"
-    ]
-  }
+      "description": "包含完成或未完成的成就"
+    }
+  },
+  "required": ["info", "list"]
+}

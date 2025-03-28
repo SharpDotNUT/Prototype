@@ -17,13 +17,13 @@ export function copyToClipboard(
     .then(() => {
       successCallback()
     })
-    .catch(error => {
+    .catch((error) => {
       errorCallback(error)
     })
 }
 
 export async function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 // 不区分大小写的string比较

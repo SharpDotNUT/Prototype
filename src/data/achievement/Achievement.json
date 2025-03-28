@@ -9018,9 +9018,7 @@
       "id": 1,
       "order": 3,
       "name": "G-1",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 6,
       "numberOfGroups": 6,
       "achievementGroups": [
@@ -9096,9 +9094,7 @@
       "id": 22,
       "order": 4,
       "name": "G-22",
-      "versions": [
-        "2.0"
-      ],
+      "versions": ["2.0"],
       "numberOfAchievements": 5,
       "numberOfGroups": 5,
       "achievementGroups": [
@@ -9163,9 +9159,7 @@
       "id": 32,
       "order": 5,
       "name": "G-32",
-      "versions": [
-        "3.0"
-      ],
+      "versions": ["3.0"],
       "numberOfAchievements": 4,
       "numberOfGroups": 4,
       "achievementGroups": [
@@ -9219,9 +9213,7 @@
       "id": 43,
       "order": 6,
       "name": "G-43",
-      "versions": [
-        "4.0"
-      ],
+      "versions": ["4.0"],
       "numberOfAchievements": 4,
       "numberOfGroups": 4,
       "achievementGroups": [
@@ -9275,9 +9267,7 @@
       "id": 57,
       "order": 7,
       "name": "G-57",
-      "versions": [
-        "5.3"
-      ],
+      "versions": ["5.3"],
       "numberOfAchievements": 7,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -9364,9 +9354,7 @@
       "id": 2,
       "order": 8,
       "name": "G-2",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 7,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -9429,9 +9417,7 @@
       "id": 3,
       "order": 9,
       "name": "G-3",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 16,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -9569,9 +9555,7 @@
       "id": 4,
       "order": 10,
       "name": "G-4",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -9688,9 +9672,7 @@
       "id": 5,
       "order": 11,
       "name": "G-5",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -9807,9 +9789,7 @@
       "id": 6,
       "order": 12,
       "name": "G-6",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 21,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -9966,9 +9946,7 @@
       "id": 36,
       "order": 13,
       "name": "G-36",
-      "versions": [
-        "3.1"
-      ],
+      "versions": ["3.1"],
       "numberOfAchievements": 7,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -10031,9 +10009,7 @@
       "id": 7,
       "order": 14,
       "name": "G-7",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 3,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -10076,9 +10052,7 @@
       "id": 8,
       "order": 15,
       "name": "G-8",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 4,
       "numberOfGroups": 4,
       "achievementGroups": [
@@ -10132,9 +10106,7 @@
       "id": 14,
       "order": 16,
       "name": "G-14",
-      "versions": [
-        "1.1"
-      ],
+      "versions": ["1.1"],
       "numberOfAchievements": 10,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -10242,9 +10214,7 @@
       "id": 15,
       "order": 17,
       "name": "G-15",
-      "versions": [
-        "1.2"
-      ],
+      "versions": ["1.2"],
       "numberOfAchievements": 8,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -10342,9 +10312,7 @@
       "id": 20,
       "order": 18,
       "name": "G-20",
-      "versions": [
-        "2.0"
-      ],
+      "versions": ["2.0"],
       "numberOfAchievements": 9,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -10453,9 +10421,7 @@
       "id": 29,
       "order": 19,
       "name": "G-29",
-      "versions": [
-        "2.6"
-      ],
+      "versions": ["2.6"],
       "numberOfAchievements": 8,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -10553,9 +10519,7 @@
       "id": 34,
       "order": 20,
       "name": "G-34",
-      "versions": [
-        "3.1"
-      ],
+      "versions": ["3.1"],
       "numberOfAchievements": 8,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -10653,9 +10617,7 @@
       "id": 39,
       "order": 21,
       "name": "G-39",
-      "versions": [
-        "3.6"
-      ],
+      "versions": ["3.6"],
       "numberOfAchievements": 8,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -10753,9 +10715,7 @@
       "id": 40,
       "order": 22,
       "name": "G-40",
-      "versions": [
-        "4.1"
-      ],
+      "versions": ["4.1"],
       "numberOfAchievements": 6,
       "numberOfGroups": 6,
       "achievementGroups": [
@@ -10831,9 +10791,7 @@
       "id": 49,
       "order": 23,
       "name": "G-49",
-      "versions": [
-        "4.6"
-      ],
+      "versions": ["4.6"],
       "numberOfAchievements": 6,
       "numberOfGroups": 6,
       "achievementGroups": [
@@ -10909,9 +10867,7 @@
       "id": 59,
       "order": 24,
       "name": "G-59",
-      "versions": [
-        "5.3"
-      ],
+      "versions": ["5.3"],
       "numberOfAchievements": 7,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -10998,9 +10954,7 @@
       "id": 9,
       "order": 25,
       "name": "G-9",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 8,
       "numberOfGroups": 4,
       "achievementGroups": [
@@ -11074,9 +11028,7 @@
       "id": 10,
       "order": 26,
       "name": "G-10",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 2,
       "numberOfGroups": 2,
       "achievementGroups": [
@@ -11108,9 +11060,7 @@
       "id": 11,
       "order": 27,
       "name": "G-11",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 2,
       "numberOfGroups": 2,
       "achievementGroups": [
@@ -11142,9 +11092,7 @@
       "id": 12,
       "order": 28,
       "name": "G-12",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 3,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -11187,9 +11135,7 @@
       "id": 13,
       "order": 29,
       "name": "G-13",
-      "versions": [
-        "1.0"
-      ],
+      "versions": ["1.0"],
       "numberOfAchievements": 13,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -11318,9 +11264,7 @@
       "id": 21,
       "order": 30,
       "name": "G-21",
-      "versions": [
-        "2.0"
-      ],
+      "versions": ["2.0"],
       "numberOfAchievements": 7,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -11407,9 +11351,7 @@
       "id": 33,
       "order": 31,
       "name": "G-33",
-      "versions": [
-        "3.0"
-      ],
+      "versions": ["3.0"],
       "numberOfAchievements": 8,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -11507,9 +11449,7 @@
       "id": 44,
       "order": 32,
       "name": "G-44",
-      "versions": [
-        "4.0"
-      ],
+      "versions": ["4.0"],
       "numberOfAchievements": 9,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -11618,9 +11558,7 @@
       "id": 53,
       "order": 33,
       "name": "G-53",
-      "versions": [
-        "5.0"
-      ],
+      "versions": ["5.0"],
       "numberOfAchievements": 9,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -11729,9 +11667,7 @@
       "id": 16,
       "order": 34,
       "name": "G-16",
-      "versions": [
-        "1.2"
-      ],
+      "versions": ["1.2"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -11848,9 +11784,7 @@
       "id": 18,
       "order": 35,
       "name": "G-18",
-      "versions": [
-        "1.5"
-      ],
+      "versions": ["1.5"],
       "numberOfAchievements": 25,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -12039,9 +11973,7 @@
       "id": 19,
       "order": 36,
       "name": "G-19",
-      "versions": [
-        "1.6"
-      ],
+      "versions": ["1.6"],
       "numberOfAchievements": 7,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -12104,9 +12036,7 @@
       "id": 23,
       "order": 37,
       "name": "G-23",
-      "versions": [
-        "2.0"
-      ],
+      "versions": ["2.0"],
       "numberOfAchievements": 10,
       "numberOfGroups": 4,
       "achievementGroups": [
@@ -12190,9 +12120,7 @@
       "id": 24,
       "order": 38,
       "name": "G-24",
-      "versions": [
-        "2.0"
-      ],
+      "versions": ["2.0"],
       "numberOfAchievements": 20,
       "numberOfGroups": 12,
       "achievementGroups": [
@@ -12374,9 +12302,7 @@
       "id": 26,
       "order": 39,
       "name": "G-26",
-      "versions": [
-        "2.1"
-      ],
+      "versions": ["2.1"],
       "numberOfAchievements": 15,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -12515,9 +12441,7 @@
       "id": 27,
       "order": 40,
       "name": "G-27",
-      "versions": [
-        "2.2"
-      ],
+      "versions": ["2.2"],
       "numberOfAchievements": 12,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -12635,9 +12559,7 @@
       "id": 25,
       "order": 41,
       "name": "G-25",
-      "versions": [
-        "2.1"
-      ],
+      "versions": ["2.1"],
       "numberOfAchievements": 12,
       "numberOfGroups": 10,
       "achievementGroups": [
@@ -12767,9 +12689,7 @@
       "id": 28,
       "order": 42,
       "name": "G-28",
-      "versions": [
-        "2.4"
-      ],
+      "versions": ["2.4"],
       "numberOfAchievements": 12,
       "numberOfGroups": 6,
       "achievementGroups": [
@@ -12875,9 +12795,7 @@
       "id": 30,
       "order": 43,
       "name": "G-30",
-      "versions": [
-        "2.6"
-      ],
+      "versions": ["2.6"],
       "numberOfAchievements": 15,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -13016,9 +12934,7 @@
       "id": 31,
       "order": 44,
       "name": "G-31",
-      "versions": [
-        "3.0"
-      ],
+      "versions": ["3.0"],
       "numberOfAchievements": 15,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -13157,9 +13073,7 @@
       "id": 35,
       "order": 45,
       "name": "G-35",
-      "versions": [
-        "3.1"
-      ],
+      "versions": ["3.1"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -13276,9 +13190,7 @@
       "id": 38,
       "order": 46,
       "name": "G-38",
-      "versions": [
-        "3.4"
-      ],
+      "versions": ["3.4"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -13395,9 +13307,7 @@
       "id": 37,
       "order": 47,
       "name": "G-37",
-      "versions": [
-        "3.3"
-      ],
+      "versions": ["3.3"],
       "numberOfAchievements": 26,
       "numberOfGroups": 10,
       "achievementGroups": [
@@ -13597,9 +13507,7 @@
       "id": 41,
       "order": 48,
       "name": "G-41",
-      "versions": [
-        "3.6"
-      ],
+      "versions": ["3.6"],
       "numberOfAchievements": 14,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -13727,9 +13635,7 @@
       "id": 42,
       "order": 49,
       "name": "G-42",
-      "versions": [
-        "4.0"
-      ],
+      "versions": ["4.0"],
       "numberOfAchievements": 16,
       "numberOfGroups": 10,
       "achievementGroups": [
@@ -13879,9 +13785,7 @@
       "id": 45,
       "order": 50,
       "name": "G-45",
-      "versions": [
-        "4.1"
-      ],
+      "versions": ["4.1"],
       "numberOfAchievements": 14,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -14009,9 +13913,7 @@
       "id": 46,
       "order": 51,
       "name": "G-46",
-      "versions": [
-        "4.2"
-      ],
+      "versions": ["4.2"],
       "numberOfAchievements": 14,
       "numberOfGroups": 8,
       "achievementGroups": [
@@ -14139,9 +14041,7 @@
       "id": 47,
       "order": 52,
       "name": "G-47",
-      "versions": [
-        "4.4"
-      ],
+      "versions": ["4.4"],
       "numberOfAchievements": 13,
       "numberOfGroups": 7,
       "achievementGroups": [
@@ -14258,9 +14158,7 @@
       "id": 48,
       "order": 53,
       "name": "G-48",
-      "versions": [
-        "4.6"
-      ],
+      "versions": ["4.6"],
       "numberOfAchievements": 13,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -14389,9 +14287,7 @@
       "id": 50,
       "order": 54,
       "name": "G-50",
-      "versions": [
-        "4.7"
-      ],
+      "versions": ["4.7"],
       "numberOfAchievements": 10,
       "numberOfGroups": 6,
       "achievementGroups": [
@@ -14487,9 +14383,7 @@
       "id": 52,
       "order": 55,
       "name": "G-52",
-      "versions": [
-        "5.0"
-      ],
+      "versions": ["5.0"],
       "numberOfAchievements": 7,
       "numberOfGroups": 3,
       "achievementGroups": [
@@ -14552,9 +14446,7 @@
       "id": 51,
       "order": 56,
       "name": "G-51",
-      "versions": [
-        "5.0"
-      ],
+      "versions": ["5.0"],
       "numberOfAchievements": 18,
       "numberOfGroups": 12,
       "achievementGroups": [
@@ -14726,9 +14618,7 @@
       "id": 55,
       "order": 57,
       "name": "G-55",
-      "versions": [
-        "5.2"
-      ],
+      "versions": ["5.2"],
       "numberOfAchievements": 15,
       "numberOfGroups": 9,
       "achievementGroups": [
@@ -14867,9 +14757,7 @@
       "id": 54,
       "order": 58,
       "name": "G-54",
-      "versions": [
-        "5.0"
-      ],
+      "versions": ["5.0"],
       "numberOfAchievements": 30,
       "numberOfGroups": 10,
       "achievementGroups": [
@@ -15089,9 +14977,7 @@
       "id": 56,
       "order": 59,
       "name": "G-56",
-      "versions": [
-        "5.2"
-      ],
+      "versions": ["5.2"],
       "numberOfAchievements": 18,
       "numberOfGroups": 6,
       "achievementGroups": [

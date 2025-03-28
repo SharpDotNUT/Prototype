@@ -1,102 +1,102 @@
 <script setup lang="ts">
-  import { ref, watch } from "vue";
-  import {
-    searchAchievement,
-    SearchPlatforms as D_SearchPlatform,
-  } from "./index";
-  import AchievementData from "@/data/achievement/Achievement.json";
-  import _TextMap from "@/data/achievement/TextMap.json";
-  import type { t_AchievementGroup } from "@/data/achievement/types";
-  import { stringIndexOfIgnoreCase } from "@/script/tools";
-  import { useI18n } from "vue-i18n";
+import { ref, watch } from 'vue'
+import { searchAchievement, SearchPlatforms as D_SearchPlatform } from './index'
+import AchievementData from '@/data/achievement/Achievement.json'
+import _TextMap from '@/data/achievement/TextMap.json'
+import type { t_AchievementGroup } from '@/data/achievement/types'
+import { stringIndexOfIgnoreCase } from '@/script/tools'
+import { useI18n } from 'vue-i18n'
 
-  const TextMap: any = _TextMap;
-  const { locale } = useI18n();
-  const f_Versions: any = { "-1": AchievementData.versions };
-  for (const goal of AchievementData.data) {
-    f_Versions[goal.order - 1] = goal.versions;
-  }
+const TextMap: any = _TextMap
+const { locale } = useI18n()
+const f_Versions: any = { '-1': AchievementData.versions }
+for (const goal of AchievementData.data) {
+  f_Versions[goal.order - 1] = goal.versions
+}
 
-  const f_selectedGoal = ref(-1);
-  const f_searchPlatform = ref("miyoushe");
-  const f_search = ref({
-    text: "",
-    version: "all",
-    finished: "all",
-  });
-  const pagination = ref({
-    page: 1,
-    pageSize: 20,
-  });
-  watch(f_selectedGoal, () => {
-    f_search.value.version = "all";
-  });
-  const ui_SearchedAchievementList: any = ref([]);
-  const ui_AchievementList: any = ref([]);
-  function search() {
-    let data: Array<any> = [];
-    if (f_selectedGoal.value == -1) {
-      for (const goal of AchievementData.data) {
-        data = data.concat(goal.achievementGroups);
-      }
-    } else {
-      data = AchievementData.data[f_selectedGoal.value].achievementGroups;
+const f_selectedGoal = ref(-1)
+const f_searchPlatform = ref('miyoushe')
+const f_search = ref({
+  text: '',
+  version: 'all',
+  finished: 'all'
+})
+const pagination = ref({
+  page: 1,
+  pageSize: 20
+})
+watch(f_selectedGoal, () => {
+  f_search.value.version = 'all'
+})
+const ui_SearchedAchievementList: any = ref([])
+const ui_AchievementList: any = ref([])
+function search() {
+  let data: Array<any> = []
+  if (f_selectedGoal.value == -1) {
+    for (const goal of AchievementData.data) {
+      data = data.concat(goal.achievementGroups)
     }
-    data = data.filter((achievements: t_AchievementGroup) => {
-      let _version = true;
-      let _text = false;
-      if (!(f_search.value.version == "all")) {
-        if (!(achievements.version == f_search.value.version)) {
-          _version = false;
+  } else {
+    data = AchievementData.data[f_selectedGoal.value].achievementGroups
+  }
+  data = data.filter((achievements: t_AchievementGroup) => {
+    let _version = true
+    let _text = false
+    if (!(f_search.value.version == 'all')) {
+      if (!(achievements.version == f_search.value.version)) {
+        _version = false
+      }
+    }
+    if (f_search.value.text == '') {
+      _text = true
+    } else if (
+      stringIndexOfIgnoreCase(
+        TextMap[locale.value][achievements.name],
+        f_search.value.text
+      )
+    ) {
+      _text = true
+    } else
+      for (const achievement of achievements.achievements) {
+        if (
+          stringIndexOfIgnoreCase(
+            TextMap[locale.value][achievement.description],
+            f_search.value.text
+          )
+        ) {
+          _text = true
         }
       }
-      if (f_search.value.text == "") {
-        _text = true;
-      } else if (
-        stringIndexOfIgnoreCase(TextMap[locale.value][achievements.name], f_search.value.text)
-      ) {
-        _text = true;
-      } else
-        for (const achievement of achievements.achievements) {
-          if (
-            stringIndexOfIgnoreCase(
-              TextMap[locale.value][achievement.description],
-              f_search.value.text
-            )
-          ) {
-            _text = true;
-          }
-        }
-      return _version && _text;
-    });
-    ui_SearchedAchievementList.value = data;
-    pagination.value.page = 1;
-  }
-  watch(
-    [
-      () => f_search.value.version,
-      () => f_search.value.text,
-      () => f_selectedGoal.value,
-    ],
-    () => {
-      search();
-    },
-    { immediate: true }
-  );
-  watch(
-    [
-      ui_SearchedAchievementList,
-      () => pagination.value.page,
-      () => pagination.value.pageSize,
-    ],
-    () => {
-      ui_AchievementList.value = ui_SearchedAchievementList.value.slice(
-        (pagination.value.page - 1) * pagination.value.pageSize,
-        pagination.value.page * pagination.value.pageSize
-      );
-    },
-    { immediate: true }
-  );
+    return _version && _text
+  })
+  ui_SearchedAchievementList.value = data
+  pagination.value.page = 1
+}
+watch(
+  [
+    () => f_search.value.version,
+    () => f_search.value.text,
+    () => f_selectedGoal.value
+  ],
+  () => {
+    search()
+  },
+  { immediate: true }
+)
+watch(
+  [
+    ui_SearchedAchievementList,
+    () => pagination.value.page,
+    () => pagination.value.pageSize
+  ],
+  () => {
+    ui_AchievementList.value = ui_SearchedAchievementList.value.slice(
+      (pagination.value.page - 1) * pagination.value.pageSize,
+      pagination.value.page * pagination.value.pageSize
+    )
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -107,8 +107,7 @@
           variant="outlined"
           v-model="f_search.text"
           :placeholder="$t('achievement.search')"
-          clearable>
-        </var-input>
+          clearable></var-input>
         <br />
         <div style="display: flex; width: 100%; gap: 1em">
           <var-select
@@ -133,16 +132,15 @@
             variant="outlined"
             v-model="f_search.finished"
             :placeholder="$t('achievement.finish.is-finished')">
-            <var-option :value="'all'" :label="$t('achievement.all')">
-            </var-option>
+            <var-option
+              :value="'all'"
+              :label="$t('achievement.all')"></var-option>
             <var-option
               :value="'unfinished'"
-              :label="$t('achievement.finish.unfinished')">
-            </var-option>
+              :label="$t('achievement.finish.unfinished')"></var-option>
             <var-option
               :value="'unfinished'"
-              :label="$t('achievement.finish.finished')">
-            </var-option>
+              :label="$t('achievement.finish.finished')"></var-option>
           </var-select>
         </div>
         <br />
@@ -157,7 +155,7 @@
         </var-select>
         <br />
         <var-button block disabled type="primary">
-          {{ $t("achievement.import-export") }}
+          {{ $t('achievement.import-export') }}
         </var-button>
       </div>
       <br />
@@ -168,12 +166,12 @@
           :value="-1"
           ripple
           @click="f_selectedGoal = -1">
-          <p style="font-size: 120%">{{ $t("achievement.all") }}</p>
+          <p style="font-size: 120%">{{ $t('achievement.all') }}</p>
           <p>
             {{
-              $t("achievement.numbers", [
+              $t('achievement.numbers', [
                 AchievementData.numberOfGroups,
-                AchievementData.numberOfAchievements,
+                AchievementData.numberOfAchievements
               ])
             }}
           </p>
@@ -188,9 +186,9 @@
           <p style="font-size: 120%">{{ TextMap[locale][goal.name] }}</p>
           <p>
             {{
-              $t("achievement.numbers", [
+              $t('achievement.numbers', [
                 goal.numberOfGroups,
-                goal.numberOfAchievements,
+                goal.numberOfAchievements
               ])
             }}
           </p>
@@ -205,14 +203,15 @@
             v-model:size="pagination.pageSize"
             :simple="false"
             :total="ui_SearchedAchievementList.length"
-            :show-total="total => `共 ${total} 个成就组`" /></div
-      ></var-paper>
+            :show-total="(total) => `共 ${total} 个成就组`" />
+        </div>
+      </var-paper>
       <div id="list">
         <div>
           <var-card v-for="(group, index) in ui_AchievementList" :key="index">
             <h2>
-              {{ TextMap[locale][group.name]
-              }}<var-chip>{{ group.version }}</var-chip>
+              {{ TextMap[locale][group.name] }}
+              <var-chip>{{ group.version }}</var-chip>
             </h2>
             <div
               v-for="(achievement, index) in group.achievements"
@@ -235,7 +234,7 @@
                 ">
                 {{
                   $t(
-                    "achievement.search-with",
+                    'achievement.search-with',
                     //@ts-ignore
                     [D_SearchPlatform[f_searchPlatform].name]
                   )
@@ -250,5 +249,5 @@
 </template>
 
 <style scoped>
-  @import url("./index.css");
+@import url('./index.css');
 </style>

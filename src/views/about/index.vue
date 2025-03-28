@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import PackageJSON from '../../../package.json'
-  import Meta from '@/meta'
+import PackageJSON from '../../../package.json'
+import Meta from '@/meta'
 
-  const show = defineModel('show', { type: Boolean, default: true })
+const show = defineModel('show', { type: Boolean, default: true })
 
-  const BuildTime = __BUILD_TIME
-  const LAST_COMMIT = __LAST_COMMIT
+const BuildTime = __BUILD_TIME
+const LAST_COMMIT = __LAST_COMMIT
 </script>
 
 <template>
@@ -26,7 +26,12 @@
         {{ $t('index.description') }}
       </p>
       <p lang="zh-Hans">
-        「<ruby>云先生<rt>云堇</rt></ruby>可爱捏」
+        「
+        <ruby>
+          云先生
+          <rt>云堇</rt>
+        </ruby>
+        可爱捏」
       </p>
       <br />
       <a
@@ -59,7 +64,9 @@
       <div style="padding-left: 1em">
         <p>
           Commit ID :
-          <var-link :href="`https://github.com/${Meta.repo}/commit/${LAST_COMMIT.sha}`" target="_blank">
+          <var-link
+            :href="`https://github.com/${Meta.repo}/commit/${LAST_COMMIT.sha}`"
+            target="_blank">
             #{{ LAST_COMMIT.sha.toUpperCase().substring(0, 17) }}
           </var-link>
         </p>
@@ -70,8 +77,12 @@
         </p>
         <p>
           Author :
-          <var-link :href="`https://github.com/${LAST_COMMIT.commit.author.name}`" target="_blank">
-            {{ LAST_COMMIT.commit.author.name }}<{{ LAST_COMMIT.commit.author.email }}>
+          <var-link
+            :href="`https://github.com/${LAST_COMMIT.commit.author.name}`"
+            target="_blank">
+            {{ LAST_COMMIT.commit.author.name }}<{{
+              LAST_COMMIT.commit.author.email
+            }}>
           </var-link>
         </p>
       </div>
@@ -84,5 +95,5 @@
 </template>
 
 <style lang="css" scoped>
-  @import url('./index.css');
+@import url('./index.css');
 </style>

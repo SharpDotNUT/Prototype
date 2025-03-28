@@ -49,7 +49,7 @@
     "bow": "弓",
     "catalyst": "法器"
   },
-  "en":{
+  "en": {
     "mondstadt": "Mondstadt",
     "dragonspine": "Dragonspine",
     "liyue": "Liyue",
@@ -99,7 +99,7 @@
     "bow": "Bow",
     "catalyst": "Catalyst"
   },
-  "ja":{
+  "ja": {
     "mondstadt": "モンド",
     "dragonspine": "ドラゴンスパイン",
     "liyue": "璃月",
@@ -148,5 +148,5 @@
     "polearm": "長柄武器",
     "bow": "弓",
     "catalyst": "法器"
-  }  
+  }
 }

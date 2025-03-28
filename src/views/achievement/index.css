@@ -1,52 +1,52 @@
 .__container {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+
+  #bar {
     display: flex;
-    gap: 10px;
-    height: 100%;
+    flex-direction: column;
     padding: 20px;
+    height: 100%;
+    width: 300px;
+    min-width: 300px;
 
-    #bar {
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        height: 100%;
-        width: 300px;
-        min-width: 300px;
+    #goal-list {
+      overflow-y: auto;
 
-        #goal-list {
-            overflow-y: auto;
+      > * {
+        border-left: 0px solid var(--color-text);
+        transition: border 0.3s ease-in-out;
+      }
 
-            >* {
-                border-left: 0px solid var(--color-text);
-                transition: border 0.3s ease-in-out;
-            }
+      .selected {
+        border-left-width: 5px;
+        background-color: #0002;
+      }
+    }
+  }
 
-            .selected {
-                border-left-width: 5px;
-                background-color: #0002;
-            }
-        }
+  #achievement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    #pagination {
+      padding: 10px;
     }
 
-    #achievement {
+    #list {
+      overflow: auto;
+      height: 100%;
+      padding: 5px;
+
+      > div {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        width: 100%;
-
-        #pagination {
-            padding: 10px;
-        }
-
-        #list {
-            overflow: auto;
-            height: 100%;
-            padding: 5px;
-
-            >div {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-        }
+        gap: 5px;
+      }
     }
+  }
 }

@@ -1,22 +1,22 @@
 <script setup>
-  import Meta from '@/meta'
-  import { useMainStore } from '@/stores/main'
-  import { Dialog } from '@varlet/ui'
-  import { useI18n } from 'vue-i18n'
+import Meta from '@/meta'
+import { useMainStore } from '@/stores/main'
+import { Dialog } from '@varlet/ui'
+import { useI18n } from 'vue-i18n'
 
-  const { t } = useI18n()
-  const mainStore = useMainStore()
+const { t } = useI18n()
+const mainStore = useMainStore()
 
-  function use(params) {
-    Dialog({
-      message: t('index.unfinished-note'),
-      showConfirmButton: false
-    })
-  }
+function use(params) {
+  Dialog({
+    message: t('index.unfinished-note'),
+    showConfirmButton: false
+  })
+}
 
-  function openGithub() {
-    window.open(`https://github.com/${Meta.repo}`, '_blank')
-  }
+function openGithub() {
+  window.open(`https://github.com/${Meta.repo}`, '_blank')
+}
 </script>
 
 <template>
@@ -52,5 +52,5 @@
 </template>
 
 <style scoped>
-  @import url('./index.css');
+@import url('./index.css');
 </style>

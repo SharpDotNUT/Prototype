@@ -1,49 +1,49 @@
 <script setup lang="ts">
-  import { LyricPlayer } from '@applemusic-like-lyrics/vue'
-  import { ref, watch } from 'vue'
-  import { useAPIStore } from '@/stores/api'
-  import { parseLrcToLyricLines } from './lyrics'
+import { LyricPlayer } from '@applemusic-like-lyrics/vue'
+import { ref, watch } from 'vue'
+import { useAPIStore } from '@/stores/api'
+import { parseLrcToLyricLines } from './lyrics'
 
-  const APIStore = useAPIStore()
+const APIStore = useAPIStore()
 
-  const lyricData: any = ref([])
-  const id = ref(0)
+const lyricData: any = ref([])
+const id = ref(0)
 
-  const props = defineProps({
-    song_id: Number
-  })
+const props = defineProps({
+  song_id: Number
+})
 
-  async function fetchLyrics() {
-    let data: any = null
-    id.value = 0
-    try {
-      const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
-      data = await res.json()
-    } catch {
-      return
-    }
-    lyricData.value = parseLrcToLyricLines(data)
-    console.log(lyricData.value)
-    id.value = 1
+async function fetchLyrics() {
+  let data: any = null
+  id.value = 0
+  try {
+    const res = await APIStore.fetchAPI('/lyric/' + props.song_id)
+    data = await res.json()
+  } catch {
+    return
   }
+  lyricData.value = parseLrcToLyricLines(data)
+  console.log(lyricData.value)
+  id.value = 1
+}
 
-  watch(
-    () => props.song_id,
-    async newSongId => {
-      if (newSongId) await fetchLyrics()
-    },
-    { immediate: true }
-  )
+watch(
+  () => props.song_id,
+  async (newSongId) => {
+    if (newSongId) await fetchLyrics()
+  },
+  { immediate: true }
+)
 
-  const currentTime = ref(0)
+const currentTime = ref(0)
 
-  function play(time: number) {
-    currentTime.value = time
-  }
+function play(time: number) {
+  currentTime.value = time
+}
 
-  defineExpose({
-    play
-  })
+defineExpose({
+  play
+})
 </script>
 
 <template>
@@ -62,11 +62,11 @@
 </template>
 
 <style>
-  #lyric-player {
-    height: 100%;
-    width: 100%;
-    > * {
-      --amll-lyric-view-color: var(--color-primary);
-    }
+#lyric-player {
+  height: 100%;
+  width: 100%;
+  > * {
+    --amll-lyric-view-color: var(--color-primary);
   }
+}
 </style>

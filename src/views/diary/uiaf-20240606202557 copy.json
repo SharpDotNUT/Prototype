@@ -5,7 +5,5 @@
     "export_app_version": "3.7",
     "uiaf_version": "v1.1"
   },
-  "list": [
-    { "id": 80001, "status": 3, "current": 0, "timestamp": 1689322511 }
-  ]
+  "list": [{ "id": 80001, "status": 3, "current": 0, "timestamp": 1689322511 }]
 }

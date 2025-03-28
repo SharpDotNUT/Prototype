@@ -1,5 +1,4 @@
 <script setup>
-
 import { ref, watch } from 'vue'
 import { useMainStore } from '@/stores/main.ts'
 
@@ -13,10 +12,10 @@ watch(display_account, () => {
   emits('update:display_account')
 })
 const account_info = ref({
-  username: "sharpdotnut",
-  "display_name": "#.NUT Studio",
-  email: "offical@sharpdotnut.top",
-  password: "TT",
+  username: 'sharpdotnut',
+  display_name: '#.NUT Studio',
+  email: 'offical@sharpdotnut.top',
+  password: 'TT'
 })
 
 function open() {
@@ -30,18 +29,17 @@ function register() {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       if (data.error) {
         Dialog({
           title: '提示',
-          message: data.error,
+          message: data.error
         })
-      }
-      else {
+      } else {
         Dialog({
           title: '提示',
-          message: '账号注册成功\n' + JSON.stringify(data.data),
+          message: '账号注册成功\n' + JSON.stringify(data.data)
         })
         login()
       }
@@ -49,19 +47,20 @@ function register() {
 }
 
 function login() {
-  fetch(`${host_name}/api/account/login?username=${account_info.value.username}&password=${account_info.value.password}`)
-    .then(res => res.json())
-    .then(data => {
+  fetch(
+    `${host_name}/api/account/login?username=${account_info.value.username}&password=${account_info.value.password}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
       if (data.error) {
         Dialog({
           title: '提示',
-          message: "登录失败：" + data.error,
+          message: '登录失败：' + data.error
         })
-      }
-      else {
+      } else {
         Dialog({
           title: '提示',
-          message: '登录成功',
+          message: '登录成功'
         })
         localStorage.setItem('yunhan-meta-user-token', data.data.token)
         localStorage.setItem('yunhan-meta-user', JSON.stringify(data.data.user))
@@ -70,7 +69,7 @@ function login() {
     })
 }
 
-function logout(){
+function logout() {
   localStorage.removeItem('yunhan-meta-user-token')
   localStorage.removeItem('yunhan-meta-user')
   mainStore.logged = false
@@ -80,9 +79,7 @@ function logout(){
 defineExpose({
   open
 })
-
 </script>
-
 
 <template>
   <div>
@@ -104,24 +101,69 @@ defineExpose({
           </var-tabs>
           <var-tabs-items v-model:active="active">
             <var-tab-item name="register">
-              <div style="display: flex; flex-direction: column; gap: 10px;margin:20px 0">
-                <var-input v-model="account_info.username" placeholder="用户名" variant="outlined" clearable>账号名
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  margin: 20px 0;
+                ">
+                <var-input
+                  v-model="account_info.username"
+                  placeholder="用户名"
+                  variant="outlined"
+                  clearable>
+                  账号名
                   <template #extra-message></template>
                 </var-input>
-                <var-input v-model="account_info.display_name" placeholder="昵称" variant="outlined"
-                  clearable>显示名</var-input>
-                <var-input v-model="account_info.password" placeholder="密码" variant="outlined" type="password"
-                  clearable>密码</var-input>
-                <var-input v-model="account_info.email" placeholder="电子邮件" variant="outlined" clearable>邮箱</var-input>
+                <var-input
+                  v-model="account_info.display_name"
+                  placeholder="昵称"
+                  variant="outlined"
+                  clearable>
+                  显示名
+                </var-input>
+                <var-input
+                  v-model="account_info.password"
+                  placeholder="密码"
+                  variant="outlined"
+                  type="password"
+                  clearable>
+                  密码
+                </var-input>
+                <var-input
+                  v-model="account_info.email"
+                  placeholder="电子邮件"
+                  variant="outlined"
+                  clearable>
+                  邮箱
+                </var-input>
               </div>
             </var-tab-item>
             <var-tab-item name="login">
-              <div style="display: flex; flex-direction: column; gap: 10px;margin:20px 0">
-                <var-input v-model="account_info.username" placeholder="用户名" variant="outlined" clearable>账号名
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  margin: 20px 0;
+                ">
+                <var-input
+                  v-model="account_info.username"
+                  placeholder="用户名"
+                  variant="outlined"
+                  clearable>
+                  账号名
                   <template #extra-message></template>
                 </var-input>
-                <var-input v-model="account_info.password" placeholder="密码" variant="outlined" type="password"
-                  clearable>密码</var-input>
+                <var-input
+                  v-model="account_info.password"
+                  placeholder="密码"
+                  variant="outlined"
+                  type="password"
+                  clearable>
+                  密码
+                </var-input>
               </div>
             </var-tab-item>
           </var-tabs-items>

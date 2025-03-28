@@ -1,19 +1,17 @@
 <script setup>
-  import { ref, watch } from 'vue'
-  import SvgIcon from '@jamescoyle/vue-icon'
-  import { mdiCog, mdiGithub, mdiInformation } from '@mdi/js'
-  import { useI18n } from 'vue-i18n'
-  import { useMainStore } from '@/stores/main'
-  import { NavigationData as RouteData } from '@/nav'
+import { ref, watch } from 'vue'
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiCog, mdiGithub, mdiInformation } from '@mdi/js'
+import { useI18n } from 'vue-i18n'
+import { useMainStore } from '@/stores/main'
+import { NavigationData as RouteData } from '@/nav'
 
-  const mainStore = useMainStore()
-  import Meta from '@/meta'
+const mainStore = useMainStore()
+import Meta from '@/meta'
 
-  function openGithub() {
-    window.open(`https://github.com/${Meta.repo}`, '_blank')
-  }
-
-
+function openGithub() {
+  window.open(`https://github.com/${Meta.repo}`, '_blank')
+}
 </script>
 
 <template>
@@ -59,5 +57,5 @@
 </template>
 
 <style scoped>
-  @import url('./router-jump.css');
+@import url('./router-jump.css');
 </style>

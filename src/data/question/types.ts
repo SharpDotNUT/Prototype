@@ -1,18 +1,18 @@
 export interface QuestionsList {
-  name?: string;
-  author?: string;
-  link?:{
-    [key: string]: URL;
+  name?: string
+  author?: string
+  link?: {
+    [key: string]: URL
   }
-  questions: Question[];
+  questions: Question[]
 }
 
 export interface Question {
-  id: number;
-  question: string;
-  answer: string | string[];
+  id: number
+  question: string
+  answer: string | string[]
   answers: {
-    [key: string]: string;
-  };
-  tag?: string[];
+    [key: string]: string
+  }
+  tag?: string[]
 }

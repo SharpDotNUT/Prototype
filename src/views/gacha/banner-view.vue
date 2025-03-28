@@ -1,23 +1,22 @@
 <script setup>
+import { ref } from 'vue'
+import IdToName from '@/data/id_to_name.CHS.json'
 
-import {ref} from "vue";
-import IdToName from "@/data/id_to_name.CHS.json";
-
-defineEmits(["select"]);
+defineEmits(['select'])
 
 const props = defineProps({
   banner: Object,
   isNeedSelect: {
     type: Boolean,
-    default: false,
-  },
-});
-const img = ref(null);
+    default: false
+  }
+})
+const img = ref(null)
 
 img.value,
-  addEventListener("load", function () {
-    console.log("图片加载完成");
-  });
+  addEventListener('load', function () {
+    console.log('图片加载完成')
+  })
 </script>
 
 <template>
@@ -38,9 +37,7 @@ img.value,
           Math.floor(((new Date(banner.to) - new Date()) % 86400000) / 3600000)
         }}
         小时
-        {{
-          Math.floor(((new Date(banner.to) - new Date()) % 3600000) / 60000)
-        }}
+        {{ Math.floor(((new Date(banner.to) - new Date()) % 3600000) / 60000) }}
         分钟
       </p>
       <p>

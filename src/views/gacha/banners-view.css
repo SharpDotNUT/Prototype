@@ -1,8 +1,7 @@
-
-.banner{
-    margin:10px;
+.banner {
+  margin: 10px;
+  border-radius: 20px;
+  img {
     border-radius: 20px;
-    img{
-        border-radius: 20px;
-    }
+  }
 }

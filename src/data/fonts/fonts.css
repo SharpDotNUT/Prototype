@@ -1,89 +1,87 @@
+@font-face {
+  font-family: 'TeyvatBlack';
+  src: url('./files/TeyvatBlack-Regular.woff2');
+}
+.font-TeyvatBlack {
+  font-family: 'TeyvatBlack';
+}
 
-    @font-face {
-        font-family: 'TeyvatBlack';
-        src: url('./files/TeyvatBlack-Regular.woff2');
-    }
-    .font-TeyvatBlack {
-        font-family: 'TeyvatBlack';
-    }
-    
-    @font-face {
-        font-family: 'InazumaBrush';
-        src: url('./files/InazumaBrush-Regular.woff2');
-    }
-    .font-InazumaBrush {
-        font-family: 'InazumaBrush';
-    }
-    
-    @font-face {
-        font-family: 'SumeruScribe';
-        src: url('./files/SumeruScribe-Regular.woff2');
-    }
-    .font-SumeruScribe {
-        font-family: 'SumeruScribe';
-    }
-    
-    @font-face {
-        font-family: 'DeshretInscription';
-        src: url('./files/DeshretInscription-Regular.woff2');
-    }
-    .font-DeshretInscription {
-        font-family: 'DeshretInscription';
-    }
-    
-    @font-face {
-        font-family: 'KhaenriahSun';
-        src: url('./files/KhaenriahSun-Regular.woff2');
-    }
-    .font-KhaenriahSun {
-        font-family: 'KhaenriahSun';
-    }
-    
-    @font-face {
-        font-family: 'KhaenriahSunChasm';
-        src: url('./files/KhaenriahSun-Chasm.woff2');
-    }
-    .font-KhaenriahSunChasm {
-        font-family: 'KhaenriahSunChasm';
-    }
-    
-    @font-face {
-        font-family: 'FonteAinee';
-        src: url('./files/FontAinee-Regular.woff2');
-    }
-    .font-FonteAinee {
-        font-family: 'FonteAinee';
-    }
-    
-    @font-face {
-        font-family: 'StarRailNeue';
-        src: url('./files/StarRailNeue-Sans-Regular.woff2');
-    }
-    .font-StarRailNeue {
-        font-family: 'StarRailNeue';
-    }
-    
-    @font-face {
-        font-family: '仙舟文';
-        src: url('./files/XianzhouSeal-Regular.woff2');
-    }
-    .font-仙舟文 {
-        font-family: '仙舟文';
-    }
-    
-    @font-face {
-        font-family: 'ZZZA';
-        src: url('./files/ZZZA-Regular.woff2');
-    }
-    .font-ZZZA {
-        font-family: 'ZZZA';
-    }
-    
-    @font-face {
-        font-family: 'ZZZSystem';
-        src: url('./files/ZZZSystem-Regular.woff2');
-    }
-    .font-ZZZSystem {
-        font-family: 'ZZZSystem';
-    }
-    
+@font-face {
+  font-family: 'InazumaBrush';
+  src: url('./files/InazumaBrush-Regular.woff2');
+}
+.font-InazumaBrush {
+  font-family: 'InazumaBrush';
+}
+
+@font-face {
+  font-family: 'SumeruScribe';
+  src: url('./files/SumeruScribe-Regular.woff2');
+}
+.font-SumeruScribe {
+  font-family: 'SumeruScribe';
+}
+
+@font-face {
+  font-family: 'DeshretInscription';
+  src: url('./files/DeshretInscription-Regular.woff2');
+}
+.font-DeshretInscription {
+  font-family: 'DeshretInscription';
+}
+
+@font-face {
+  font-family: 'KhaenriahSun';
+  src: url('./files/KhaenriahSun-Regular.woff2');
+}
+.font-KhaenriahSun {
+  font-family: 'KhaenriahSun';
+}
+
+@font-face {
+  font-family: 'KhaenriahSunChasm';
+  src: url('./files/KhaenriahSun-Chasm.woff2');
+}
+.font-KhaenriahSunChasm {
+  font-family: 'KhaenriahSunChasm';
+}
+
+@font-face {
+  font-family: 'FonteAinee';
+  src: url('./files/FontAinee-Regular.woff2');
+}
+.font-FonteAinee {
+  font-family: 'FonteAinee';
+}
+
+@font-face {
+  font-family: 'StarRailNeue';
+  src: url('./files/StarRailNeue-Sans-Regular.woff2');
+}
+.font-StarRailNeue {
+  font-family: 'StarRailNeue';
+}
+
+@font-face {
+  font-family: '仙舟文';
+  src: url('./files/XianzhouSeal-Regular.woff2');
+}
+.font-仙舟文 {
+  font-family: '仙舟文';
+}
+
+@font-face {
+  font-family: 'ZZZA';
+  src: url('./files/ZZZA-Regular.woff2');
+}
+.font-ZZZA {
+  font-family: 'ZZZA';
+}
+
+@font-face {
+  font-family: 'ZZZSystem';
+  src: url('./files/ZZZSystem-Regular.woff2');
+}
+.font-ZZZSystem {
+  font-family: 'ZZZSystem';
+}

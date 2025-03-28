@@ -1,38 +1,38 @@
 #container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 10px;
-    padding: 10px;
-    max-height: 70vh;
-    overflow-y: scroll;
-    max-width: min(90vh, 300px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  max-height: 70vh;
+  overflow-y: scroll;
+  max-width: min(90vh, 300px);
 }
 
 #apps {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .app {
-    width: 100%;
-    padding: 10px;
-    color: var(--color-primary);
+  width: 100%;
+  padding: 10px;
+  color: var(--color-primary);
 
-    .app-name {
-        width: 100%;
-        text-wrap: auto;
-        display: flex;
-        gap: 10px;
-        flex-direction: row;
-        display: flex;
-        align-items: center;
-        color:var(--color-primary);
-        .icon {
-            width: 30px;
-            height: 30px;
-            flex-shrink: 0;
-        }
+  .app-name {
+    width: 100%;
+    text-wrap: auto;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+    .icon {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
     }
+  }
 }

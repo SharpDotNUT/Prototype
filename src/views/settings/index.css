@@ -1,48 +1,49 @@
 .__container_settings {
-    position: relative;
-    height: 100%;
-    width: 100%;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 #tabs {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 200px;
-    padding: 10px;
-    transition: transform 0.5s ease-in-out;
-    z-index: 10;
-    background-color: var(--color-body);
-    border-right: 1px solid var(--color-primary);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 200px;
+  padding: 10px;
+  transition: transform 0.5s ease-in-out;
+  z-index: 10;
+  background-color: var(--color-body);
+  border-right: 1px solid var(--color-primary);
 
-    >div {
-        padding: 10px;
-    }
+  > div {
+    padding: 10px;
+  }
 }
 
 #views {
+  display: flex;
+  justify-content: center;
+  transition: margin-left 0.5s ease-in-out;
+  height: 100%;
+  overflow: auto;
+  > div {
     display: flex;
-    justify-content: center;
-    transition: margin-left 0.5s ease-in-out;
+    flex-direction: column;
+    gap: 20px;
+    width: min(90%, 600px);
     height: 100%;
-    overflow: auto;
-    >div {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: min(90%, 600px);
-        height: 100%;
-        padding: 20px 10px;
-        overflow-y: auto;
-        >div {
-            margin:20px 0;
-            >h2 {
-                padding-bottom: 5px;;
-                border-bottom: 1px solid var(--color-text);
-            }
-        }
+    padding: 20px 10px;
+    overflow-y: auto;
+    > div {
+      margin: 20px 0;
+      > h2 {
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--color-text);
+      }
     }
+  }
 }
 
-@media screen and (max-width: 600px) {}
+@media screen and (max-width: 600px) {
+}

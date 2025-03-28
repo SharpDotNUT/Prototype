@@ -1,3 +1,3 @@
 export default {
-    "repo":"SharpDotNUT/Prototype"
+  repo: 'SharpDotNUT/Prototype'
 }

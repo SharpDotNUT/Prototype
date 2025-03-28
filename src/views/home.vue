@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  //@ts-ignore
-  import { ref, watch } from 'vue'
-  import { useI18n } from 'vue-i18n'
-  import { NavigationData } from '@/nav'
+//@ts-ignore
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { NavigationData } from '@/nav'
 </script>
 
 <template>
@@ -15,8 +15,10 @@
           <h3>{{ $t(item.name + '.title') }}</h3>
           <p>
             {{ $t(item.name + '.description') }}
-            <br/>
-            <var-chip v-if="item.beta" size="small" type="warning">Beta</var-chip>
+            <br />
+            <var-chip v-if="item.beta" size="small" type="warning">
+              Beta
+            </var-chip>
           </p>
         </var-card>
       </router-link>
@@ -25,5 +27,5 @@
 </template>
 
 <style lang="css" scoped>
-  @import url('./home.css');
+@import url('./home.css');
 </style>

@@ -1,40 +1,40 @@
 <script setup>
-  import { ref, watch, computed } from 'vue'
+import { ref, watch, computed } from 'vue'
 
-  import SvgIcon from '@jamescoyle/vue-icon'
+import SvgIcon from '@jamescoyle/vue-icon'
 
-  import D_FontData from '@/data/fonts/data.json'
+import D_FontData from '@/data/fonts/data.json'
 
-  import domtoimage from 'dom-to-image'
+import domtoimage from 'dom-to-image'
 import { mdiExport } from '@mdi/js'
 
-  const ui_key = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const ui_showKeyboard = ref(false)
-  const ui_rawText = ref('type you text here')
-  const ui_font = ref('TeyvatBlack')
-  const ui_mode = ref(0)
-  watch(ui_mode, () => {
-    ui_showKeyboard.value = false
+const ui_key = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const ui_showKeyboard = ref(false)
+const ui_rawText = ref('type you text here')
+const ui_font = ref('TeyvatBlack')
+const ui_mode = ref(0)
+watch(ui_mode, () => {
+  ui_showKeyboard.value = false
+})
+const ui_fontStyle = ref({
+  size: 16,
+  wrap: true
+})
+const ui_rawTextFont = computed(() => {
+  return ui_mode.value ? ui_font.value : 'inherit'
+})
+const ui_showExportDialog = ref(false)
+const ui_exporting = ref(false)
+const el_result = ref(null)
+const m_imgUrl = ref(undefined)
+function handleExport() {
+  ui_exporting.value = true
+  ui_showExportDialog.value = true
+  domtoimage.toPng(el_result.value, { quality: 1 }).then((dataUrl) => {
+    m_imgUrl.value = dataUrl
+    ui_exporting.value = false
   })
-  const ui_fontStyle = ref({
-    size: 16,
-    wrap: true
-  })
-  const ui_rawTextFont = computed(() => {
-    return ui_mode.value ? ui_font.value : 'inherit'
-  })
-  const ui_showExportDialog = ref(false)
-  const ui_exporting = ref(false)
-  const el_result = ref(null)
-  const m_imgUrl = ref(undefined)
-  function handleExport() {
-    ui_exporting.value = true
-    ui_showExportDialog.value = true
-    domtoimage.toPng(el_result.value, { quality: 1 }).then(dataUrl => {
-      m_imgUrl.value = dataUrl
-      ui_exporting.value = false
-    })
-  }
+}
 </script>
 
 <template>
@@ -89,9 +89,7 @@ import { mdiExport } from '@mdi/js'
         <span>
           {{ $t('translator.export-to-image') }}
         </span>
-        <var-button
-          type="primary"
-          @click="handleExport()">
+        <var-button type="primary" @click="handleExport()">
           <svg-icon type="mdi" :path="mdiExport"></svg-icon>
         </var-button>
       </div>
@@ -131,18 +129,14 @@ import { mdiExport } from '@mdi/js'
           </div>
         </div>
         <div class="row raw">
-          <div class="key" v-ripple @click="ui_rawText += ' '">
-            SPACE
-          </div>
+          <div class="key" v-ripple @click="ui_rawText += ' '">SPACE</div>
           <div
             class="key"
             v-ripple
             @click="ui_rawText = ui_rawText.slice(0, -1)">
             BACKSPACE
           </div>
-          <div class="key" v-ripple @click="ui_rawText += '\n'">
-            ENTER
-          </div>
+          <div class="key" v-ripple @click="ui_rawText += '\n'">ENTER</div>
         </div>
       </div>
     </var-card>
@@ -150,17 +144,17 @@ import { mdiExport } from '@mdi/js'
 </template>
 
 <style scoped>
-  @import url('@/data/fonts/fonts.css');
-  @import url('./index.css');
+@import url('@/data/fonts/fonts.css');
+@import url('./index.css');
 
-  #keyboard {
-    #keys{
-      .row{
-        font-family: v-bind(ui_font);
-      }
+#keyboard {
+  #keys {
+    .row {
+      font-family: v-bind(ui_font);
     }
   }
-  :deep(.var-input--textarea) {
-    font-family: v-bind(ui_rawTextFont);
-  }
+}
+:deep(.var-input--textarea) {
+  font-family: v-bind(ui_rawTextFont);
+}
 </style>

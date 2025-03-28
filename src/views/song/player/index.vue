@@ -1,160 +1,160 @@
 <script setup>
+import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import SvgIcon from '@jamescoyle/vue-icon'
+import LyricsView from './lyrics-view-new.vue'
+import TitleView from './title-view.vue'
+import ControlPanel from './control-panel.vue'
+import { Snackbar, Dialog } from '@varlet/ui'
+import {
+  mdiSkipNext,
+  mdiSkipPrevious,
+  mdiPlay,
+  mdiPause,
+  mdiListBox,
+  mdiTextBox,
+  mdiImageArea
+} from '@mdi/js'
 
-  import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
-  import SvgIcon from '@jamescoyle/vue-icon'
-  import LyricsView from './lyrics-view-new.vue'
-  import TitleView from './title-view.vue'
-  import ControlPanel from './control-panel.vue'
-  import { Snackbar,Dialog } from '@varlet/ui'
-  import {
-    mdiSkipNext,
-    mdiSkipPrevious,
-    mdiPlay,
-    mdiPause,
-    mdiListBox,
-    mdiTextBox,
-    mdiImageArea
-  } from '@mdi/js'
+const ref_image = ref(null)
 
-  const ref_image = ref(null)
+Dialog(
+  '由于歌词组件的某些特性，本页面目前还不支持在浅色模式下访问，请转到设置切换成深色模式。'
+)
 
-  Dialog('由于歌词组件的某些特性，本页面目前还不支持在浅色模式下访问，请转到设置切换成深色模式。')
-
-  let Data = {}
-  const s_dataLoaded = ref(false)
-  const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
-  caches.open('prototype').then(cache => {
-    cache.match(d_dataURL).then(async res => {
-      if (res) {
-        res.json().then(data => {
-          Snackbar('从缓存加载成功')
-          Data = data
-          init()
-        })
-      } else {
-        const res = await fetch(d_dataURL)
-        cache.put(d_dataURL, res.clone())
-        res.json().then(data => {
-          Snackbar('从网络下载成功')
-          Data = data
-          init()
-        })
-      }
-    })
-  })
-  function init() {
-    s_dataLoaded.value = true
-    songMetaData.value = Data.data
-    selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
-    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
-    currentSongID.value =
-      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-  }
-
-  const route = useRoute()
-  const router = useRouter()
-
-  const songMetaData = ref([])
-  const selectedAlbum = ref(0) // 空气蛹
-  const selectedSong = ref(0)
-  const currentSongID = ref({})
-  watch(selectedAlbum, () => {
-    selectedSong.value = 0
-    currentSongID.value =
-      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
-  })
-  watch(selectedSong, () => {
-    currentSongID.value =
-      songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
-    if (
-      selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length
-    ) {
-      selectedSong.value = 0
-    } else if (selectedSong.value < 0) {
-      selectedSong.value =
-        songMetaData.value[selectedAlbum.value].songs.length - 1
+let Data = {}
+const s_dataLoaded = ref(false)
+const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
+caches.open('prototype').then((cache) => {
+  cache.match(d_dataURL).then(async (res) => {
+    if (res) {
+      res.json().then((data) => {
+        Snackbar('从缓存加载成功')
+        Data = data
+        init()
+      })
+    } else {
+      const res = await fetch(d_dataURL)
+      cache.put(d_dataURL, res.clone())
+      res.json().then((data) => {
+        Snackbar('从网络下载成功')
+        Data = data
+        init()
+      })
     }
   })
-  if (route.query.album) {
-    selectedAlbum.value =
-      songMetaData.value.length - parseInt(route.query.album)
-    picURL.value = songMetaData.value[selectedAlbum.value].picUrl
-  }
-  if (route.query.song) {
-    selectedSong.value = parseInt(route.query.song)
-  }
-  router.push({ query: { album: undefined } })
-  router.push({ query: { song: undefined } })
+})
+function init() {
+  s_dataLoaded.value = true
+  songMetaData.value = Data.data
+  selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+  currentSongID.value =
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+}
 
-  const picURL = ref('')
-  const imageLoaded = ref(false)
-  const lyricsView = ref(null)
-  const audio = useTemplateRef('audio')
-  const isMuted = ref(false)
-  const isAutoScroll = ref(true)
-  const process = ref(0)
-  const processMax = ref(0)
-  const onChangeProcess = ref(false)
-  const hasChangedProcess = ref(false)
-  const pause = ref(true)
-  const ui_showControlPanel = ref(true)
-  const isMobileWidth = ref(false)
-  const isViewingLyrics = ref(false)
-  function checkMobileWidth() {
-    isMobileWidth.value = window.innerWidth <= 800
+const route = useRoute()
+const router = useRouter()
+
+const songMetaData = ref([])
+const selectedAlbum = ref(0) // 空气蛹
+const selectedSong = ref(0)
+const currentSongID = ref({})
+watch(selectedAlbum, () => {
+  selectedSong.value = 0
+  currentSongID.value =
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+})
+watch(selectedSong, () => {
+  currentSongID.value =
+    songMetaData.value[selectedAlbum.value].songs[selectedSong.value].id
+  if (
+    selectedSong.value >= songMetaData.value[selectedAlbum.value].songs.length
+  ) {
+    selectedSong.value = 0
+  } else if (selectedSong.value < 0) {
+    selectedSong.value =
+      songMetaData.value[selectedAlbum.value].songs.length - 1
   }
-  checkMobileWidth()
-  window.addEventListener('resize', checkMobileWidth)
-  watch(pause, () => {
-    if (pause.value) {
-      audio.value.pause()
-    } else {
+})
+if (route.query.album) {
+  selectedAlbum.value = songMetaData.value.length - parseInt(route.query.album)
+  picURL.value = songMetaData.value[selectedAlbum.value].picUrl
+}
+if (route.query.song) {
+  selectedSong.value = parseInt(route.query.song)
+}
+router.push({ query: { album: undefined } })
+router.push({ query: { song: undefined } })
+
+const picURL = ref('')
+const imageLoaded = ref(false)
+const lyricsView = ref(null)
+const audio = useTemplateRef('audio')
+const isMuted = ref(false)
+const isAutoScroll = ref(true)
+const process = ref(0)
+const processMax = ref(0)
+const onChangeProcess = ref(false)
+const hasChangedProcess = ref(false)
+const pause = ref(true)
+const ui_showControlPanel = ref(true)
+const isMobileWidth = ref(false)
+const isViewingLyrics = ref(false)
+function checkMobileWidth() {
+  isMobileWidth.value = window.innerWidth <= 800
+}
+checkMobileWidth()
+window.addEventListener('resize', checkMobileWidth)
+watch(pause, () => {
+  if (pause.value) {
+    audio.value.pause()
+  } else {
+    audio.value.play()
+  }
+})
+watch(picURL, () => {
+  imageLoaded.value = false
+})
+
+const timeFormat = (time) => {
+  return `${Math.floor(time / 60)}:${Math.floor(time % 60)
+    .toString()
+    .padStart(2, '0')}`
+}
+
+watch(audio, () => {
+  watchEffect(() => {
+    audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
+    audio.value.muted = isMuted.value
+  })
+  audio.value.addEventListener('loadedmetadata', () => {
+    processMax.value = Math.ceil(audio.value.duration)
+    process.value = 0
+  })
+  audio.value.addEventListener('canplay', () => {
+    if (!pause.value) {
       audio.value.play()
     }
   })
-  watch(picURL, () => {
-    imageLoaded.value = false
+  audio.value.addEventListener('play', () => {
+    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
   })
-
-  const timeFormat = time => {
-    return `${Math.floor(time / 60)}:${Math.floor(time % 60)
-      .toString()
-      .padStart(2, '0')}`
-  }
-
-  watch(audio, () => {
-    watchEffect(() => {
-      audio.value.src = `https://music.163.com/song/media/outer/url?id=${currentSongID.value}.mp3`
-      audio.value.muted = isMuted.value
-    })
-    audio.value.addEventListener('loadedmetadata', () => {
-      processMax.value = Math.ceil(audio.value.duration)
-      process.value = 0
-    })
-    audio.value.addEventListener('canplay', () => {
-      if (!pause.value) {
-        audio.value.play()
-      }
-    })
-    audio.value.addEventListener('play', () => {
-      lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
-    })
-    audio.value.addEventListener('timeupdate', () => {
-      lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
-      if (!onChangeProcess.value) {
-        process.value = Math.ceil(audio.value.currentTime)
-      }
-      if (hasChangedProcess.value) {
-        hasChangedProcess.value = false
-      }
-    })
+  audio.value.addEventListener('timeupdate', () => {
+    lyricsView.value.play(Math.floor(audio.value.currentTime * 1000))
+    if (!onChangeProcess.value) {
+      process.value = Math.ceil(audio.value.currentTime)
+    }
+    if (hasChangedProcess.value) {
+      hasChangedProcess.value = false
+    }
   })
+})
 
-  onUnmounted(() => {
-    window.removeEventListener('resize', checkMobileWidth)
-  })
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobileWidth)
+})
 </script>
 
 <template>
@@ -254,5 +254,5 @@
 </template>
 
 <style scoped>
-  @import './index.css';
+@import './index.css';
 </style>

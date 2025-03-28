@@ -1,75 +1,73 @@
 #container {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  #title {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  #controller {
+    padding: 20px;
+    border-top: 1px solid var(--color-surface-container-highest);
+
+    #controls {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  #main {
+    position: relative;
     overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 
-    #title {
-        text-align: center;
-        margin: 20px 0;
-    }
+    #view {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow-x: hidden;
 
-    #controller {
-        padding: 20px;
-        border-top: 1px solid var(--color-surface-container-highest);
+      > * {
+        transition: all 0.5s ease-in-out;
+      }
 
-        #controls {
-            display: flex;
-            justify-content: center;
-            align-items: start;
-            align-items: center;
-            gap: 10px;
-        }
-    }
-
-    #main {
-
-        position: relative;
-        overflow-y: auto;
+      #pic {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         height: 100%;
+
+        img {
+          width: 70%;
+          border-radius: 10%;
+        }
+      }
+
+      #lyrics {
+        flex: 3;
+        height: 100%;
+        width: 100%;
         overflow: hidden;
-
-        #view {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            overflow-x: hidden;
-
-            >* {
-                transition: all 0.5s ease-in-out;
-            }
-
-            #pic {
-                flex: 2;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-
-                img {
-                    width: 70%;
-                    border-radius: 10%;
-                }
-            }
-
-            #lyrics {
-                flex: 3;
-                height: 100%;
-                width: 100%;
-                overflow: hidden;
-            }
-        }
-
-        #view,
-        #control-panel{
-            position: absolute;
-        }
-
+      }
     }
+
+    #view,
+    #control-panel {
+      position: absolute;
+    }
+  }
 }

@@ -6,7 +6,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import { VarletImportResolver } from '@varlet/import-resolver'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const res = await fetch('https://api.github.com/repos/Sharpdotnut/prototype/commits')
+const res = await fetch(
+  'https://api.github.com/repos/Sharpdotnut/prototype/commits'
+)
 const commit = (await res.json())[0]
 
 export default defineConfig({
@@ -25,7 +27,7 @@ export default defineConfig({
         name: 'Prototype',
         short_name: 'Prototype',
         id: 'sharpdotnut-prototype',
-        background_color: "#000000",
+        background_color: '#000000',
         theme_color: '#d1bdff',
         icons: [
           {

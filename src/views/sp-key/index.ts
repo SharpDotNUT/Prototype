@@ -1,4 +1,3 @@
-
 import { useAPIStore } from '@/stores/api'
 
 const API = useAPIStore()
@@ -22,7 +21,7 @@ export type t_Data = Array<{
 }>
 
 export function reduceData(data: t_Data) {
-  data.forEach(item => {
+  data.forEach((item) => {
     item['available-time-string'] = new Date(
       item['available-time']
     ).toLocaleString()

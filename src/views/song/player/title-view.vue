@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  const props = defineProps({
-    data: {
-      type: Object,
-      default: () => ({})
-    }
-  })
+const props = defineProps({
+  data: {
+    type: Object,
+    default: () => ({})
+  }
+})
 </script>
 
 <template>

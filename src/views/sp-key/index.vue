@@ -1,49 +1,49 @@
 <script setup lang="ts">
-  import { computed, ref, type Ref } from 'vue'
-  import { GameList } from '@/data/games'
-  import { useAPIStore } from '@/stores/api'
-  //@ts-ignore
-  import SvgIcon from '@jamescoyle/vue-icon'
-  import { mdiContentCopy } from '@mdi/js'
-  import { copyToClipboard } from '@/script/tools'
-  import { reduceData, type t_Data } from './index'
-  import { Snackbar } from '@varlet/ui'
+import { computed, ref, type Ref } from 'vue'
+import { GameList } from '@/data/games'
+import { useAPIStore } from '@/stores/api'
+//@ts-ignore
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiContentCopy } from '@mdi/js'
+import { copyToClipboard } from '@/script/tools'
+import { reduceData, type t_Data } from './index'
+import { Snackbar } from '@varlet/ui'
 
-  const date = ref(new Date().toLocaleDateString())
-  const time = ref('23:59:59')
-  const datetime = computed(() => date.value + ' ' + time.value)
-  const form = ref({
-    token: '',
-    key: '',
-    game: 'GI',
-    server: 'CN'
+const date = ref(new Date().toLocaleDateString())
+const time = ref('23:59:59')
+const datetime = computed(() => date.value + ' ' + time.value)
+const form = ref({
+  token: '',
+  key: '',
+  game: 'GI',
+  server: 'CN'
+})
+
+const ui_commit = ref(false)
+
+const data: Ref<t_Data> = ref([])
+
+const API = useAPIStore()
+API.fetchAPI('/sp-key')
+  .then((res) => res.json())
+  .then((res) => {
+    data.value = reduceData(res)
   })
 
-  const ui_commit = ref(false)
-
-  const data: Ref<t_Data> = ref([])
-
-  const API = useAPIStore()
-  API.fetchAPI('/sp-key')
-    .then(res => res.json())
-    .then(res => {
-      data.value = reduceData(res)
-    })
-
-  function commit() {
-    API.fetchAPI('/sp-key', undefined, 'POST', {
-      token: form.value.token,
-      key: form.value.key,
-      game: form.value.game,
-      server: form.value.server,
-      version: '1.5.5',
-      'available-time': new Date(datetime.value).getTime()
-    }).then(res => {
-      if (res.status === 401) {
-        Snackbar.error('Commit failed. Token is invalid.')
-      }
-    })
-  }
+function commit() {
+  API.fetchAPI('/sp-key', undefined, 'POST', {
+    token: form.value.token,
+    key: form.value.key,
+    game: form.value.game,
+    server: form.value.server,
+    version: '1.5.5',
+    'available-time': new Date(datetime.value).getTime()
+  }).then((res) => {
+    if (res.status === 401) {
+      Snackbar.error('Commit failed. Token is invalid.')
+    }
+  })
+}
 </script>
 
 <template>
@@ -125,5 +125,5 @@
 </template>
 
 <style>
-  @import url('./index.css');
+@import url('./index.css');
 </style>

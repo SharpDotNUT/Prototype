@@ -1,6 +1,3 @@
+export const GameList = ['HI', 'GI', 'HSR', 'ZZZ']
 
-export const GameList = ['HI','GI',"HSR",'ZZZ']
-
-export default [
-    
-]
+export default []
