@@ -3,7 +3,7 @@
     "build-time": "ビルド時間: {0}",
     "thanks-to-contributors": "すべての貢献者に感謝します",
     "copyright": "Copyright © 2025 SharpDotNUT Studio. All Rights Reserved.",
-    "last-commit": "最後の送信"
+    "last-commit": "最終コミット"
   },
   "achievement": {
     "title": "実績",
@@ -17,7 +17,7 @@
     },
     "platforms-to-search": "実績検索プラットフォーム",
     "import-export": "インポート/エクスポート",
-    "numbers": "{0} 個の実績グループ - {1} 個の実績",
+    "numbers": "{0} 実績グループ - {1} 実績",
     "search-with": "{0}で検索",
     "description": "原神の実績管理/検索/記録ツール"
   },
@@ -32,17 +32,17 @@
   },
   "gacha": {
     "view": {
-      "title": "ガチャプール-閲覧"
+      "title": "ガチャプール：閲覧"
     },
     "simulator": {
-      "title": "ガチャプール-シミュレーター"
+      "title": "ガチャプール：シミュレーター"
     }
   },
   "global": {
     "copy-success": "コピー成功",
     "copy-fail": "コピー失敗: {0}",
     "about": "について",
-    "github-os-repo": "Github オープンソースリポジトリ",
+    "github-os-repo": "GitHub オープンソースリポジトリ",
     "loading": "読み込み中",
     "game": {
       "HI": "崩壊3rd",
@@ -53,25 +53,25 @@
     "expired": "期限切れ",
     "commit": "送信",
     "username": {
-      "traveler": "旅者"
+      "traveler": "旅人"
     },
     "time": {
       "min-sec": "{0} 分 {1} 秒",
       "sec": "{0} 秒"
     },
-    "all": "全て"
+    "all": "すべて"
   },
   "home": {
     "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",
-    "title": "ホームページ"
+    "title": "ホーム"
   },
   "index": {
-    "s0": "（訳）美しき雲に愛しき花、風流は山水にありて。{'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
-    "description": "オープンソースのHoYoVERSEゲーム用ウェブツールキット。",
+    "s0": "「雲も花も優雅に揺れ、風流は山水の間にあり」",
+    "description": "HoYoVERSEゲーム向けのオープンソースWebツールキット",
     "use": "今すぐ使う",
     "install": "PWAアプリとしてインストール",
-    "unfinished-note": "このウェブページは未完成です。多くのページはモバイルに対応していません。右上のメニューから利用可能な機能にアクセスしてください。",
-    "title": "紹介ページ"
+    "unfinished-note": "本ウェブサイトは開発中です。多くのページはモバイル未対応です。右上のメニューから利用可能な機能にアクセスしてください。",
+    "title": "ホーム"
   },
   "name": "「試作」",
   "question": {
@@ -92,14 +92,14 @@
     "theme": {
       "dark": "ダークモード",
       "light": "ライトモード",
-      "system": "システムに従う",
+      "system": "システム設定に従う",
       "select": "テーマ選択",
       "title": "テーマ"
     },
     "language": {
       "title": "言語",
       "select": "言語選択",
-      "teyvat": "テイワット字体を使用"
+      "teyvat": "ティワット字体を使用"
     },
     "about": {
       "title": "について"
@@ -107,28 +107,28 @@
     "title": "設定"
   },
   "song-player": {
-    "title": "音楽プレイヤー",
-    "description": "HoYo-Mix（HoYoVERSE音楽スタジオ）がリリースした楽曲に対応した音楽プレイヤー",
+    "title": "ミュージックプレイヤー",
+    "description": "HoYoVERSE音楽スタジオ「HoYo-Mix」の楽曲に対応した音楽プレイヤー",
     "album": "アルバム",
-    "songs": "歌",
-    "songs-in-total": "合計{0}曲",
-    "jump-to-current-lyric": "現在の歌詞にジャンプします",
-    "album-description": "アルバムの説明"
+    "songs": "楽曲",
+    "songs-in-total": "全{0}曲",
+    "jump-to-current-lyric": "現在の歌詞にジャンプ",
+    "album-description": "アルバム説明"
   },
   "sp-key": {
-    "commit-key": "シリアルコード登録",
+    "commit-key": "コード登録",
     "game": "ゲーム",
     "server": "サーバー",
     "version": "バージョン",
     "expired-time": "有効期限",
     "time-to-expire": "あと{0}分で期限切れ",
-    "key": "シリアルコード",
-    "token-to-auth": "認証用トークン",
+    "key": "引き換えコード",
+    "token-to-auth": "認証トークン",
     "become-a-contributor": {
       "title": "協力者になる",
-      "content": "シリアルコードプールの協力者になりませんか？詳細は「について」ページから作者に連絡してください。トークンを発行し、コード登録が可能になります。"
+      "content": "コードプールの協力者になりませんか？「について」ページから作者に連絡いただければ、コード登録用のトークンを発行します。"
     },
-    "title": "シリアルコード",
+    "title": "引き換えコード",
     "description": "予告番組の引き換えコードを検索"
   },
   "translator": {
@@ -136,20 +136,20 @@
     "raw-text": "原文",
     "forward-translation": "順方向翻訳",
     "reverse-translation": "逆方向翻訳",
-    "title": "翻訳機",
+    "title": "翻訳ツール",
     "auto-wrap": "自動改行",
     "open-keyboard": "キーボード表示",
     "export-to-image": "画像としてエクスポート",
     "action-to-save": "右クリック/長押しで保存",
     "close-keyboard": "キーボードを閉じる",
-    "description": "HoYoVERSEゲーム内のテキストと英語を変換するためのツール"
+    "description": "HoYoVERSEゲーム内のテキストと英語を変換するツール"
   },
   "update-log": {
-    "major-versions": "メインバージョン番号",
+    "major-versions": "メジャーバージョン",
     "minor-versions": "マイナーバージョン",
     "major-version": "メジャーバージョン",
     "minor-version": "マイナーバージョン",
-    "area": "関数",
+    "area": "機能",
     "type": "カテゴリ"
   }
 }

@@ -5,7 +5,7 @@
   height: 100%;
   overflow: auto;
 
-  >div {
+  > div {
     flex-shrink: 0;
   }
 }
@@ -26,7 +26,7 @@
 
 .lyric-item-active {
   text-shadow: 2px 2px 20px var(--color-primary);
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 .lyric-item:hover {

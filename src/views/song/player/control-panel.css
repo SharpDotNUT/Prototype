@@ -5,9 +5,11 @@
   background-color: color-mix(in srgb, var(--color-body) 20%, transparent);
   padding: 0px max(calc(50vw - 400px), 20px);
 
-  >div {
+  > div {
     position: absolute;
-    transition: left 0.5s ease-in-out, right 0.5s ease-in-out;
+    transition:
+      left 0.5s ease-in-out,
+      right 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -39,7 +41,11 @@
 
       .cell.selected,
       .cell:hover {
-        background-color: color-mix(in srgb, var(--color-text) 20%, transparent);
+        background-color: color-mix(
+          in srgb,
+          var(--color-text) 20%,
+          transparent
+        );
       }
 
       .cell:hover {
@@ -47,7 +53,7 @@
       }
 
       .sub-text {
-        color: color-mix(in srgb, var(--color-text) 40%, transparent)
+        color: color-mix(in srgb, var(--color-text) 40%, transparent);
       }
     }
   }

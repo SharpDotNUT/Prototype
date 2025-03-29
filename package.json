@@ -1,6 +1,6 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.0.0 - rc.3",
+  "version": "2.0.0",
   "description": "A open source HoYo game toolkit.",
   "private": true,
   "type": "module",
@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
@@ -27,7 +28,8 @@
     "vite-plugin-vue-devtools": "^7.7.1",
     "vue": "^3.5.13",
     "vue-i18n": "^9.13.1",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vue-tsc": "^2.2.8"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.15",

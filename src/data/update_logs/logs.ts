@@ -1,7 +1,5 @@
 import type { t_UpdateLog } from './types'
 
-const log: t_UpdateLog = []
-/*
 const log: t_UpdateLog = [
   {
     version: '2.0.0',
@@ -36,6 +34,5 @@ const log: t_UpdateLog = [
     ]
   }
 ]
-*/
 
 export default log

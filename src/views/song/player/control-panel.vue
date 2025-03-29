@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//@ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiArrowLeft, mdiArrowRight } from '@mdi/js'
 import { ref } from 'vue'

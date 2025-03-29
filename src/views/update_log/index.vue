@@ -2,7 +2,9 @@
   <div class="update-log-container">
     <div class="filters">
       <div>
-        <var-select v-model="selectedMajor" :placeholder="$t('update-log.major-versions')">
+        <var-select
+          v-model="selectedMajor"
+          :placeholder="$t('update-log.major-versions')">
           <var-option value="All" :label="$t('global.all')"></var-option>
           <var-option
             v-for="majorVersion in majorVersions"
@@ -11,7 +13,7 @@
         </var-select>
         <var-select
           v-model="selectedMinor"
-          :placehupdate-log.minor-versionse-log.minor')"
+          :placeholder="$t('update-log.minor-versions')"
           :disabled="selectedMajor === 'All'">
           <var-option value="All" :label="$t('global.all')"></var-option>
           <var-option
@@ -78,7 +80,7 @@
                 class="change-item">
                 <div class="change-meta">
                   <var-chip size="small" type="primary" class="area">
-                    {{$t('update-log.area')}} : {{ item.area }}
+                    {{ $t('update-log.area') }} : {{ item.area }}
                   </var-chip>
                   <span>&nbsp</span>
                   <var-chip

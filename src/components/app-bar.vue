@@ -34,7 +34,7 @@ watch(
   (newVal, oldVal) => {
     title.value = newVal
   }
-);
+)
 </script>
 
 <template>
