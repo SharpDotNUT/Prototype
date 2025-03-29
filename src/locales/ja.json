@@ -110,7 +110,8 @@
     "description": "HoYo-Mix（HoYoVERSE音楽スタジオ）がリリースした楽曲に対応した音楽プレイヤー",
     "album": "アルバム",
     "songs": "歌",
-    "songs-in-total": "合計{0}曲"
+    "songs-in-total": "合計{0}曲",
+    "jump-to-current-lyric": "現在の歌詞にジャンプします"
   },
   "sp-key": {
     "commit-key": "シリアルコード登録",

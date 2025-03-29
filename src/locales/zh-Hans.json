@@ -110,7 +110,8 @@
     "description": "适用于米哈游音乐工作室 HoYo-Mix 发布音乐的音乐播放器",
     "album": "专辑",
     "songs": "歌曲",
-    "songs-in-total": "共 {0} 首"
+    "songs-in-total": "共 {0} 首",
+    "jump-to-current-lyric": "跳转至当前歌词"
   },
   "sp-key": {
     "commit-key": "提交兑换码",

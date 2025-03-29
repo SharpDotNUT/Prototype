@@ -110,7 +110,8 @@
     "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
     "album": "Albums",
     "songs": "Songs",
-    "songs-in-total": "{0} songs in total"
+    "songs-in-total": "{0} songs in total",
+    "jump-to-current-lyric": "Jump to the current lyric"
   },
   "sp-key": {
     "commit-key": "Commit Code",

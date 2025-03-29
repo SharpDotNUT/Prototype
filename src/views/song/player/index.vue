@@ -2,7 +2,7 @@
 import { ref, watch, watchEffect, onUnmounted, useTemplateRef } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import SvgIcon from '@jamescoyle/vue-icon'
-import LyricsView from './lyrics-view-new.vue'
+import LyricsView from './lyrics-view.vue'
 import TitleView from './title-view.vue'
 import ControlPanel from './control-panel.vue'
 import { Snackbar, Dialog } from '@varlet/ui'
@@ -16,10 +16,6 @@ import {
   mdiImageArea
 } from '@mdi/js'
 const ref_image = ref(null)
-
-Dialog(
-  '由于歌词组件的某些特性，本页面目前还不支持在浅色模式下访问，请转到设置切换成深色模式。'
-)
 
 let Data = []
 const s_dataLoaded = ref(false)
@@ -187,7 +183,6 @@ onUnmounted(() => {
             left: isViewingLyrics || !isMobileWidth ? '0%' : '100%'
           }"
           :song_id="songMetaData[selectedAlbum].songs[selectedSong].id"
-          :autoScroll="isAutoScroll"
           ref="lyricsView"
           @play="
             console.log($event)

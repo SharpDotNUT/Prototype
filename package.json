@@ -10,31 +10,15 @@
     "preview": "vite preview",
     "format": "prettier --write ."
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@applemusic-like-lyrics/lyric"
-    ]
-  },
   "dependencies": {
-    "@applemusic-like-lyrics/lyric": "^0.2.4",
-    "@applemusic-like-lyrics/vue": "^0.1.5",
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
-    "@pixi/app": "^7.4.3",
-    "@pixi/core": "^7.4.3",
-    "@pixi/display": "^7.4.3",
-    "@pixi/filter-blur": "^7.4.3",
-    "@pixi/filter-bulge-pinch": "^5.1.1",
-    "@pixi/filter-color-matrix": "^7.4.3",
-    "@pixi/sprite": "^7.4.3",
     "@varlet/touch-emulator": "^3.2.13",
     "@varlet/ui": "^3.9.0",
     "@vue/tsconfig": "^0.5.1",
     "dom-to-image": "^2.6.0",
     "filesize": "^10.1.6",
     "github-markdown-css": "^5.5.1",
-    "jss": "^10.10.0",
-    "jss-preset-default": "^10.10.0",
     "lodash-es": "^4.17.21",
     "markdown-it": "^14.1.0",
     "pinia": "^2.1.7",

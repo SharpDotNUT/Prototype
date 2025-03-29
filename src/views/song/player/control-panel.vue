@@ -53,7 +53,7 @@ const selectedSong = defineModel('selectedSong', { type: Number, default: 0 })
     </div>
     <div>
       <p>{{ $t('song-player.songs') }}</p>
-      <div style="display: flex; justify-content: center">
+      <div style="display: flex; justify-content: center; height: 100%">
         <div class="list">
           <div
             class="cell"

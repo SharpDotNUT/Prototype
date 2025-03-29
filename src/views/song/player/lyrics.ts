@@ -1,40 +1,15 @@
-interface t_RawData_Lyric {
-  lyric: string // lrc 格式
-  version: string
-}
-
-interface t_RawData {
-  lrc: t_RawData_Lyric
-  tlyric: t_RawData_Lyric // 可能为 ''
-  romalrc: t_RawData_Lyric // 可能为 ''
-}
-
-interface t_LyricWord {
-  startTime: number
-  endTime: number
-  word: string
-}
-
-interface t_LyricLine {
-  words: t_LyricWord[]
-  translatedLyric: string
-  romanLyric: string
-  startTime: number
-  endTime: number
-}
-
-interface t_LyricsTimeline {
+export interface t_RawLyrics {
   [key: number]: string
 }
+export interface t_Lyrics {
+  [key: number]: { raw: string; translation: string; romaji: string }
+}
 
-/**
- * 解析 LRC 格式的歌词
- */
-export function parseLyrics(lyrics: string | undefined): t_LyricsTimeline {
+export function parseLyrics(lyrics: string | undefined) {
   if (!lyrics) return {}
 
   const lyricsLines = lyrics.trim().split('\n')
-  const lyricsObject: t_LyricsTimeline = {}
+  const lyricsObject: t_RawLyrics = {}
 
   lyricsLines.forEach((line) => {
     const timeTag = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\]/)
@@ -49,64 +24,39 @@ export function parseLyrics(lyrics: string | undefined): t_LyricsTimeline {
       lyricsObject[timeInMilliseconds] = lyricText
     }
   })
-
   return lyricsObject
 }
 
-/**
- * 解析 LRC 和 YRC 歌词为结构化的歌词行
- */
-export function parseLrcToLyricLines(lrc: t_RawData): t_LyricLine[] {
-  console.clear()
+export function mergeLyrics(
+  raw: t_RawLyrics,
+  translation: t_RawLyrics,
+  romaji: t_RawLyrics
+) {
+  const mergedLyrics: t_Lyrics = {}
 
-  const lyricLines: t_LyricLine[] = []
-
-  // 解析原始歌词
-  const rawLyrics = parseLyrics(lrc.lrc.lyric)
-  const translatedLyrics = parseLyrics(lrc.tlyric.lyric)
-  const romanLyrics = parseLyrics(lrc.romalrc.lyric)
-
-  // 获取所有时间戳
+  // 将所有时间戳合并到一个集合中
   const allTimestamps = new Set([
-    ...Object.keys(rawLyrics),
-    ...Object.keys(translatedLyrics),
-    ...Object.keys(romanLyrics)
+    ...Object.keys(raw),
+    ...Object.keys(translation),
+    ...Object.keys(romaji)
   ])
 
-  // 将时间戳转换为数字并排序
-  const sortedTimestamps = Array.from(allTimestamps)
-    .map(Number)
-    .sort((a, b) => a - b)
-
-  // 遍历时间戳，构建歌词行
-  for (let i = 0; i < sortedTimestamps.length; i++) {
-    const startTime = sortedTimestamps[i]
-    const endTime =
-      i < sortedTimestamps.length - 1
-        ? sortedTimestamps[i + 1]
-        : startTime + 10000 // 如果没有下一行，假设持续10秒
-
-    const rawLyric = rawLyrics[startTime] || ''
-    const translatedLyric = translatedLyrics[startTime] || ''
-    const romanLyric = romanLyrics[startTime] || ''
-
-    // 如果有逐字歌词，则拆分 words
-    const words = [
-      {
-        startTime,
-        endTime,
-        word: rawLyric
+  // 遍历所有时间戳，并合并对应的歌词
+  let lastIsBlank = false
+  allTimestamps.forEach((timestamp) => {
+    const time = parseInt(timestamp, 10)
+    const isBlank = !raw[time] && !translation[time] && !romaji[time]
+    if (true) {
+      mergedLyrics[time] = {
+        raw: raw[time] || '',
+        translation: translation[time] || '',
+        romaji: romaji[time] || ''
       }
-    ]
+      lastIsBlank = isBlank ? true : false
+    } else {
+      lastIsBlank = true
+    }
+  })
 
-    lyricLines.push({
-      words,
-      translatedLyric,
-      romanLyric,
-      startTime,
-      endTime
-    })
-  }
-
-  return lyricLines
+  return mergedLyrics
 }
