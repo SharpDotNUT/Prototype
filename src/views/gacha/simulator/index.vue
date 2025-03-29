@@ -52,9 +52,7 @@ alert('临时开发版本；未完整实现大小保底和翻页功能')
       <BannersView
         :isNeedSelect="true"
         @select="
-          d_banner = $event
-          s_openSelector = false
-          updateSimulator()
+          ((d_banner = $event), (s_openSelector = false), updateSimulator())
         " />
     </div>
   </var-popup>

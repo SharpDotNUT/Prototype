@@ -15,17 +15,16 @@ import {
   mdiTextBox,
   mdiImageArea
 } from '@mdi/js'
-
 const ref_image = ref(null)
 
 Dialog(
   '由于歌词组件的某些特性，本页面目前还不支持在浅色模式下访问，请转到设置切换成深色模式。'
 )
 
-let Data = {}
+let Data = []
 const s_dataLoaded = ref(false)
-const d_dataURL = 'https://prototype-oss.sharpdotnut.com/songs.json'
-caches.open('prototype').then((cache) => {
+const d_dataURL = 'https://prototype-oss.sharpdotnut.com/song_meta.json'
+caches.open('prototype').then((cache) =>
   cache.match(d_dataURL).then(async (res) => {
     if (res) {
       res.json().then((data) => {
@@ -43,10 +42,10 @@ caches.open('prototype').then((cache) => {
       })
     }
   })
-})
+)
 function init() {
   s_dataLoaded.value = true
-  songMetaData.value = Data.data
+  songMetaData.value = Data
   selectedAlbum.value = songMetaData.value.length - 74 // 空气蛹
   picURL.value = songMetaData.value[selectedAlbum.value].picUrl
   currentSongID.value =

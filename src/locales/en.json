@@ -54,6 +54,10 @@
     "commit": "Commit",
     "username": {
       "traveler": "Traveler"
+    },
+    "time": {
+      "min-sec": "{0} minutes {1} seconds",
+      "sec": "{0} seconds"
     }
   },
   "home": {
@@ -103,7 +107,10 @@
   },
   "song-player": {
     "title": "Music Player",
-    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE"
+    "description": "A music player for tracks released by HoYo-Mix, the music studio of HoYoVERSE",
+    "album": "Albums",
+    "songs": "Songs",
+    "songs-in-total": "{0} songs in total"
   },
   "sp-key": {
     "commit-key": "Commit Code",

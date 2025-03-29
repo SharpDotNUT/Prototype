@@ -1,10 +1,11 @@
 .__selector {
   display: flex;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   transition: transform 0.5s ease-in-out;
+  background-color: color-mix(in srgb, var(--color-body) 20%, transparent);
   padding: 0px max(calc(50vw - 400px), 20px);
 
-  > div {
+  >div {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -13,7 +14,6 @@
     border-radius: 20px;
     overflow-y: hidden;
     flex: 1;
-    background-color: rgba(255, 255, 255, 0.01);
 
     .list {
       display: flex;
@@ -21,19 +21,23 @@
       flex-direction: column;
       overflow-y: auto;
 
-      > div {
+      .cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         padding: 5px;
         cursor: pointer;
-        border-right: 5px solid transparent;
         transition:
           background-color 1s ease-in-out,
           border 0.3s ease-in-out;
       }
 
-      > .selected {
-        border-left: 5px solid var(--color-primary);
-        border-right: none;
-        background-color: #777;
+      .cell.selected {
+        background-color: color-mix(in srgb, var(--color-text) 20%, transparent);
+      }
+
+      .sub-text {
+        color: color-mix(in srgb, var(--color-text) 40%, transparent)
       }
     }
   }

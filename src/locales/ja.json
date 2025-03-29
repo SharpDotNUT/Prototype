@@ -54,6 +54,10 @@
     "commit": "送信",
     "username": {
       "traveler": "旅者"
+    },
+    "time": {
+      "min-sec": "{0} 分 {1} 秒",
+      "sec": "{0} 秒"
     }
   },
   "home": {
@@ -103,7 +107,10 @@
   },
   "song-player": {
     "title": "音楽プレイヤー",
-    "description": "HoYo-Mix（HoYoVERSE音楽スタジオ）がリリースした楽曲に対応した音楽プレイヤー"
+    "description": "HoYo-Mix（HoYoVERSE音楽スタジオ）がリリースした楽曲に対応した音楽プレイヤー",
+    "album": "アルバム",
+    "songs": "歌",
+    "songs-in-total": "合計{0}曲"
   },
   "sp-key": {
     "commit-key": "シリアルコード登録",
