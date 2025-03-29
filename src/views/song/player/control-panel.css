@@ -6,10 +6,13 @@
   padding: 0px max(calc(50vw - 400px), 20px);
 
   >div {
+    position: absolute;
+    transition: left 0.5s ease-in-out, right 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 10px;
     height: 100%;
+    width: 100%;
     padding: 20px;
     border-radius: 20px;
     overflow-y: hidden;
@@ -28,13 +31,19 @@
         gap: 10px;
         padding: 5px;
         cursor: pointer;
+        border-radius: 10px;
         transition:
           background-color 1s ease-in-out,
           border 0.3s ease-in-out;
       }
 
-      .cell.selected {
+      .cell.selected,
+      .cell:hover {
         background-color: color-mix(in srgb, var(--color-text) 20%, transparent);
+      }
+
+      .cell:hover {
+        transition: background-color 0.3s ease-in-out;
       }
 
       .sub-text {

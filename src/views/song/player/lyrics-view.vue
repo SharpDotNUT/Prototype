@@ -166,6 +166,7 @@ defineExpose({ play, scrollToCurrentLyric })
         'lyric-item': true,
         'lyric-item-active': nowPlayingIndex === index
       }"
+      lang="zh-Hans"
       @click="(play(Number(timestamp)), $emit('play', Number(timestamp)))">
       <p class="lyric-text">{{ lyric.raw }}</p>
       <p class="lyric-translation" v-if="lyric.translation">

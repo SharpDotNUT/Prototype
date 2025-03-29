@@ -111,7 +111,8 @@
     "album": "Albums",
     "songs": "Songs",
     "songs-in-total": "{0} songs in total",
-    "jump-to-current-lyric": "Jump to the current lyric"
+    "jump-to-current-lyric": "Jump to the current lyric",
+    "album-description": "Album Description"
   },
   "sp-key": {
     "commit-key": "Commit Code",

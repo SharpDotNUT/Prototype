@@ -25,6 +25,7 @@
 }
 
 .lyric-item-active {
+  text-shadow: 2px 2px 20px var(--color-primary);
   color: var(--color-primary)
 }
 

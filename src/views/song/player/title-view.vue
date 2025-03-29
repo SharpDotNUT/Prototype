@@ -9,10 +9,10 @@ const props = defineProps({
 
 <template>
   <div id="title">
-    <h2>
+    <h2 lang="zh-Hans">
       {{ data.name }}
     </h2>
-    <p style="color: #777">
+    <p lang="zh-Hans" style="color: #777">
       {{ data.alias }}
     </p>
   </div>

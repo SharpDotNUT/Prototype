@@ -111,7 +111,8 @@
     "album": "专辑",
     "songs": "歌曲",
     "songs-in-total": "共 {0} 首",
-    "jump-to-current-lyric": "跳转至当前歌词"
+    "jump-to-current-lyric": "跳转至当前歌词",
+    "album-description": "专辑描述"
   },
   "sp-key": {
     "commit-key": "提交兑换码",

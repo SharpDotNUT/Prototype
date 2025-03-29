@@ -88,7 +88,6 @@ const imageLoaded = ref(false)
 const lyricsView = ref(null)
 const audio = useTemplateRef('audio')
 const isMuted = ref(false)
-const isAutoScroll = ref(true)
 const process = ref(0)
 const processMax = ref(0)
 const onChangeProcess = ref(false)
@@ -194,6 +193,7 @@ onUnmounted(() => {
         :style="{
           transform: ui_showControlPanel ? 'translateY(100%)' : 'translateY(0%)'
         }"
+        :isMobileWidth="isMobileWidth"
         :songMetaData="songMetaData"
         v-model:selectedAlbum="selectedAlbum"
         v-model:selectedSong="selectedSong" />

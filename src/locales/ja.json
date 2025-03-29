@@ -111,7 +111,8 @@
     "album": "アルバム",
     "songs": "歌",
     "songs-in-total": "合計{0}曲",
-    "jump-to-current-lyric": "現在の歌詞にジャンプします"
+    "jump-to-current-lyric": "現在の歌詞にジャンプします",
+    "album-description": "アルバムの説明"
   },
   "sp-key": {
     "commit-key": "シリアルコード登録",
