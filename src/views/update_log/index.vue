@@ -1,247 +1,267 @@
 <template>
-  <div class="__container">
-    <!-- 工具栏 -->
-    <div class="toolbar">
-      <var-button @click="exportJson" class="export-button">
-        导出 JSON
-      </var-button>
-      <var-button @click="addVersion" class="add-button">添加版本</var-button>
-    </div>
-
-    <!-- 版本列表 -->
-    <div v-for="(item, index) in data" :key="item.version" class="item">
-      <div class="version-header">
-        <h3 class="version">{{ item.version }}</h3>
-        <div class="actions">
-          <var-button @click="moveVersionUp(index)" class="action-button">
-            ⬆️
-          </var-button>
-          <var-button @click="moveVersionDown(index)" class="action-button">
-            ⬇️
-          </var-button>
-          <var-button @click="deleteVersion(index)" class="action-button">
-            ❌
-          </var-button>
-        </div>
+  <div class="update-log-container">
+    <div class="filters">
+      <div>
+        <var-select v-model="selectedMajor" :placeholder="$t('update-log.major-versions')">
+          <var-option value="All" :label="$t('global.all')"></var-option>
+          <var-option
+            v-for="majorVersion in majorVersions"
+            :value="majorVersion"
+            :label="majorVersion + '.x'"></var-option>
+        </var-select>
+        <var-select
+          v-model="selectedMinor"
+          :placehupdate-log.minor-versionse-log.minor')"
+          :disabled="selectedMajor === 'All'">
+          <var-option value="All" :label="$t('global.all')"></var-option>
+          <var-option
+            v-for="minorVersion in minorVersions"
+            :value="minorVersion"
+            :label="selectedMajor + '.' + minorVersion + '.x'"></var-option>
+        </var-select>
       </div>
-
-      <div v-if="editable" class="editable-section">
-        <var-input v-model="item.name" placeholder="名称" class="input-field" />
-        <var-input
-          textarea
-          v-model="item.description"
-          placeholder="描述"
-          class="textarea-field"></var-input>
-        <var-input
-          textarea
-          v-model="item.description_en"
-          placeholder="英文描述"
-          class="textarea-field"></var-input>
-
-        <div
-          v-for="(change, changeIndex) in item.changes"
-          :key="change.commit_id"
-          class="change">
-          <div class="change-header">
-            <var-input
-              v-model="change.commit_id"
-              placeholder="Commit ID"
-              class="input-field" />
-            <div class="actions">
-              <var-button
-                @click="moveChangeUp(index, changeIndex)"
-                class="action-button">
-                ⬆️
-              </var-button>
-              <var-button
-                @click="moveChangeDown(index, changeIndex)"
-                class="action-button">
-                ⬇️
-              </var-button>
-              <var-button
-                @click="deleteChange(index, changeIndex)"
-                class="action-button">
-                ❌
-              </var-button>
+      <div>
+        <var-select
+          v-model="selectedAreas"
+          :placeholder="$t('update-log.area')"
+          multiple>
+          <var-option
+            v-for="area in allAreas"
+            :key="area"
+            :label="area"
+            :value="area"></var-option>
+        </var-select>
+        <var-select
+          v-model="selectedTypes"
+          :placeholder="$t('update-log.type')"
+          multiple>
+          <var-option
+            v-for="type in allTypes"
+            :key="type"
+            :value="type"
+            :label="type"></var-option>
+        </var-select>
+      </div>
+    </div>
+    <br />
+    <div class="list">
+      <template v-if="filteredLogs.length > 0">
+        <var-card
+          v-for="log in filteredLogs"
+          :key="log.version"
+          class="version">
+          <div class="version-content">
+            <h1>
+              <span style="font-family: JetBrains Mono">
+                {{ log.version }}
+              </span>
+              <span v-if="log['name-zh']">
+                &nbsp- {{ log['name-zh'] }} {{ log['name-en'] }}
+              </span>
+            </h1>
+            <h3 style="display: flex; align-items: center">
+              <span class="date">{{ formatDate(log.date) }}</span>
+              <span v-if="log.version.endsWith('.0.0')">&nbsp</span>
+              <var-chip type="primary" v-if="log.version.endsWith('.0.0')">
+                {{ $t('update-log.major-version') }}
+              </var-chip>
+              <span v-if="log.version.endsWith('.0')">&nbsp</span>
+              <var-chip type="success" v-if="log.version.endsWith('.0')">
+                {{ $t('update-log.minor-version') }}
+              </var-chip>
+            </h3>
+            <var-divider />
+            <div>
+              <div
+                v-for="(item, itemIndex) in log.items"
+                :key="itemIndex"
+                class="change-item">
+                <div class="change-meta">
+                  <var-chip size="small" type="primary" class="area">
+                    {{$t('update-log.area')}} : {{ item.area }}
+                  </var-chip>
+                  <span>&nbsp</span>
+                  <var-chip
+                    size="small"
+                    :color="colors[item.type]"
+                    text-color="#e9dbff"
+                    class="type">
+                    {{ $t('update-log.type') }} : {{ item.type }}
+                  </var-chip>
+                </div>
+                <div style="margin: 10px 0; font-size: 1.5em">
+                  <p>{{ item['content-zh'] }}</p>
+                  <p>{{ item['content-en'] }}</p>
+                </div>
+              </div>
+            </div>
+            <var-divider />
+            <div
+              v-if="log.commits && log.commits.length > 0"
+              class="commits-section">
+              <h3>Commits:</h3>
+              <ul>
+                <var-link
+                  v-for="(commit, commitIndex) in log.commits"
+                  :href="`https://github.com/${Meta.repo}/commit/${commit}`"
+                  target="_blank"
+                  :key="commitIndex">
+                  {{ commit }}
+                </var-link>
+              </ul>
             </div>
           </div>
-
-          <div
-            v-for="(detail, detailIndex) in change.changes"
-            :key="detailIndex"
-            class="detail">
-            <var-input
-              v-model="detail.type"
-              placeholder="类型"
-              class="input-field" />
-            <var-input
-              v-model="detail.scope"
-              placeholder="范围"
-              class="input-field" />
-            <var-input
-              textarea
-              v-model="detail.description"
-              placeholder="描述"
-              class="textarea-field"></var-input>
-            <var-input
-              textarea
-              v-model="detail.description_en"
-              placeholder="英文描述"
-              class="textarea-field"></var-input>
-          </div>
-          <var-button
-            @click="addChangeDetail(index, changeIndex)"
-            class="add-detail-button">
-            添加变更详情
-          </var-button>
-        </div>
-        <var-button @click="addChange(index)" class="add-change-button">
-          添加变更
-        </var-button>
-      </div>
-
-      <div v-else class="preview-section">
-        <p class="name">{{ item.name }}</p>
-        <p class="description">{{ item.description }}</p>
-        <p class="description-en">{{ item.description_en }}</p>
-
-        <div
-          v-for="(change, changeIndex) in item.changes"
-          :key="change.commit_id"
-          class="change">
-          <p class="commit-id">
-            <strong>Commit ID:</strong>
-            {{ change.commit_id }}
-          </p>
-          <div
-            v-for="(detail, detailIndex) in change.changes"
-            :key="detailIndex"
-            class="detail">
-            <p>
-              <strong>类型:</strong>
-              {{ detail.type }}
-            </p>
-            <p>
-              <strong>范围:</strong>
-              {{ detail.scope }}
-            </p>
-            <p>
-              <strong>描述:</strong>
-              {{ detail.description }}
-            </p>
-            <p>
-              <strong>英文描述:</strong>
-              {{ detail.description_en }}
-            </p>
-          </div>
-        </div>
-      </div>
+        </var-card>
+      </template>
+      <div v-else class="no-results">No results found.</div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, computed, type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Meta from '@/meta'
+import UpdateLogsData from '@/data/update_logs/logs'
+import { watch } from 'vue'
 
-// 定义 props
-const props = defineProps({
-  editable: {
-    type: Boolean,
-    default: true
+const UpdateLogs = UpdateLogsData.sort(
+  // 根据 版本号降序排序
+  (a, b) => {
+    const [aMajor, aMinor, aPatch] = a.version.split('.').map(Number)
+    const [bMajor, bMinor, bPatch] = b.version.split('.').map(Number)
+    return bMajor - aMajor || bMinor - aMinor || bPatch - aPatch
   }
+)
+
+const { locale } = useI18n()
+
+// 筛选状态
+const selectedMajor = ref('All')
+const selectedMinor = ref('All')
+const selectedAreas: Ref<string[]> = ref([])
+const selectedTypes: Ref<string[]> = ref([])
+
+// 计算属性
+const majorVersions = computed(() => {
+  const versions = new Set()
+  UpdateLogs.forEach((log) => {
+    const [major] = log.version.split('.')
+    versions.add(major)
+  })
+  return Array.from(versions).sort((a: any, b: any) => b - a)
 })
 
-import Update_log from '@/docs/update_log/changes.json'
+const minorVersions = computed(() => {
+  const versions = new Set()
+  UpdateLogs.forEach((log) => {
+    const [major, minor] = log.version.split('.')
+    if (major === selectedMajor.value || selectedMajor.value === 'All') {
+      versions.add(minor)
+    }
+  })
+  return Array.from(versions).sort((a: any, b: any) => b - a)
+})
 
-// 元数据
-const data = ref(Update_log)
+const allAreas = computed(() => {
+  const areas = new Set()
+  UpdateLogs.forEach((log: { items: any[] }) => {
+    log.items.forEach((item: { area: unknown }) => {
+      areas.add(item.area)
+    })
+  })
+  return Array.from(areas).sort()
+})
 
-// 添加版本
-const addVersion = () => {
-  data.value.push({
-    version: `新版本 ${data.value.length + 1}`,
-    name: '',
-    changes: []
+const allTypes = computed(() => {
+  const types = new Set()
+  UpdateLogs.forEach((log: { items: any[] }) => {
+    log.items.forEach((item: { type: unknown }) => {
+      types.add(item.type)
+    })
+  })
+  return Array.from(types).sort()
+})
+
+const filteredLogs = computed(() => {
+  return UpdateLogs.filter((log) => {
+    // 版本筛选
+    const [major, minor] = log.version.split('.')
+
+    // 主版本筛选
+    if (selectedMajor.value !== 'All' && major !== selectedMajor.value) {
+      return false
+    }
+
+    // 次版本筛选
+    if (
+      selectedMajor.value !== 'All' &&
+      selectedMinor.value !== 'All' &&
+      minor !== selectedMinor.value
+    ) {
+      return false
+    }
+
+    // 如果没有任何区域或类型被选中，则显示所有项目
+    if (selectedAreas.value.length === 0 && selectedTypes.value.length === 0) {
+      return true
+    }
+
+    // 检查日志项是否包含任何选中的区域或类型
+    const hasMatchingItems = log.items.some((item) => {
+      const areaMatch =
+        selectedAreas.value.length === 0 ||
+        selectedAreas.value.includes(item.area)
+      const typeMatch =
+        selectedTypes.value.length === 0 ||
+        selectedTypes.value.includes(item.type)
+      return areaMatch && typeMatch
+    })
+
+    return hasMatchingItems
+  })
+    .map((log) => {
+      // 如果筛选了区域或类型，只显示匹配的项目
+      if (selectedAreas.value.length > 0 || selectedTypes.value.length > 0) {
+        return {
+          ...log,
+          items: log.items.filter((item) => {
+            const areaMatch =
+              selectedAreas.value.length === 0 ||
+              selectedAreas.value.includes(item.area)
+            const typeMatch =
+              selectedTypes.value.length === 0 ||
+              selectedTypes.value.includes(item.type)
+            return areaMatch && typeMatch
+          })
+        }
+      }
+      return log
+    })
+    .filter((log) => log.items.length > 0) // 确保只返回有项目的日志
+})
+
+const formatDate = (timestamp: string | number | Date) => {
+  return new Date(timestamp).toLocaleDateString(locale.value, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   })
 }
 
-// 删除版本
-const deleteVersion = (index) => {
-  data.value.splice(index, 1)
-}
+watch(selectedMajor, () => {
+  selectedMinor.value = 'All'
+})
 
-// 上移版本
-const moveVersionUp = (index) => {
-  if (index > 0) {
-    const temp = data.value[index]
-    data.value[index] = data.value[index - 1]
-    data.value[index - 1] = temp
-  }
-}
-
-// 下移版本
-const moveVersionDown = (index) => {
-  if (index < data.value.length - 1) {
-    const temp = data.value[index]
-    data.value[index] = data.value[index + 1]
-    data.value[index + 1] = temp
-  }
-}
-
-// 添加变更
-const addChange = (versionIndex) => {
-  data.value[versionIndex].changes.push({
-    commit_id: `commit_${data.value[versionIndex].changes.length + 1}`,
-    changes: []
-  })
-}
-
-// 删除变更
-const deleteChange = (versionIndex, changeIndex) => {
-  data.value[versionIndex].changes.splice(changeIndex, 1)
-}
-
-// 上移变更
-const moveChangeUp = (versionIndex, changeIndex) => {
-  if (changeIndex > 0) {
-    const temp = data.value[versionIndex].changes[changeIndex]
-    data.value[versionIndex].changes[changeIndex] =
-      data.value[versionIndex].changes[changeIndex - 1]
-    data.value[versionIndex].changes[changeIndex - 1] = temp
-  }
-}
-
-// 下移变更
-const moveChangeDown = (versionIndex, changeIndex) => {
-  if (changeIndex < data.value[versionIndex].changes.length - 1) {
-    const temp = data.value[versionIndex].changes[changeIndex]
-    data.value[versionIndex].changes[changeIndex] =
-      data.value[versionIndex].changes[changeIndex + 1]
-    data.value[versionIndex].changes[changeIndex + 1] = temp
-  }
-}
-
-// 添加变更详情
-const addChangeDetail = (versionIndex, changeIndex) => {
-  data.value[versionIndex].changes[changeIndex].changes.push({
-    type: '',
-    scope: '',
-    description: '',
-    description_en: ''
-  })
-}
-
-// 导出 JSON 文件
-const exportJson = () => {
-  const jsonString = JSON.stringify(data.value, null, 2)
-  const blob = new Blob([jsonString], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = 'data.json'
-  a.click()
-  URL.revokeObjectURL(url)
+const colors = {
+  'UI & UX': '#6f42c1',
+  'Bug Fix': '#d73a49',
+  Feature: '#28a745',
+  Performance: '#005cc5',
+  Others: '#a0a000'
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+@import url('./index.css');
+</style>

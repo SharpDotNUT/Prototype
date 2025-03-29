@@ -1,4 +1,4 @@
-import i18n from '@/locales/i18n.ts'
+import i18n from '@/locales/i18n'
 import { Snackbar } from '@varlet/ui'
 
 const t = i18n.global.t

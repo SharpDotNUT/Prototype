@@ -58,7 +58,8 @@
     "time": {
       "min-sec": "{0} 分 {1} 秒",
       "sec": "{0} 秒"
-    }
+    },
+    "all": "所有"
   },
   "home": {
     "welcome": "{0}，你来了呀。看你最近来去匆忙…<br/>要是能偶尔坐下来听戏饮茶,享受闲适的趣味,会更有益身心哦。",
@@ -142,5 +143,13 @@
     "action-to-save": "右键或长按保存",
     "close-keyboard": "收起键盘",
     "description": "一个用于转换米哈游游戏内文字和英文的工具"
+  },
+  "update-log": {
+    "major-versions": "主版本号",
+    "major-version": "主要版本",
+    "minor-versions": "次版本号",
+    "minor-version": "次要版本",
+    "area": "功能",
+    "type": "类别"
   }
 }

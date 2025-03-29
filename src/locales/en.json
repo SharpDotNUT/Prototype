@@ -58,7 +58,8 @@
     "time": {
       "min-sec": "{0} minutes {1} seconds",
       "sec": "{0} seconds"
-    }
+    },
+    "all": "All"
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
@@ -142,5 +143,13 @@
     "action-to-save": "Right click or long press to save",
     "close-keyboard": "Close Keyboard",
     "description": "A tool for converting in-game text and English in HoYoVERSE games"
+  },
+  "update-log": {
+    "major-versions": "Major Versions",
+    "minor-versions": "Minor Versions",
+    "major-version": "Major Version",
+    "minor-version": "Minor Version",
+    "area": "Area",
+    "type": "Types"
   }
 }

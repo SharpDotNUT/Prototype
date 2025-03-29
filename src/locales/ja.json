@@ -58,7 +58,8 @@
     "time": {
       "min-sec": "{0} 分 {1} 秒",
       "sec": "{0} 秒"
-    }
+    },
+    "all": "全て"
   },
   "home": {
     "welcome": "いらしていたのですね。近頃とてもお忙しいようですが…<br/> たまには座って劇を見たり、お茶を飲んだりしてみてはいかがでしょう。心身ともに安らぎますよ。",
@@ -142,5 +143,13 @@
     "action-to-save": "右クリック/長押しで保存",
     "close-keyboard": "キーボードを閉じる",
     "description": "HoYoVERSEゲーム内のテキストと英語を変換するためのツール"
+  },
+  "update-log": {
+    "major-versions": "メインバージョン番号",
+    "minor-versions": "マイナーバージョン",
+    "major-version": "メジャーバージョン",
+    "minor-version": "マイナーバージョン",
+    "area": "関数",
+    "type": "カテゴリ"
   }
 }
