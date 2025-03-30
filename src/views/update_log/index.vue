@@ -30,7 +30,7 @@
           <var-option
             v-for="area in allAreas"
             :key="area"
-            :label="area"
+            :label="area != 'Others' ? $t(area + '.title') : area"
             :value="area"></var-option>
         </var-select>
         <var-select
@@ -57,7 +57,7 @@
               <span style="font-family: JetBrains Mono">
                 {{ log.version }}
               </span>
-              <span v-if="log['name-zh']">
+              <span v-if="log['name-zh']" lang="zh-Hans">
                 &nbsp- {{ log['name-zh'] }} {{ log['name-en'] }}
               </span>
             </h1>
@@ -80,7 +80,12 @@
                 class="change-item">
                 <div class="change-meta">
                   <var-chip size="small" type="primary" class="area">
-                    {{ $t('update-log.area') }} : {{ item.area }}
+                    {{ $t('update-log.area') }} :
+                    {{
+                      item.area != 'Others'
+                        ? $t(item.area + '.title')
+                        : item.area
+                    }}
                   </var-chip>
                   <span>&nbsp</span>
                   <var-chip
@@ -92,8 +97,8 @@
                   </var-chip>
                 </div>
                 <div style="margin: 10px 0; font-size: 1.5em">
-                  <p>{{ item['content-zh'] }}</p>
-                  <p>{{ item['content-en'] }}</p>
+                  <p lang="zh-Hans">{{ item['content-zh'] }}</p>
+                  <p lang="en">{{ item['content-en'] }}</p>
                 </div>
               </div>
             </div>
@@ -102,15 +107,16 @@
               v-if="log.commits && log.commits.length > 0"
               class="commits-section">
               <h3>Commits:</h3>
-              <ul>
+              <p
+                v-for="(commit, commitIndex) in log.commits"
+                style="font-family: JetBrains Mono">
                 <var-link
-                  v-for="(commit, commitIndex) in log.commits"
                   :href="`https://github.com/${Meta.repo}/commit/${commit}`"
                   target="_blank"
                   :key="commitIndex">
                   {{ commit }}
                 </var-link>
-              </ul>
+              </p>
             </div>
           </div>
         </var-card>
@@ -244,10 +250,13 @@ const filteredLogs = computed(() => {
 })
 
 const formatDate = (timestamp: string | number | Date) => {
-  return new Date(timestamp).toLocaleDateString(locale.value, {
+  return new Date(timestamp).toLocaleString(locale.value, {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
   })
 }
 

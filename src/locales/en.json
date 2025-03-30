@@ -150,6 +150,10 @@
     "major-version": "Major Version",
     "minor-version": "Minor Version",
     "area": "Feature",
-    "type": "Category"
+    "type": "Category",
+    "title": "Update log"
+  },
+  "docs": {
+    "title": "Document"
   }
 }

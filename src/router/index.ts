@@ -16,8 +16,8 @@ export const routes = [
     component: () => import('../views/settings/index.vue' as any)
   },
   {
-    path: '/update_log',
-    name: 'update_log',
+    path: '/update-log',
+    name: 'update-log',
     component: () => import('../views/update_log/index.vue' as any)
   },
   {

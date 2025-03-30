@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiCog, mdiGithub, mdiInformation } from '@mdi/js'
+import { mdiCog, mdiGithub, mdiInformation, mdiUpdate } from '@mdi/js'
 import { useI18n } from 'vue-i18n'
 import { useMainStore } from '@/stores/main'
 import { NavigationData as RouteData } from '@/nav'
@@ -38,6 +38,12 @@ function openGithub() {
         <RouterLink class="app-name" to="/about">
           <SvgIcon class="icon" type="mdi" :path="mdiInformation" />
           <span>{{ $t('global.about') }}</span>
+        </RouterLink>
+      </var-paper>
+      <var-paper elevation="3" class="app var-button">
+        <RouterLink class="app-name" to="/update-log">
+          <SvgIcon class="icon" type="mdi" :path="mdiUpdate" />
+          <span>{{ $t('update-log.title') }}</span>
         </RouterLink>
       </var-paper>
       <var-divider />

@@ -150,6 +150,10 @@
     "major-version": "メジャーバージョン",
     "minor-version": "マイナーバージョン",
     "area": "機能",
-    "type": "カテゴリ"
+    "type": "カテゴリ",
+    "title": "ログを更新します"
+  },
+  "docs": {
+    "title": "書類"
   }
 }
