@@ -2,6 +2,30 @@ import type { t_UpdateLog } from './types'
 
 const log: t_UpdateLog = [
   {
+    version: '2.1.0',
+    date: '2025-03-31T22:30:00+0800',
+    items: [
+      {
+        area: 'i18n',
+        type: 'Performance',
+        'content-zh': '改进翻译',
+        'content-en': 'Improved translation'
+      },
+      {
+        area: 'app',
+        type: 'Performance',
+        'content-zh': '改名为「试作 · 云翰」',
+        'content-en': 'Renamed to "Prototype · Yun Han"'
+      },
+      {
+        area: 'update-log',
+        type: 'Performance',
+        'content-zh': '更新了 README.md',
+        'content-en': 'Updated README.md'
+      }
+    ]
+  },
+  {
     version: '2.0.1',
     date: '2025-03-30T12:00:00+0800',
     items: [
@@ -23,7 +47,8 @@ const log: t_UpdateLog = [
         'content-zh': '更改路径为 `/update-log`',
         'content-en': 'Changed path to `/update-log`'
       }
-    ]
+    ],
+    commits: ['7f10a7d7220c92609bf2c06748518b80065af418']
   },
   {
     version: '2.0.0',
@@ -50,7 +75,7 @@ const log: t_UpdateLog = [
         'content-en': 'Optimized font display, adapted to mobile devices'
       },
       {
-        area: 'Others',
+        area: 'app',
         type: 'Others',
         'content-zh': '升级 Vue@3.5，Vite@6',
         'content-en': 'Bump Vue@3.5, Vite@6'

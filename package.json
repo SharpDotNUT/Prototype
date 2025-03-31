@@ -1,7 +1,7 @@
 {
   "name": "yunhan-toolbox",
-  "version": "2.0.0",
-  "description": "A open source HoYo game toolkit.",
+  "version": "2.1.0",
+  "description": "An open-source web-based toolkit for HoYoVERSE games.",
   "private": true,
   "type": "module",
   "scripts": {

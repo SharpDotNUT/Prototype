@@ -30,7 +30,7 @@
           <var-option
             v-for="area in allAreas"
             :key="area"
-            :label="area != 'Others' ? $t(area + '.title') : area"
+            :label="getArea(area)"
             :value="area"></var-option>
         </var-select>
         <var-select
@@ -81,11 +81,7 @@
                 <div class="change-meta">
                   <var-chip size="small" type="primary" class="area">
                     {{ $t('update-log.area') }} :
-                    {{
-                      item.area != 'Others'
-                        ? $t(item.area + '.title')
-                        : item.area
-                    }}
+                    {{ getArea(item.area) }}
                   </var-chip>
                   <span>&nbsp</span>
                   <var-chip
@@ -127,7 +123,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Ref } from 'vue'
+import { ref, computed, type Ref, type ComputedRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Meta from '@/meta'
 import UpdateLogsData from '@/data/update_logs/logs'
@@ -142,7 +138,7 @@ const UpdateLogs = UpdateLogsData.sort(
   }
 )
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 
 // 筛选状态
 const selectedMajor = ref('All')
@@ -263,6 +259,26 @@ const formatDate = (timestamp: string | number | Date) => {
 watch(selectedMajor, () => {
   selectedMinor.value = 'All'
 })
+
+const areas: Ref<any> = ref({})
+watch(
+  locale,
+  () => {
+    areas.value = {
+      app: t('name'),
+      i18n: t('update-log.areas.i18n'),
+      others: t('update-log.areas.others')
+    }
+  },
+  { immediate: true }
+)
+function getArea(key: string) {
+  if (areas.value[key]) {
+    return areas.value[key]
+  } else {
+    return t(key + '.title')
+  }
+}
 
 const colors = {
   'UI & UX': '#6f42c1',

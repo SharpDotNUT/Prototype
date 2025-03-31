@@ -73,7 +73,7 @@
     "unfinished-note": "本网页未完成。大部分页面并没有适配手机。请使用右上角菜单访问已有的功能。",
     "title": "首页"
   },
-  "name": "「试作」",
+  "name": "「试作 · 云翰」",
   "question": {
     "answer-right": "回答正确",
     "answer-wrong": "回答错误",
@@ -151,7 +151,11 @@
     "minor-version": "次要版本",
     "area": "功能",
     "type": "类别",
-    "title": "更新日志"
+    "title": "更新日志",
+    "areas": {
+      "i18n": "国际化",
+      "others": "其他"
+    }
   },
   "docs": {
     "title": "文档"

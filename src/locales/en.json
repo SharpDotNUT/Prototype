@@ -63,17 +63,17 @@
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",
-    "title": "Home"
+    "title": "Home Page"
   },
   "index": {
-    "s0": "「Clouds dance with grace, flowers sway in elegance; true refinement lies within mountains and waters.」",
+    "s0": "How gently do the clouds and flowers sway, as dancing winds meander through the vales. {'|'} 「云婵娟来花婵娟，风流尽在山水间。」",
     "description": "An open-source web-based toolkit for HoYoVERSE games.",
     "use": "Use Now",
     "install": "Install as PWA App",
     "unfinished-note": "This website is under development. Most pages are not mobile-optimized. Please use the menu in the top-right corner to access available features.",
-    "title": "Home"
+    "title": "Introduction Page"
   },
-  "name": "「Prototype」",
+  "name": "「Prototype : Yun Han」",
   "question": {
     "answer-right": "Correct",
     "answer-wrong": "Incorrect",
@@ -151,7 +151,11 @@
     "minor-version": "Minor Version",
     "area": "Feature",
     "type": "Category",
-    "title": "Update log"
+    "title": "Update log",
+    "areas": {
+      "i18n": "Internationalization",
+      "others": "Others"
+    }
   },
   "docs": {
     "title": "Document"

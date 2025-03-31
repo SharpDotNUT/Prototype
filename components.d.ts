@@ -23,20 +23,27 @@ declare module 'vue' {
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
+    VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
+    VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
+    VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
+    VarSlider: typeof import('@varlet/ui')['_SliderComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
     VarTab: typeof import('@varlet/ui')['_TabComponent']
     VarTabItem: typeof import('@varlet/ui')['_TabItemComponent']
     VarTabs: typeof import('@varlet/ui')['_TabsComponent']
     VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
+  }
+  export interface ComponentCustomProperties {
+    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }
