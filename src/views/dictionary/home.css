@@ -1,0 +1,6 @@
+.dictionary-home {
+    padding: 20px max(calc(50vw - 300px), 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

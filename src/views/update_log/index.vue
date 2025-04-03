@@ -86,7 +86,7 @@
                   <span>&nbsp</span>
                   <var-chip
                     size="small"
-                    :color="colors[item.type]"
+                    type="primary"
                     text-color="#e9dbff"
                     class="type">
                     {{ $t('update-log.type') }} : {{ item.type }}
@@ -123,10 +123,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Ref, type ComputedRef } from 'vue'
+import { ref, computed, type Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Meta from '@/meta'
-import UpdateLogsData from '@/data/update_logs/logs'
+import UpdateLogsData from '@/docs/update-log/logs'
 import { watch } from 'vue'
 
 const UpdateLogs = UpdateLogsData.sort(
@@ -136,7 +136,7 @@ const UpdateLogs = UpdateLogsData.sort(
     const [bMajor, bMinor, bPatch] = b.version.split('.').map(Number)
     return bMajor - aMajor || bMinor - aMinor || bPatch - aPatch
   }
-)
+).filter((log) => !log.released && log.released != false)
 
 const { locale, t } = useI18n()
 
@@ -170,11 +170,11 @@ const minorVersions = computed(() => {
 const allAreas = computed(() => {
   const areas = new Set()
   UpdateLogs.forEach((log: { items: any[] }) => {
-    log.items.forEach((item: { area: unknown }) => {
+    log.items.forEach((item: { area: string }) => {
       areas.add(item.area)
     })
   })
-  return Array.from(areas).sort()
+  return Array.from(areas).sort() as string[]
 })
 
 const allTypes = computed(() => {
@@ -278,14 +278,6 @@ function getArea(key: string) {
   } else {
     return t(key + '.title')
   }
-}
-
-const colors = {
-  'UI & UX': '#6f42c1',
-  'Bug Fix': '#d73a49',
-  Feature: '#28a745',
-  Performance: '#005cc5',
-  Others: '#a0a000'
 }
 </script>
 

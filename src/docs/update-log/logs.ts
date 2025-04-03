@@ -2,6 +2,27 @@ import type { t_UpdateLog } from './types'
 
 const log: t_UpdateLog = [
   {
+    version: '2.1.1',
+    date: '2025-03-31T22:30:00+0800',
+    items: [
+      {
+        area: 'app',
+        type: 'Development',
+        'content-zh': '增强 TypeScript 支持',
+        'content-en': 'Enhanced TypeScript support'
+      },
+      {
+        area: 'dictionary',
+        type: 'UI & UX',
+        'content-zh':
+          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能',
+        'content-en':
+          'Changed to home and secondary page mechanism, preparing for future feature expansion; ' +
+          'optimized interface; used virtual scrolling to improve performance'
+      }
+    ]
+  },
+  {
     version: '2.1.0',
     date: '2025-03-31T22:30:00+0800',
     items: [
@@ -23,7 +44,8 @@ const log: t_UpdateLog = [
         'content-zh': '更新了 README.md',
         'content-en': 'Updated README.md'
       }
-    ]
+    ],
+    commits: ['bee94830c15a75a8414a7585ce70842e967f6baf']
   },
   {
     version: '2.0.1',
@@ -32,14 +54,9 @@ const log: t_UpdateLog = [
       {
         area: 'update-log',
         type: 'UI & UX',
-        'content-zh': '补充了功能列表的翻译',
-        'content-en': 'Added translation for area list'
-      },
-      {
-        area: 'update-log',
-        type: 'UI & UX',
-        'content-zh': '优化了在日文下的字体展示',
-        'content-en': 'Optimized font display in Japanese'
+        'content-zh': '补充了功能列表的翻译；优化了在日文下的字体展示',
+        'content-en':
+          'Added translation for area list; optimized font display in Japanese'
       },
       {
         area: 'update-log',
@@ -91,5 +108,11 @@ const log: t_UpdateLog = [
     ]
   }
 ]
+
+if (log[0].commits) {
+  log[0].commits.unshift(__LAST_COMMIT.sha)
+} else {
+  log[0].commits = [__LAST_COMMIT.sha]
+}
 
 export default log

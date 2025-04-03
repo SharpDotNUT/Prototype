@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-export const routes = [
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'index',
@@ -72,7 +72,19 @@ export const routes = [
   {
     name: 'dictionary',
     path: '/dictionary',
-    component: () => import('../views/dictionary/index.vue' as any)
+    component: () => import('../views/dictionary/index.vue' as any),
+    children: [
+      {
+        name: 'dictionary-home',
+        path: '',
+        component: () => import('../views/dictionary/home.vue' as any)
+      },
+      {
+        name: 'dictionary-main',
+        path: 'main',
+        component: () => import('../views/dictionary/main.vue' as any)
+      }
+    ]
   },
   {
     name: 'sp-key',

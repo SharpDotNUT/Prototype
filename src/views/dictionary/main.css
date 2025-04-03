@@ -1,0 +1,68 @@
+.dictionary-main {
+    display: flex;
+    overflow-y: hidden;
+    gap: 20px;
+    height: 100%;
+    padding: 20px;
+
+    >* {
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    #search {
+        width: 300px;
+    }
+
+    #result {
+        display: flex;
+        flex-direction: column;
+
+        #list {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        >p {
+            padding: 2px;
+            text-align: center;
+        }
+    }
+
+    .word {
+
+        h5 {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .kana {
+            font-size: 0.8em;
+        }
+
+        .tag {
+            cursor: pointer;
+            margin: 0px 1px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dictionary-main {
+        flex-direction: column;
+        gap: 10px;
+
+        #search {
+            width: 100%;
+            flex-shrink: 0;
+
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+}

@@ -18,7 +18,10 @@ export const useMainStore = defineStore('main', () => {
   const logged = ref(false)
   const user_info = ref({})
   const isUsingTeyvatFont = ref(false)
-  const token = ref('')
+  const windowSize = ref({
+    width: window.innerHeight,
+    height: window.innerWidth
+  })
   let beforeInstallPromptEvent = ref(null)
   window.addEventListener('beforeinstallprompt', function (e: any) {
     // 阻止默认事件
@@ -52,37 +55,17 @@ export const useMainStore = defineStore('main', () => {
           .addEventListener('change', updateThemeAuto)
       }
     }
-    if (themeName !== 'system') {
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', updateThemeAuto)
-    }
-  }
-  function initUserInfo() {
-    try {
-      if (
-        localStorage.getItem('yunhan-meta-user') &&
-        localStorage.getItem('yunhan-meta-user')
-      ) {
-        user_info.value = JSON.parse(
-          localStorage.getItem('yunhan-meta-user') as string
-        )
-        token.value = localStorage.getItem('yunhan-meta-token') as string
-        logged.value = true
-      }
-    } catch (e) {
-      console.log(e)
-      Dialog({
-        title: '提示',
-        message: '登录信息有误，请重新登录。'
-      })
-    }
   }
   watch(locale, () => {
     isUsingTeyvatFont.value = false
   })
+  window.addEventListener('resize', () => {
+    windowSize.value = {
+      width: window.innerHeight,
+      height: window.innerWidth
+    }
+  })
   const plugin_version = '1.0.0'
-  // const plugin_version = ref((window as any)?.["yunhan_plugin_version"] ?? undefined);
   return {
     version,
     host_name,
@@ -90,10 +73,9 @@ export const useMainStore = defineStore('main', () => {
     setTheme,
     logged,
     user_info,
-    token,
-    initUserInfo,
     plugin_version,
     isUsingTeyvatFont,
-    beforeInstallPromptEvent
+    beforeInstallPromptEvent,
+    windowSize
   }
 })

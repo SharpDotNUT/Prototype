@@ -22,13 +22,12 @@
     "description": "An achievement management/query/record tool for Genshin Impact"
   },
   "dictionary": {
-    "zh-cn": "Simplified Chinese",
-    "en": "English",
-    "ja": "Japanese",
     "search-text": "Text to Search",
-    "title": "Dictionary",
+    "title": "HoYoVERSE Dictionary",
     "filter": "Filter Tags",
-    "description": "A Chinese-Japanese-English dictionary of Genshin Impact proper nouns"
+    "description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",
+    "genshin-dict": "\"Genshin Impact\" Dictionary",
+    "search-lang": "Language to search"
   },
   "gacha": {
     "view": {
@@ -59,7 +58,12 @@
       "min-sec": "{0} minutes {1} seconds",
       "sec": "{0} seconds"
     },
-    "all": "All"
+    "all": "All",
+    "lang": {
+      "ja": "Japanese",
+      "en": "English",
+      "zh-Hans": "Simplified Chinese"
+    }
   },
   "home": {
     "welcome": "Ah, you've arrived, {0}. I couldn't help but notice how busy you are these days...<br/>If you could manage to find the time to sit and enjoy an opera together or share a pot of tea... Taking a moment to slow down and enjoy the finer things in life is always beneficial to your body and soul.",

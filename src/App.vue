@@ -6,7 +6,6 @@ import AppBar from '@/components/app-bar.vue'
 import { useI18n } from 'vue-i18n'
 const locale = useI18n().locale
 const mainStore = useMainStore()
-mainStore.initUserInfo()
 const route = useRoute()
 const router = useRouter()
 const loading = ref(false)

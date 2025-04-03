@@ -13,8 +13,12 @@ app.use(router)
 app.use(i18n)
 app.mount('#app')
 
+import VueVirtualScroller from 'vue-virtual-scroller'
+app.use(VueVirtualScroller)
+
 import '@varlet/touch-emulator'
 import '@varlet/ui/es/style'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 
 import { useMainStore } from './stores/main'
 useMainStore().setTheme('system')

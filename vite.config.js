@@ -53,5 +53,8 @@ export default defineConfig({
   define: {
     __BUILD_TIME: new Date().getTime(),
     __LAST_COMMIT: commit
+  },
+  optimizeDeps: {
+    include: ['@varlet/ui']
   }
 })
