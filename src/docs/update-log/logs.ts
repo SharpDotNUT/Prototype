@@ -3,14 +3,15 @@ import type { t_UpdateLog } from './types'
 const log: t_UpdateLog = [
   {
     version: '2.1.1',
-    date: '2025-03-31T22:30:00+0800',
-    released: false,
+    date: '2025-04-04T23:00:00+0800',
     items: [
       {
         area: 'app',
         type: 'Development',
-        'content-zh': '增强 TypeScript 支持',
-        'content-en': 'Enhanced TypeScript support'
+        'content-zh':
+          '增强 TypeScript 支持；组件库改为全量引入；升级 Vue-I18n@11',
+        'content-en':
+          'Enhanced TypeScript support; component library changed to full import; upgraded Vue-I18n@11'
       },
       {
         area: 'dictionary',

@@ -15,7 +15,10 @@ Locale.add('ja', Locale.jaJP)
 
 let defaultLanguage = 'zh-Hans'
 
-const i18n = createI18n({
+const i18n = createI18n<
+  [typeof EN, typeof ZHS, typeof JA],
+  'zh-Hans' | 'en' | 'ja'
+>({
   locale: 'zh-Hans', // 默认语言
   fallbackLocale: 'zh-Hans', // 备用语言
   messages: {
@@ -33,16 +36,6 @@ const i18n = createI18n({
   legacy: false
 })
 
-// set window title to i18n.global.t("name")
-
 document.title = i18n.global.t('name')
-
-document.documentElement.lang = defaultLanguage
-watch(i18n.global.locale, (newLocale) => {
-  console.log(newLocale)
-  document.title = i18n.global.t('name')
-  document.documentElement.lang = newLocale
-  Locale.use(newLocale)
-})
 
 export default i18n

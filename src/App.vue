@@ -1,9 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { RouterView, useRoute, useRouter } from 'vue-router'
+import { ref, onMounted, watch } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
 import AppBar from '@/components/app-bar.vue'
 import { useI18n } from 'vue-i18n'
-const { locale } = useI18n()
+import { Locale } from '@varlet/ui'
+const { locale, t } = useI18n()
 const route = useRoute()
 const loading = ref(false)
 
@@ -12,6 +13,12 @@ onMounted(() => {
   if (lang !== 'request') {
     locale.value = lang
   }
+})
+
+watch(locale, (newLocale) => {
+  document.title = t('name')
+  document.documentElement.lang = newLocale
+  Locale.use(newLocale)
 })
 </script>
 
@@ -25,6 +32,10 @@ onMounted(() => {
         <RouterView />
       </div>
       <template #description>
+        <span>
+          {{ t('test') }}
+          {{ $t('test') }}
+        </span>
         {{ $t('global.loading') }}
       </template>
     </var-loading>

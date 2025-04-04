@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import Varlet from '@varlet/ui'
 import i18n from './locales/i18n'
 //@ts-ignore
 import App from './App.vue'
@@ -11,6 +12,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
+app.use(Varlet)
 app.mount('#app')
 
 import VueVirtualScroller from 'vue-virtual-scroller'

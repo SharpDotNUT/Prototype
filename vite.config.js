@@ -1,9 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import components from 'unplugin-vue-components/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import { VarletImportResolver } from '@varlet/import-resolver'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const res = await fetch(
@@ -14,9 +12,6 @@ const commit = (await res.json())[0]
 export default defineConfig({
   plugins: [
     vue(),
-    components({
-      resolvers: [VarletImportResolver()]
-    }),
     vueDevTools(),
     VitePWA({
       registerType: 'autoUpdate',

@@ -1,0 +1,3 @@
+const map = {}
+
+class ResourceManager {}
