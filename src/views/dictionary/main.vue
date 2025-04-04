@@ -69,14 +69,13 @@ const search = (e: Event | null, force = false) => {
       <var-input
         v-model="searchString"
         :placeholder="$t('dictionary.search-text')"
-        @blur="search"
-        @keydown.enter="search" />
+        @input="search(null)" />
       <br />
       <var-select
         :placeholder="$t('dictionary.search-lang')"
         chip
         v-model="searchFrom"
-        @blur="search">
+        @change="search">
         <var-option value="all" :label="$t('global.all')" />
         <var-option value="zh-Hans" :label="$t('global.lang.zh-Hans')" />
         <var-option value="en" :label="$t('global.lang.en')" />
@@ -88,7 +87,7 @@ const search = (e: Event | null, force = false) => {
         chip
         multiple
         v-model="searchTags"
-        @blur="search">
+        @change="(search(null), console.log(searchTags))">
         <var-option
           v-for="(text, tag) in (Tags as Record<string, Record<string, any>>)?.[
             locale

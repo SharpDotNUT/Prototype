@@ -7,13 +7,6 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const mainStore = useMainStore()
 
-function use(params) {
-  Dialog({
-    message: t('index.unfinished-note'),
-    showConfirmButton: false
-  })
-}
-
 function openGithub() {
   window.open(`https://github.com/${Meta.repo}`, '_blank')
 }
@@ -38,9 +31,11 @@ function openGithub() {
           <img :src="`https://img.shields.io/github/license/${Meta.repo}`" />
         </a>
         <div id="actions">
-          <var-button @click="use" type="primary">
-            {{ $t('index.use') }}
-          </var-button>
+          <router-link to="/home">
+            <var-button type="primary">
+              {{ $t('index.use') }}
+            </var-button>
+          </router-link>
           <var-button @click="openGithub">GitHub</var-button>
           <var-button @click="mainStore.beforeInstallPromptEvent.prompt()">
             {{ $t('index.install') }}

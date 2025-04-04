@@ -21,15 +21,10 @@ const f_search = ref({
   version: 'all',
   finished: 'all'
 })
-const pagination = ref({
-  page: 1,
-  pageSize: 20
-})
 watch(f_selectedGoal, () => {
   f_search.value.version = 'all'
 })
 const ui_SearchedAchievementList: any = ref([])
-const ui_AchievementList: any = ref([])
 function search() {
   let data: Array<any> = []
   if (f_selectedGoal.value == -1) {
@@ -70,7 +65,6 @@ function search() {
     return _version && _text
   })
   ui_SearchedAchievementList.value = data
-  pagination.value.page = 1
 }
 watch(
   [
@@ -80,20 +74,6 @@ watch(
   ],
   () => {
     search()
-  },
-  { immediate: true }
-)
-watch(
-  [
-    ui_SearchedAchievementList,
-    () => pagination.value.page,
-    () => pagination.value.pageSize
-  ],
-  () => {
-    ui_AchievementList.value = ui_SearchedAchievementList.value.slice(
-      (pagination.value.page - 1) * pagination.value.pageSize,
-      pagination.value.page * pagination.value.pageSize
-    )
   },
   { immediate: true }
 )
@@ -195,56 +175,56 @@ watch(
         </var-cell>
       </div>
     </var-paper>
-    <div id="achievement">
-      <var-paper id="pagination">
-        <div>
-          <var-pagination
-            v-model:current="pagination.page"
-            v-model:size="pagination.pageSize"
-            :simple="false"
-            :total="ui_SearchedAchievementList.length"
-            :show-total="(total) => `共 ${total} 个成就组`" />
-        </div>
-      </var-paper>
-      <div id="list">
-        <div>
-          <var-card v-for="(group, index) in ui_AchievementList" :key="index">
-            <h2>
-              {{ TextMap[locale][group.name] }}
-              <var-chip>{{ group.version }}</var-chip>
-            </h2>
-            <div
-              v-for="(achievement, index) in group.achievements"
-              :key="index">
-              <p>
-                <span>
-                  {{ achievement.rewards }}
-                  <img style="height: 1em" src="./img/Primo.webp" />
-                </span>
-                {{ TextMap[locale][achievement.description] }}
-              </p>
-            </div>
-            <var-space justify="flex-end">
-              <var-button
-                @click="
-                  searchAchievement(
-                    TextMap[locale][group.name],
-                    f_searchPlatform
-                  )
-                ">
-                {{
-                  $t(
-                    'achievement.search-with',
-                    //@ts-ignore
-                    [D_SearchPlatform[f_searchPlatform].name]
-                  )
-                }}
-              </var-button>
-            </var-space>
-          </var-card>
-        </div>
-      </div>
-    </div>
+    <dynamic-scroller
+      id="achievements"
+      :items="ui_SearchedAchievementList"
+      :min-item-size="122"
+      key-field="name">
+      <template #default="{ item: group, index, active }">
+        <dynamic-scroller-item
+          :item="group"
+          :active="active"
+          :size-dependencies="[group.achievements]"
+          :data-index="index">
+          <div class="item">
+            <var-card>
+              <h2>
+                {{ TextMap[locale][group.name] }}
+                <var-chip>{{ group.version }}</var-chip>
+              </h2>
+              <div
+                v-for="(achievement, aIndex) in group.achievements"
+                :key="aIndex">
+                <p>
+                  <span>
+                    {{ achievement.rewards }}
+                    <img style="height: 1em" src="./img/Primo.webp" />
+                  </span>
+                  {{ TextMap[locale][achievement.description] }}
+                </p>
+              </div>
+              <var-space justify="flex-end">
+                <var-button
+                  @click="
+                    searchAchievement(
+                      TextMap[locale][group.name],
+                      f_searchPlatform
+                    )
+                  ">
+                  {{
+                    $t(
+                      'achievement.search-with',
+                      //@ts-ignore
+                      [D_SearchPlatform[f_searchPlatform].name]
+                    )
+                  }}
+                </var-button>
+              </var-space>
+            </var-card>
+          </div>
+        </dynamic-scroller-item>
+      </template>
+    </dynamic-scroller>
   </div>
 </template>
 

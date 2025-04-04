@@ -1,22 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
-import { useMainStore } from './stores/main'
 import AppBar from '@/components/app-bar.vue'
 import { useI18n } from 'vue-i18n'
-const locale = useI18n().locale
-const mainStore = useMainStore()
+const { locale } = useI18n()
 const route = useRoute()
-const router = useRouter()
 const loading = ref(false)
-
-router.beforeEach(async () => {
-  loading.value = true
-  return true
-})
-router.afterEach(() => {
-  loading.value = false
-})
 
 onMounted(() => {
   const lang = route.query.lang || 'request'
@@ -32,10 +21,7 @@ onMounted(() => {
       <AppBar />
     </div>
     <var-loading :loading="loading" type="wave">
-      <div
-        id="content"
-        class="elevation-12"
-        :style="{ opacity: loading ? 0 : 1 }">
+      <div id="content" class="elevation-12">
         <RouterView />
       </div>
       <template #description>
@@ -53,28 +39,6 @@ onMounted(() => {
 }
 </style>
 
-<style scoped>
-#app {
-  height: 100dvh;
-}
-#content {
-  box-shadow: 0 0 10px var(--color-body);
-  height: calc(100dvh - var(--app-bar-height));
-  overflow: auto;
-  margin: 0 auto;
-  transition: opacity 0.25s ease-in-out;
-}
-
-#router-loading {
-  position: fixed;
-  top: var(--app-bar-height);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-html[data-theme='dark'] #router-loading {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+<style lang="css" scoped>
+@import url('./app.css');
 </style>

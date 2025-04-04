@@ -15,10 +15,12 @@ const log: t_UpdateLog = [
         area: 'dictionary',
         type: 'UI & UX',
         'content-zh':
-          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能',
+          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能' +
+          '搜索结果将根据输入的关键词实时更新',
         'content-en':
           'Changed to home and secondary page mechanism, preparing for future feature expansion; ' +
-          'optimized interface; used virtual scrolling to improve performance'
+          'optimized interface; used virtual scrolling to improve performance; ' +
+          'search results will be updated in real time based on the input keyword'
       }
     ]
   },

@@ -27,7 +27,8 @@
     "filter": "Filter Tags",
     "description": "A tool for querying terms and proper nouns within HoYoVERSE's IPs",
     "genshin-dict": "\"Genshin Impact\" Dictionary",
-    "search-lang": "Language to search"
+    "search-lang": "Language to search",
+    "result-count": "{0} words found"
   },
   "gacha": {
     "view": {
@@ -74,7 +75,6 @@
     "description": "An open-source web-based toolkit for HoYoVERSE games.",
     "use": "Use Now",
     "install": "Install as PWA App",
-    "unfinished-note": "This website is under development. Most pages are not mobile-optimized. Please use the menu in the top-right corner to access available features.",
     "title": "Introduction Page"
   },
   "name": "「Prototype : Yun Han」",

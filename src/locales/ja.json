@@ -27,7 +27,8 @@
     "filter": "タグフィルター",
     "description": "HoYoVERSEグループIP内の用語や固有名詞を検索するためのツールです",
     "genshin-dict": "「原神」辞書",
-    "search-lang": "検索言語"
+    "search-lang": "検索言語",
+    "result-count": "{0}件見つかりました"
   },
   "gacha": {
     "view": {
@@ -74,7 +75,6 @@
     "description": "HoYoVERSEゲーム向けのオープンソースWebツールキット",
     "use": "今すぐ使う",
     "install": "PWAアプリとしてインストール",
-    "unfinished-note": "本ウェブサイトは開発中です。多くのページはモバイル未対応です。右上のメニューから利用可能な機能にアクセスしてください。",
     "title": "紹介ページ"
   },
   "name": "「試作•雲翰」",
