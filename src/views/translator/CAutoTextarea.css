@@ -1,0 +1,8 @@
+.--textarea {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  resize: none;
+}

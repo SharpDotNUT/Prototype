@@ -30,6 +30,9 @@
     "search-lang": "Language to search",
     "result-count": "{0} words found"
   },
+  "docs": {
+    "title": "Document"
+  },
   "gacha": {
     "view": {
       "title": "Gacha Pool: View"
@@ -136,16 +139,7 @@
     "description": "Query redemption codes for SP/Special Programs"
   },
   "translator": {
-    "font-size": "Font Size",
-    "raw-text": "Original Text",
-    "forward-translation": "Forward Translation",
-    "reverse-translation": "Reverse Translation",
     "title": "Translator",
-    "auto-wrap": "Auto Wrap",
-    "open-keyboard": "Open Keyboard",
-    "export-to-image": "Export as Image",
-    "action-to-save": "Right-click or long press to save",
-    "close-keyboard": "Close Keyboard",
     "description": "A tool for converting in-game text and English in HoYoVERSE games"
   },
   "update-log": {
@@ -160,8 +154,5 @@
       "i18n": "Internationalization",
       "others": "Others"
     }
-  },
-  "docs": {
-    "title": "Document"
   }
 }

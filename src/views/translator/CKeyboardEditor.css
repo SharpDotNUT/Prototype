@@ -1,0 +1,46 @@
+#container {
+  height: 80vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#textarea {
+  height: 100%;
+  overflow-y: auto;
+  flex: 1;
+}
+
+#keyboard {
+  background-color: var(--color-paper);
+  transition: transform 0.3s ease-in-out;
+  user-select: none;
+  z-index: 10;
+
+  #keys {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+
+    .row {
+      display: flex;
+      justify-content: space-around;
+      height: 5vh;
+      font-family: v-bind(ui_font);
+
+      .key {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2vh;
+        cursor: pointer;
+      }
+    }
+
+    .row.raw {
+      font-family: inherit;
+    }
+  }
+}

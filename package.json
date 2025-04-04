@@ -1,4 +1,16 @@
 {
+  "name": "yunhan-toolbox",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "format-locales": "deno run --allow-read --allow-write .\\src\\locales\\reduce.runtime.ts",
+    "check": "vue-tsc --noEmit"
+  },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
@@ -35,17 +47,5 @@
     "unplugin-vue-components": "^0.27.2",
     "vite": "^6.2.3",
     "vite-plugin-pwa": "^0.21.2"
-  },
-  "name": "yunhan-toolbox",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "format": "prettier --write .",
-    "format-locales": "deno run --allow-read --allow-write .\\src\\locales\\reduce.runtime.ts",
-    "check": "vue-tsc --noEmit"
-  },
-  "type": "module",
-  "version": "2.1.0"
+  }
 }

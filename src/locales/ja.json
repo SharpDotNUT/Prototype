@@ -30,6 +30,9 @@
     "search-lang": "検索言語",
     "result-count": "{0}件見つかりました"
   },
+  "docs": {
+    "title": "書類"
+  },
   "gacha": {
     "view": {
       "title": "ガチャプール：閲覧"
@@ -136,16 +139,7 @@
     "description": "予告番組の引き換えコードを検索"
   },
   "translator": {
-    "font-size": "文字サイズ",
-    "raw-text": "原文",
-    "forward-translation": "順方向翻訳",
-    "reverse-translation": "逆方向翻訳",
     "title": "翻訳ツール",
-    "auto-wrap": "自動改行",
-    "open-keyboard": "キーボード表示",
-    "export-to-image": "画像としてエクスポート",
-    "action-to-save": "右クリック/長押しで保存",
-    "close-keyboard": "キーボードを閉じる",
     "description": "HoYoVERSEゲーム内のテキストと英語を変換するツール"
   },
   "update-log": {
@@ -160,8 +154,5 @@
       "i18n": "国際化",
       "others": "他の"
     }
-  },
-  "docs": {
-    "title": "書類"
   }
 }

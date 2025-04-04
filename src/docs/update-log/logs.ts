@@ -4,6 +4,7 @@ const log: t_UpdateLog = [
   {
     version: '2.1.1',
     date: '2025-03-31T22:30:00+0800',
+    released: false,
     items: [
       {
         area: 'app',
@@ -15,12 +16,29 @@ const log: t_UpdateLog = [
         area: 'dictionary',
         type: 'UI & UX',
         'content-zh':
-          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能' +
+          '改为首页和二级页面机制，为后续功能扩展做准备；优化界面；使用虚拟滚动提高性能；' +
           '搜索结果将根据输入的关键词实时更新',
         'content-en':
           'Changed to home and secondary page mechanism, preparing for future feature expansion; ' +
           'optimized interface; used virtual scrolling to improve performance; ' +
           'search results will be updated in real time based on the input keyword'
+      },
+      {
+        area: 'translator',
+        type: 'UI & UX',
+        'content-zh':
+          '模仿 Google Translate 的界面，优化了界面和交互；' +
+          '软键盘将在一个新的对话框中打开，以避免与输入框的冲突',
+        'content-en':
+          'Imitated the interface of Google Translate, optimized the interface and interaction;' +
+          'the soft keyboard will open in a new dialog box to avoid conflicts with the input box'
+      },
+      {
+        area: 'index',
+        type: 'UI & UX',
+        'content-zh': '「立即使用」按钮现在将直接跳转到主页',
+        'content-en':
+          'The "Use Now" button will now directly jump to the homepage'
       }
     ]
   },

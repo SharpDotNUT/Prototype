@@ -11,6 +11,7 @@ body {
 :root {
   --base-width: min(100%, 1000px);
 }
+
 .base-width {
   width: var(--base-width);
 }
@@ -26,7 +27,9 @@ body {
   min-height: -webkit-fill-available;
   --option-height: auto;
   --option-padding: 6px 12px;
+  word-break: break-word;
 }
+
 html {
   height: -webkit-fill-available;
 }

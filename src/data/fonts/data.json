@@ -3,88 +3,99 @@
     "id": "TeyvatBlack",
     "file": "./files/TeyvatBlack-Regular.woff2",
     "name": {
-      "zh": "提瓦特文（UI，蒙德）",
-      "en": "Teyvat Script (UI, Mondstadt)"
+      "zh-Hans": "提瓦特文（UI，蒙德）",
+      "en": "Teyvat Script (UI, Mondstadt)",
+      "ja": "テイワット文字（UI、モンド）"
     }
   },
   {
     "id": "InazumaBrush",
     "file": "./files/InazumaBrush-Regular.woff2",
     "name": {
-      "zh": "稻妻文",
-      "en": "Inazuma Script"
+      "zh-Hans": "稻妻文",
+      "en": "Inazuma Script",
+      "ja": "稲妻文字"
     }
   },
   {
     "id": "SumeruScribe",
     "file": "./files/SumeruScribe-Regular.woff2",
     "name": {
-      "zh": "须弥文（雨林）",
-      "en": "Sumeru Script (Jungle)"
+      "zh-Hans": "须弥文（雨林）",
+      "en": "Sumeru Script (Jungle)",
+      "ja": "スメール文字（雨林）"
     }
   },
   {
     "id": "DeshretInscription",
     "file": "./files/DeshretInscription-Regular.woff2",
     "name": {
-      "zh": "赤冠文（沙漠）",
-      "en": "Deshret Script (Desert)"
+      "zh-Hans": "赤冠文（沙漠）",
+      "en": "Deshret Script (Desert)",
+      "ja": "デシェレト文字（砂漠）"
     }
   },
   {
     "id": "KhaenriahSun",
     "file": "./files/KhaenriahSun-Regular.woff2",
     "name": {
-      "zh": "坎瑞亚文（深渊）",
-      "en": "Khænri'ah Script (Abyss)"
+      "zh-Hans": "坎瑞亚文（深渊）",
+      "en": "Khaenri'ah Script (Abyss)",
+      "ja": "カーンルイア文字（深淵）"
     }
   },
   {
     "id": "KhaenriahSunChasm",
     "file": "./files/KhaenriahSun-Chasm.woff2",
     "name": {
-      "zh": "坎瑞亚文（深渊）（层岩巨渊变体）",
-      "en": "Khænri'ah Script (Abyss) (Chasm Variant)"
+      "zh-Hans": "坎瑞亚文（深渊）（层岩巨渊变体）",
+      "en": "Khaenri'ah Script (Abyss) (Chasm Variant)",
+      "ja": "カーンルイア文字（深淵）（層岩巨淵バリアント）"
     }
   },
   {
     "id": "FonteAinee",
     "file": "./files/FontAinee-Regular.woff2",
     "name": {
-      "zh": "枫丹文",
-      "en": "Fontaine Script"
+      "zh-Hans": "枫丹文",
+      "en": "Fontaine Script",
+      "ja": "フォンテーヌ文字"
     }
   },
   {
     "id": "StarRailNeue",
     "file": "./files/StarRailNeue-Sans-Regular.woff2",
     "name": {
-      "zh": "星穹铁道文（UI, 黑塔空间站，贝洛伯格）",
-      "en": "Star Rail Script (UI, Herta, Belobog)"
+      "zh-Hans": "星穹铁道文（UI, 黑塔空间站，贝洛伯格）",
+      "en": "Star Rail Script (UI, Herta, Belobog)",
+      "ja": "星穹鉄道文字（UI、ヘルタ空間站、ベロブローグ）"
     }
   },
   {
-    "id": "仙舟文",
+    "id": "XianzhouSeal",
     "file": "./files/XianzhouSeal-Regular.woff2",
     "name": {
-      "zh": "仙舟文",
-      "en": "Xianzhou Script"
+      "zh-Hans": "仙舟文",
+      "en": "Xianzhou Script",
+      "ja": "仙舟文字"
     }
   },
   {
     "id": "ZZZA",
     "file": "./files/ZZZA-Regular.woff2",
     "name": {
-      "zh": "绝区零文字变体A",
-      "en": "ZZZ Script Variant A"
+      "zh-Hans": "绝区零文字变体A",
+      "en": "ZZZ Script Variant A",
+      "ja": "ゼンレスゾーンゼロ文字 バリアントA"
     }
   },
   {
     "id": "ZZZSystem",
     "file": "./files/ZZZSystem-Regular.woff2",
     "name": {
-      "zh": "绝区零文字(系统)",
-      "en": "ZZZ System"
+      "zh-Hans": "绝区零文字(系统)",
+      "en": "ZZZ System",
+      "ja": "ゼンレスゾーンゼロシステム文字"
     }
   }
 ]

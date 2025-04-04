@@ -30,6 +30,9 @@
     "result-count": "查询到 {0} 个词条",
     "search-lang": "要搜索的语言"
   },
+  "docs": {
+    "title": "文档"
+  },
   "gacha": {
     "view": {
       "title": "卡池-浏览"
@@ -136,16 +139,7 @@
     "description": "查询前瞻特别节目的兑换码"
   },
   "translator": {
-    "font-size": "字体大小",
-    "raw-text": "原文",
-    "forward-translation": "正向翻译",
-    "reverse-translation": "反向翻译",
     "title": "翻译器",
-    "auto-wrap": "自动换行",
-    "open-keyboard": "打开键盘",
-    "export-to-image": "导出结果为图片",
-    "action-to-save": "右键或长按保存",
-    "close-keyboard": "收起键盘",
     "description": "一个用于转换米哈游游戏内文字和英文的工具"
   },
   "update-log": {
@@ -160,8 +154,5 @@
       "i18n": "国际化",
       "others": "其他"
     }
-  },
-  "docs": {
-    "title": "文档"
   }
 }

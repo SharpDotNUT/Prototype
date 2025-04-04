@@ -2,10 +2,14 @@
 // 去除空对象
 // 按键排序
 
-const dir = Deno.readDirSync('.')
+import path from 'node:path'
+const dirname = import.meta.dirname
+
+const dir = Deno.readDirSync(dirname)
 dir.forEach(async (file) => {
   if (file.name.endsWith('.json')) {
-    const data = JSON.parse(await Deno.readTextFile(file.name))
+    const filename = path.join(dirname, file.name)
+    const data = JSON.parse(await Deno.readTextFile(filename))
     const sorted = Object.keys(data)
       .sort()
       .reduce(
@@ -15,6 +19,6 @@ dir.forEach(async (file) => {
         },
         {} as Record<string, any>
       )
-    await Deno.writeTextFile(file.name, JSON.stringify(sorted, null, 2))
+    await Deno.writeTextFile(filename, JSON.stringify(sorted, null, 2))
   }
 })

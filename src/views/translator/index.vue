@@ -1,145 +1,131 @@
-<script setup>
-import { ref, watch, computed } from 'vue'
-
+<script setup lang="ts">
+import { ref, watch, computed, nextTick } from 'vue'
 import SvgIcon from '@jamescoyle/vue-icon'
-
 import D_FontData from '@/data/fonts/data.json'
+import CAutoTextarea from './CAutoTextarea.vue'
+import CKeyboardEditor from './CKeyboardEditor.vue'
+import Default from './default.txt?raw'
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
 
-import domtoimage from 'dom-to-image'
-import { mdiExport } from '@mdi/js'
+import {
+  mdiContentCopy,
+  mdiKeyboard,
+  mdiSwapHorizontal,
+  mdiTranslate
+} from '@mdi/js'
+import { copyToClipboard } from '@/script/tools'
 
-const ui_key = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const ui_showKeyboard = ref(false)
-const ui_rawText = ref('type you text here')
-const ui_font = ref('TeyvatBlack')
-const ui_mode = ref(0)
-watch(ui_mode, () => {
-  ui_showKeyboard.value = false
+const showKeyboard = ref(false)
+const text = ref(Default)
+const currentFont = ref(D_FontData[0].id)
+const mode = ref(1)
+const ref_textarea = ref(null)
+const currentFontName = computed(() => {
+  //@ts-ignore
+  const font: any = D_FontData.find((x) => x.id === currentFont.value)
+  console.log(font)
+  return font.name[locale.value]
 })
-const ui_fontStyle = ref({
-  size: 16,
-  wrap: true
-})
-const ui_rawTextFont = computed(() => {
-  return ui_mode.value ? ui_font.value : 'inherit'
-})
-const ui_showExportDialog = ref(false)
-const ui_exporting = ref(false)
-const el_result = ref(null)
-const m_imgUrl = ref(undefined)
-function handleExport() {
-  ui_exporting.value = true
-  ui_showExportDialog.value = true
-  domtoimage.toPng(el_result.value, { quality: 1 }).then((dataUrl) => {
-    m_imgUrl.value = dataUrl
-    ui_exporting.value = false
+watch(mode, () => {
+  showKeyboard.value = false
+  nextTick(() => {
+    if (!ref_textarea.value) return
+    //@ts-ignore
+    ref_textarea.value?.resizeTextarea()
   })
+})
+watch(showKeyboard, () => {
+  nextTick(() => {
+    if (!ref_textarea.value || showKeyboard.value) return
+    //@ts-ignore
+    ref_textarea.value?.resizeTextarea()
+  })
+})
+
+function openDeepLToTranslate(text: string) {
+  const lang = {
+    en: 'en-us',
+    ja: 'ja',
+    'zh-Hans': 'zh-hans'
+  }[locale.value]
+  window.open(
+    `https://www.deepl.com/zh/translator#en/${lang}/${encodeURIComponent(text)}`
+  )
 }
 </script>
 
 <template>
-  <div class="__container_translator">
-    <var-tabs v-model:active="ui_mode">
-      <var-tab>{{ $t('translator.forward-translation') }}</var-tab>
-      <var-tab>{{ $t('translator.reverse-translation') }}</var-tab>
-    </var-tabs>
-    <br />
-    <var-input
-      variant="outlined"
-      :placeholder="$t('translator.raw-text')"
-      textarea
-      v-model="ui_rawText"></var-input>
-    <div>
-      <br />
-      <var-button
-        v-if="ui_mode"
-        block
-        @click="ui_showKeyboard = !ui_showKeyboard">
-        <span v-if="!ui_showKeyboard">
-          {{ $t('translator.open-keyboard') }}
-        </span>
-        <span v-else>{{ $t('translator.close-keyboard') }}</span>
-      </var-button>
-    </div>
-    <br />
-    <var-select variant="outlined" v-model="ui_font">
-      <var-option
-        v-for="font in D_FontData"
-        :key="font.name"
-        :label="font.id"
-        :value="font.id">
-        <div style="display: flex; flex-direction: column; padding: 10px 0">
-          <p :class="`font-${font.id}`">{{ font.id }}</p>
-          <p>{{ font.name.zh }}</p>
-          <p>{{ font.name.en }}</p>
+  <div class="translator">
+    <var-card>
+      <p>
+        导出功能重制中，目前不可使用。Export function is being reconstructed,
+        currently not available.
+        エクスポート機能は改修中のため、現在ご利用いただけません。
+      </p>
+      <div id="bar">
+        <div id="title">
+          <var-chip type="primary" block>
+            {{ mode ? $t('global.lang.en') : currentFontName }}
+          </var-chip>
+          <var-button id="button" round @click="mode = 1 - mode">
+            <svg-icon type="mdi" :path="mdiSwapHorizontal" />
+          </var-button>
+          <var-chip type="primary" block>
+            {{ mode ? currentFontName : $t('global.lang.en') }}
+          </var-chip>
         </div>
-      </var-option>
-    </var-select>
-    <br />
-    <div id="actions">
-      <div>
-        <span>{{ $t('translator.font-size') }}</span>
-        <var-counter v-model="ui_fontStyle.size" />
-      </div>
-      <div>
-        <span>{{ $t('translator.auto-wrap') }}</span>
-        <var-switch variant v-model="ui_fontStyle.wrap" />
-      </div>
-      <div>
-        <span>
-          {{ $t('translator.export-to-image') }}
-        </span>
-        <var-button type="primary" @click="handleExport()">
-          <svg-icon type="mdi" :path="mdiExport"></svg-icon>
-        </var-button>
-      </div>
-    </div>
-    <br />
-    <var-divider></var-divider>
-    <div id="result" ref="el_result">
-      <pre
-        :style="{
-          'font-size': `${ui_fontStyle.size}px`,
-          'text-wrap': ui_fontStyle.wrap ? 'wrap' : 'nowrap',
-          'font-family': ui_mode ? undefined : ui_font
-        }"
-        >{{ ui_rawText }}</pre
-      >
-      <var-dialog v-model:show="ui_showExportDialog">
-        <template #title>{{ $t('translator.export-to-image') }}</template>
-        <p>{{ $t('translator.action-to-save') }}</p>
-        <br />
-        <var-loading v-if="ui_exporting" :loading="ui_exporting"></var-loading>
-        <div v-else style="max-height: 50vh; overflow-y: auto">
-          <var-image :src="m_imgUrl" fit="cover"></var-image>
-        </div>
-      </var-dialog>
-    </div>
-    <var-card
-      id="keyboard"
-      :style="{ transform: `translateY(${ui_showKeyboard ? '0' : '100%'})` }">
-      <div id="keys">
-        <div class="row" v-for="x in 6">
-          <div
-            class="key var-button"
-            v-for="y in 6"
-            v-ripple
-            @click="ui_rawText += ui_key[(x - 1) * 6 + y - 1]">
-            {{ ui_key[(x - 1) * 6 + y - 1] }}
-          </div>
-        </div>
-        <div class="row raw">
-          <div class="key" v-ripple @click="ui_rawText += ' '">SPACE</div>
-          <div
-            class="key"
-            v-ripple
-            @click="ui_rawText = ui_rawText.slice(0, -1)">
-            BACKSPACE
-          </div>
-          <div class="key" v-ripple @click="ui_rawText += '\n'">ENTER</div>
-        </div>
+        <var-select style="width: 100%" v-model="currentFont">
+          <var-option
+            v-for="font in D_FontData as any[]"
+            :key="font.id"
+            :label="font.name[locale]"
+            :value="font.id">
+            <div style="display: flex; flex-direction: column; padding: 10px 0">
+              <p :class="`font-${font.id}`">{{ font.id }}</p>
+              <p>{{ font.name[locale] }}</p>
+            </div>
+          </var-option>
+        </var-select>
       </div>
     </var-card>
+    <div id="main">
+      <var-card>
+        <CAutoTextarea
+          ref="ref_textarea"
+          variant="standard"
+          v-model="text"
+          :style="{
+            fontFamily: mode ? 'inherit' : currentFont
+          }" />
+        <div id="actions">
+          <var-button v-if="!mode" round @click="showKeyboard = true">
+            <svg-icon type="mdi" :path="mdiKeyboard" />
+          </var-button>
+        </div>
+      </var-card>
+      <var-card>
+        <pre
+          ref="el_result"
+          :style="{
+            fontFamily: !mode ? 'inherit' : currentFont
+          }"
+          >{{ text }}</pre
+        >
+        <div id="actions">
+          <var-button v-if="!mode" round @click="openDeepLToTranslate(text)">
+            <svg-icon type="mdi" :path="mdiTranslate" />
+          </var-button>
+          <var-button v-if="!mode" round @click="copyToClipboard(text)">
+            <svg-icon type="mdi" :path="mdiContentCopy" />
+          </var-button>
+        </div>
+      </var-card>
+    </div>
+    <CKeyboardEditor
+      v-model:show-keyboard="showKeyboard"
+      v-model:text="text"
+      :font="currentFont"></CKeyboardEditor>
   </div>
 </template>
 
@@ -147,14 +133,10 @@ function handleExport() {
 @import url('@/data/fonts/fonts.css');
 @import url('./index.css');
 
-#keyboard {
-  #keys {
-    .row {
-      font-family: v-bind(ui_font);
-    }
-  }
-}
-:deep(.var-input--textarea) {
-  font-family: v-bind(ui_rawTextFont);
+textarea,
+pre {
+  font-family: inherit;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 </style>
