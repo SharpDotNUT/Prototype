@@ -7,29 +7,16 @@ import { isEqual } from 'lodash-es'
 import Tags from '@/data/dictionary/tags.json'
 import { filter, type t_word } from './main'
 import type { Ref } from 'vue'
+import { useMainStore } from '@/stores/main'
 
-const WordsPath = 'https://dataset.genshin-dictionary.com/words.json'
 let Words: t_word[] = []
-caches.open('dictionary').then((cache) => {
-  cache.match(WordsPath).then(async (res) => {
-    if (res) {
-      res.json().then((data) => {
-        Words = data
-        Words_loaded.value = true
-        Snackbar('从缓存加载成功')
-        search(null, true)
-      })
-    } else {
-      const res = await fetch(WordsPath)
-      cache.put(WordsPath, res.clone())
-      res.json().then((data) => {
-        Words = data
-        Words_loaded.value = true
-        Snackbar('从网络下载成功')
-        search(null, true)
-      })
-    }
-  })
+const mainStore = useMainStore()
+mainStore.RM.get({ id: 'dictionary/genshin' }).then(async (res) => {
+  if (res) {
+    Words = await res.json()
+    Words_loaded.value = true
+    search(null, true)
+  }
 })
 
 const Words_loaded = ref(false)
@@ -64,7 +51,7 @@ const search = (e: Event | null, force = false) => {
 <template>
   <div class="dictionary-main">
     <div id="search">
-      <h2>{{ $t('dictionary.genshin-dict') }}</h2>
+      <h2 class="only-in-pc">{{ $t('dictionary.genshin-dict') }}</h2>
       <br />
       <var-input
         v-model="searchString"
@@ -98,6 +85,7 @@ const search = (e: Event | null, force = false) => {
     </div>
     <div id="result">
       <p>{{ $t('dictionary.result-count', [words.length]) }}</p>
+      <var-loading v-if="!Words_loaded" :description="$t('global.loading')" />
       <dynamic-scroller id="list" :items="words" :min-item-size="100">
         <template #default="{ item: word, index, active }">
           <dynamic-scroller-item

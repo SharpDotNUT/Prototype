@@ -1,10 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { useMainStore } from '@/stores/main'
-import { useRoute, useRouter } from 'vue-router'
-import About from '../about/index.vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import type { Ref } from 'vue'
+import type { CacheResourceRecord } from '@/script/RM/types'
 const { locale } = useI18n()
+import { filesize } from 'filesize'
 const mainStore = useMainStore()
 const ui_isTeyvatFont = ref(mainStore.isUsingTeyvatFont)
 const theme = ref('system')
@@ -24,10 +26,25 @@ watch(ui_isTeyvatFont, () => {
   }
 })
 
-const route = useRoute()
 const router = useRouter()
-
 const showMenu = ref(false)
+const StorageUsage: Ref<null | {
+  total: number
+  used: number
+  cacheUsed: number
+  resources: Record<string, CacheResourceRecord>
+}> = ref(null)
+function loadStorageUsage() {
+  mainStore.RM.getLocalMeta().then((res) => {
+    StorageUsage.value = res as {
+      total: number
+      used: number
+      cacheUsed: number
+      resources: Record<string, CacheResourceRecord>
+    }
+  })
+}
+loadStorageUsage()
 
 const s_isWidthOver800 = ref(false)
 onMounted(() => {
@@ -107,6 +124,53 @@ onMounted(() => {
             <span>{{ $t('setting.language.teyvat') }}</span>
             <var-switch v-model="ui_isTeyvatFont" :variant="true" />
           </p>
+        </div>
+        <div v-if="StorageUsage">
+          <h2>Resource Manager</h2>
+          <p>
+            {{ filesize(StorageUsage.cacheUsed) }} /
+            {{ filesize(StorageUsage.total) }}
+          </p>
+          <var-table>
+            <table>
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Variant</td>
+                  <td>Size</td>
+                  <td>UpdatedAt</td>
+                  <td>Actions</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="value in StorageUsage?.resources">
+                  <td>
+                    {{ value.id }}
+                  </td>
+                  <td>
+                    {{ value.variant }}
+                  </td>
+                  <td>{{ filesize(value.size) }}</td>
+                  <td>{{ new Date(value.updatedAt).toLocaleString() }}</td>
+                  <td>
+                    <var-button
+                      size="small"
+                      type="warning"
+                      @click="
+                        mainStore.RM.remove({
+                          id: value.id,
+                          variant: value.variant
+                        }).then(() => {
+                          loadStorageUsage()
+                        })
+                      ">
+                      Delete
+                    </var-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </var-table>
         </div>
       </div>
     </div>
